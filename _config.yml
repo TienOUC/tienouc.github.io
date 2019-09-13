@@ -1,0 +1,52 @@
+# Basic
+title: Tien
+#subtitle: 日就月将，渐益堆积。
+description: The truth is what it is,not what you see.
+welcome_message: <a href="http://willtien.com">Homepage</a>
+#welcome_message: <a href="#" target="_blank">Download the theme</a>
+#creator: <a href="http://xxx.com">@yourID</a>
+
+
+#url: "http://baidu.com"
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: rouge
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: 
+
+# The blog button should not be removed.
+blog_button:
+    title: Blog
+    description: Visit blog
+
+# Navigation buttons in the front page.
+nav:
+    - {title: Projects, description: Projects, url: 'http://willtien.com/codeBlog'}
+    - {title: Resume, description: Resume, url: 'http://willtien.com/resume'} 
+    # - {title: Another Button, description: A button, url: 'http://example.com'}
+
+# Pagination
+plugins: [jekyll-paginate]
+paginate: 8
+paginate_path: "page/:num/"
+
+# Comment
+comment:
+    disqus: vno-jekyll
+    # duoshuo: 
+    
+# Social
+social:
+    weibo: Tien
+    github: TienOUC
+    #twitter: 
+   # gplus: 
+    mail: willtien@outlook.com
+
+# Google Analytics
+ga:
+    # id: your_ga_id
+    # host: your_host
