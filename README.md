@@ -1,5 +1,5 @@
 # Tien
-我的个人博客主页 [Tien](https://willtien.com)
+我的个人博客主页 &rarr;[Tien](https://willtien.com)
 
 
 ### 1. 如何部署
@@ -44,15 +44,15 @@
 
 #### 2.1 博客首页   
 
-![首页](/images/readme//img1.jpg)   
+**![首页](/images/readme//img1.jpg)**
 
 #### 2.2 文章详情   
 
-![文章列表](/images/readme//img2.jpg) 
+**![文章列表](/images/readme//img2.jpg)** 
 
-![文章头部](/images/readme//img3.jpg)
+**![文章头部](/images/readme//img3.jpg)**
 
-![文章尾部](/images/readme//img4.jpg)
+**![文章尾部](/images/readme//img4.jpg)**
 
 
 
