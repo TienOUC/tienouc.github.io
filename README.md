@@ -60,8 +60,9 @@ Jekyll 依赖：Ruby、bundler
 
 ![](/images/readme//img3.jpg)
 
+![](/images/readme//img4.jpg)
 
-#### 感谢   
+#### 感谢:      
 
 本博客是在[Vno Jekyll](https://github.com/onevcat/vno-jekyll)基础上修改的。  
 
