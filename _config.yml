@@ -7,7 +7,7 @@ welcome_message: <a href="http://willtien.com">Homepage</a>
 #creator: <a href="http://xxx.com">@yourID</a>
 
 
-#url: "http://baidu.com"
+url: "https://willtien.com"
 
 permalink: /:year/:month/:title/
 
@@ -24,8 +24,8 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: Projects, url: 'http://willtien.com/codeBlog'}
-    - {title: Resume, description: Resume, url: 'http://willtien.com/resume'} 
+    - {title: Projects, description: Projects, url: 'https://willtien.com/Projects'}
+    - {title: Resume, description: Resume, url: 'http://willtien.com/Resume'} 
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
