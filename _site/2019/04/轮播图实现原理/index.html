@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>轮播图实现原理</title>
+  <meta name="description" content="通过以下的5个过程，实现轮播图的轮播效果1. 动态生成结构">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="轮播图实现原理">
+  <meta name="twitter:description" content="通过以下的5个过程，实现轮播图的轮播效果1. 动态生成结构">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="轮播图实现原理">
+  <meta property="og:description" content="通过以下的5个过程，实现轮播图的轮播效果1. 动态生成结构">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+  <!-- Weibo -->
+  <!-- <li class="navigation__item">
+    <a href="http://weibo.com/Tien" title="@Tien 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+   -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:willtien@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-04-18 03:00:46 +0800" itemprop="datePublished" class="post-meta__date date">2019-04-18</time> &#8226; <span class="post-meta__tags tags">WEB/Html/CSS/Javascript</span>
+    </div>
+    <h1 class="post-title">轮播图实现原理</h1>
+  </header>
+
+  <section class="post">
+    <p>通过以下的5个过程，实现轮播图的轮播效果</p>
+<h3 id="1-动态生成结构">1. 动态生成结构</h3>
+
+<p>创建元素和插入元素的方法分别是什么？ 
+创建元素：document.creatElement( tagName ) var li = document.creatElement(“li”)； 
+插入元素：appendChild( element ) ol.appendChild(“li”);
+通过什么方法复制第一张图片元素？ 
+通过cloneNode()方法来复制元素：eg . var firstImg = ulLis[0].cloneNode(true)；
+其中cloneNode方法中，如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点</p>
+
+<h3 id="2-鼠标经过按钮">2. 鼠标经过按钮</h3>
+
+<p>鼠标经过时如何改变按钮样式？ 
+a. 清除所有按钮的样式 
+for (var j = 0; j &lt; olLis.length; j++) { olLis[j].className = “”; }
+b. 给当前鼠标所在按钮添加特殊样式 
+this.className = “current”;
+鼠标经过按钮时如何计算图片盒子移动的距离? 
+通过按钮索引值（this.index）和图片的宽度（imgWidth）来计算图片盒子要移动的距离（target） 
+`target = - this.index * imgWidth</p>
+
+<h3 id="3-鼠标点击箭头">3. 鼠标点击箭头</h3>
+
+<p>通过什么属性改变左右箭头的隐藏和显示？ 
+通过控制左右箭头盒子的display属性来控制左右箭头盒子的显示（block）和隐藏（none）
+通过什么机制来统一左/右箭头点击时图片切换为当前图片的上/下一张？ 
+利用全局变量来统一左右箭头切换图片，在左右箭头点击时，通过pic来计算图片盒子移动的目标位置 
+var target = -pic * imgWidth;
+当点击左箭头时：pic– –这样target比当前位置数值大imgWidth 图片盒子向右移动一张图片的距离 显示出上一张图片
+当点击右箭头时：pic++ 这样target比当前位置数值小imgWidth 图片盒子向左移动一张图片的距离 显示出下一张图片</p>
+
+<h3 id="4-按钮随之变化">4. 按钮随之变化</h3>
+<p>square的取值范围以及其与pic对应情况</p>
+
+<h3 id="5-添加自动滚动">5. 添加自动滚动</h3>
+
+<p>图片自动播放下一张和点击右箭头的操作相同</p>
+
+<p><strong>HTML:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"all"</span> <span class="na">id=</span><span class="s">'box'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"screen"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/1.jpg"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"200"</span><span class="nt">/&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/2.jpg"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"200"</span><span class="nt">/&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/3.jpg"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"200"</span><span class="nt">/&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/4.jpg"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"200"</span><span class="nt">/&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"images/5.jpg"</span> <span class="na">width=</span><span class="s">"500"</span> <span class="na">height=</span><span class="s">"200"</span><span class="nt">/&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"arr"</span><span class="nt">&gt;&lt;span</span> <span class="na">id=</span><span class="s">"left"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">id=</span><span class="s">"right"</span><span class="nt">&gt;</span><span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><strong>CSS:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;style type="text/css"&gt;
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    &lt;/style&gt;
+</code></pre></div></div>
+<p><strong>JS:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+    //要做事先找人
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var ulLis = ul.children;//所有的图片
+    var imgWidth = screen.offsetWidth;
+    var arr = document.getElementById("arr");
+    var arrRight = document.getElementById("right");
+    var arrLeft = document.getElementById("left");
+    var timer = null;
+    //alert(imgWidth);
+
+    //1.动态生成结构
+    //1.1根据图片的数量动态生成按钮
+    for (var i = 0; i &lt; ulLis.length; i++) {
+        //动态生成按钮
+        var li = document.createElement("li");
+        //给li添加序号
+        //索引号是从0开始的
+        //序号=索引号+1
+        li.innerHTML = i + 1;
+        //追加到ol下面
+        ol.appendChild(li);
+    }
+    var olLis = ol.children;//必须生成之后才能获取到
+    olLis[0].className = "current";
+
+    //1.2把第一张图片追加到最后
+    //复制第一张图片
+    var firstImg = ulLis[0].cloneNode(true);
+    //追加到ul后面
+    ul.appendChild(firstImg);
+
+    //2.鼠标经过按钮
+    //循环遍历 给每一个按钮绑定鼠标经过事件
+    for (var j = 0; j &lt; olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onmouseover = function () {
+            //按钮排他
+            //干掉所有人
+            for (var k = 0; k &lt; olLis.length; k++) {
+                olLis[k].className = "";
+            }
+            //留下我自己
+            this.className = "current";
+            //根据索引号 通过动画函数移动ul
+            //图片移动的位置 和 当前按钮索引号 和 图片宽度有关 而且是负数
+            var target = -this.index * imgWidth;
+            animate(ul, target);
+
+            //将应该显示的图片的索引号 和 鼠标经过的按钮的索引号 进行统一
+            pic = this.index;
+            //将应该亮起的按钮的索引号 和 鼠标经过的按钮的索引号 进行统一
+            square = this.index;
+        }
+    }
+
+    //3.鼠标点击箭头
+    //鼠标经过box显示arr 清理定时器停止自动播放
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timer);
+    }
+    //鼠标离开box隐藏arr 设置定时器继续自动播放
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timer = setInterval(playNext, 1000);
+    }
+
+    //点击 右箭头 显示下一张
+    var pic = 0;//pic表示当前图片的索引
+    var square = 0;//square表示当前按钮的索引
+    arrRight.onclick = function () {
+        playNext();
+    }
+    arrLeft.onclick = function () {
+        //判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
+        if (pic == 0) {
+            pic = ulLis.length - 1;
+            ul.style.left = -(ulLis.length - 1) * imgWidth + "px";
+        }
+        pic--;
+        //通过动画函数对ul进行移动
+        //target 和 图片索引 和 图片宽度 有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+
+        //按钮也应该自动播放
+        //如果当前按钮的索引号square大于第一个按钮的索引号0 就--
+        if (square &gt; 0) {
+            square--;
+        } else {
+            //如果square等于零 说明到第一个了 这时就应该把他变成最后一个
+            square = olLis.length - 1;
+        }
+        //干掉所有人
+        for (var i = 0; i &lt; olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        //留下我自己
+        olLis[square].className = "current";
+    }
+
+    //4.添加自动滚动
+    timer = setInterval(playNext, 1000)
+
+    function playNext() {
+        //先判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
+        //如果相等马上跳过去然后在执行动画效果 从而实现无缝滚动
+        //并且把索引号也归零
+        if (pic == ulLis.length - 1) {
+            ul.style.left = 0;
+            pic = 0;
+        }
+        pic++;//pic++相当于 pic=pic+1;
+        //通过动画函数对ul进行移动
+        //target 和 图片索引 和 图片宽度 有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+
+        //按钮也应该自动播放
+        //如果当前按钮的索引号square小于最后一个按钮的索引号olLis.length - 1 就++
+        if (square &lt; olLis.length - 1) {
+            square++;
+        } else {
+            square = 0;
+        }
+
+        //干掉所有人
+        for (var i = 0; i &lt; olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        //留下我自己
+        olLis[square].className = "current";
+    }
+
+    //5.完善鼠标经过
+
+
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = 25;
+            //left值越小越靠左
+            //obj.offsetLeft小于target
+            //obj在target的左侧
+            //应该向右走
+            //向右走step是正
+            /*if (obj.offsetLeft &lt; target) {
+             step = 9;
+             }
+             if (obj.offsetLeft &gt; target) {
+             //向左走是负
+             step = -9;
+             }*/
+            var step = obj.offsetLeft &lt; target ? step : -step;
+
+            //Math.abs(obj.offsetLeft - target) 这个表示对象到目标的距离
+            //如果对象到目标的距离比一步迈出的距离要大 我就要继续走
+
+            if (Math.abs(obj.offsetLeft - target) &gt; Math.abs(step)) {
+                obj.style.left = obj.offsetLeft + step + "px";
+            } else {
+                //再迈一步就超过目标了
+                obj.style.left = target + "px";//手动把对象放置到目标上
+                clearInterval(obj.timer);//清理定时器
+            }
+        }, 15)
+    }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>总结两种常见轮播图的实现思路</strong></p>
+<h4 id="1--通过修改每一张图片的透明度让其每隔一段时间将其中的某一张图片透明度设为1而其他的设为0从而实现图频轮流播放的效果该种思路比较简单首先让一组图片绝对定位并使其重叠通过函数切换控制图片的透明度和定时器来触发该函数改变不同图片的透明度">1.  通过修改每一张图片的透明度，让其每隔一段时间将其中的某一张图片透明度设为1，而其他的设为0，从而实现图频轮流播放的效果。该种思路比较简单，首先让一组图片绝对定位，并使其重叠，通过函数切换控制图片的透明度和定时器来触发该函数，改变不同图片的透明度。</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+        <span class="cm">/*此时li为childID；parentID即为parentID*/</span>
+        <span class="kd">var</span> <span class="nx">autoPlay</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parentID</span><span class="p">,</span><span class="nx">childTag</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">pictures</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">parentID</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nx">pictures</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">showItem</span><span class="p">();</span>
+            <span class="c1">//显示一张图片</span>
+            <span class="kd">function</span> <span class="nx">showItem</span> <span class="p">(){</span>
+                <span class="c1">//首先将所有图片的透明度设为0；</span>
+                <span class="nx">hideItems</span><span class="p">();</span>
+                <span class="nx">items</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="c1">//将要显示的透明度改变让其显示</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">&gt;</span> <span class="nx">len</span> <span class="o">-</span> <span class="mi">2</span><span class="p">){</span>
+                    <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="p">}{</span>
+                    <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="c1">// 在这里用setTimeout模拟setInterval的效果</span>
+                <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">showItem</span><span class="p">,</span><span class="mi">2500</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">//将所有的图片透明度设为0</span>
+            <span class="kd">function</span> <span class="nx">hideItems</span><span class="p">(){</span>
+                <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+                    <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"parentID"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;</span> <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;</span> <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h4 id="2--滑动形式通过改变元素的left值让图片呈现左右滑动的效果">2.  滑动形式，通过改变元素的left值让图片呈现左右滑动的效果。</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/*此时li为childID；parentID即为parentID*/
+var autoSlide = function(parentID,childTag) {
+    var parent = 
+document.getElementById(parentID);
+    parent.style.position = "relative";
+    var items = parent.getElementsByTagName(childTag);
+    var width = items[0].offsetWidth;
+    var index = 0;
+
+    function slide() {
+        if (index &gt; items.length - 2) {
+            index = 0;
+        } else {
+            index++;
+        }
+        moveWide = -width * index;
+        parent.style.left = moveWide + "px";
+        setTimeout(slide, 1500);
+    }
+
+    slide();
+} 
+</code></pre></div></div>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/05/CSS3-transform/" title="link to CSS图片旋转-transform">CSS图片旋转-transform</a></h2>
+       <p class="excerpt">html&lt;!DOCTYPE html&gt;&lt;html lang="zh-CN"&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;&lt;style&gt;    .mainDiv{        width:100px;        height:100px;        margin:100px auto;        text-alig...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-05-08 01:00:06 +0800" class="post-list__meta--date date">2019-05-08</time> &#8226; <span class="post-list__meta--tags tags">WEB/CSS</span><a class="btn-border-small" href=/2019/05/CSS3-transform/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/04/Markdown%E8%AF%AD%E6%B3%95/" title="link to Markdown语法">Markdown语法</a></h2>
+       <p class="excerpt">一、标题在想要设置为标题的文字前面加#来表示一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。注：标准语法在#后跟一个空格示例：这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题二、字体      加粗要加粗的文字左右分别用两个*号包起来        斜体要倾斜的文字左右分别用一个*号包起来        斜体加粗要倾斜和加粗的文字左右分别用三个*号包起来        删除线要加删除线的文字左右分别用两个~~号包起来  示例：这是加粗的文字 这是倾斜的文...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-04-18 01:00:06 +0800" class="post-list__meta--date date">2019-04-18</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/04/Markdown%E8%AF%AD%E6%B3%95/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/04/Markdown%E8%AF%AD%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="Markdown语法">上一篇：  <span>Markdown语法</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2019/05/CSS3-transform/" data-toggle="tooltip" data-placement="top" title="CSS图片旋转-transform">下一篇：  <span>CSS图片旋转-transform</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+    <div id="disqus_thread">disqus</div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/";
+        this.page.identifier = "/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

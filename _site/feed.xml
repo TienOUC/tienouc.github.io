@@ -5,9 +5,2951 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 13 Sep 2019 16:48:40 +0800</pubDate>
-    <lastBuildDate>Fri, 13 Sep 2019 16:48:40 +0800</lastBuildDate>
+    <pubDate>Sat, 14 Sep 2019 22:32:49 +0800</pubDate>
+    <lastBuildDate>Sat, 14 Sep 2019 22:32:49 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>圣杯布局</title>
+        <description>&lt;h2 id=&quot;1-建立框架&quot;&gt;1. 建立框架&lt;/h2&gt;
+
+&lt;p&gt;​  先写 header, footer 和 container 三个 &amp;lt;div&amp;gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​  我们将 container 的内边距设置为左右两边各自的宽度。它看起来就像这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/006tNc79ly1g5r3byed2gj30f009qaad.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-加入三栏&quot;&gt;2. 加入三栏&lt;/h2&gt;
+
+&lt;p&gt;​  此时我们有了基本框架，可以把三栏塞进去了。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#center&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#left&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#right&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​  接着我们给每一栏配上合适的宽度，并将它们设为浮动。同时我们需要清除 footer 的上下环境，以免跟上面三栏一起浮动。&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​  注意这里中间一栏的 100% 宽是基于它的父容器 container 的宽度而言的，由于 container 设置了内边距，因此中间栏看起来就处在了网页的中间，但左右两栏由于排在中间栏的后面，且因为空间不够被挤到了中间栏的下面，如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5r3dlvswvj30f009q74n.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-把左侧栏放上去&quot;&gt;3. 把左侧栏放上去&lt;/h2&gt;
+
+&lt;p&gt;​  中间栏已经就位，剩下的事情就是把左右两栏放上去了，接下来我们先放左侧栏。
+为了详述过程，这里将分为两个小步骤。首先，我们先将它的外边距设置为 -100%，这样一来，由于浮动的关系，左侧栏就能上位，与中间栏交叠在一起，并占据了左边。而右侧栏由于左侧栏的上位，自动向前浮动到了原来左侧栏的位置。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5r3jgwkmbj30f009q0t2.jpg&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;​  接着我们要用到相对定位属性（relative），并设置一个与左侧栏等宽的偏移量：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
+   &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​  可以看到，它设置的 right 属性就是相对于 container 的右边线向左偏移 200px，如此一来，它就完美地跑到了 container 左内边距的位置，也就是我们希望它呆的地方，如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tNc79ly1g5r3g7cvmrj30f009qaaa.jpg&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4-把右侧栏放上去&quot;&gt;4. 把右侧栏放上去&lt;/h2&gt;
+
+&lt;p&gt;​  最后，我们需要把右侧栏放上去，此时只需利用上面的原理把他放到 container 的右外边距的位置即可，我们需要再一次设置一个负外边距的值，它等于右侧栏的宽度：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​  至此，所有的栏目都就位了~&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/006tNc79ly1g5r3ffez5wj30f009qmx5.jpg&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;​  具体代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;nl&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;550px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;padding-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;padding-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#e9e9e9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#1d9ee9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f46a3c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#header&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#0b0b0b&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#center&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#left&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#right&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt; ​ 转载请注明：&lt;a href=&quot;http://tienouc&quot;&gt;Tien’s Blog&lt;/a&gt; » &lt;a href=&quot;http://tienouc.io/2015/09/iOS9_Note/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 07 Sep 2019 02:15:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/</guid>
+        
+        <category>WEB</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Webpack笔记</title>
+        <description>&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;网易云免费课程-&lt;a href=&quot;https://study.163.com/courses-search?keyword=Webpack打包工具用法&quot;&gt;Webpack打包工具用法&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;在网易云课堂初学webpack3.0用法，学完再实践过程中发现4.0版本变动较大，就去官网查了一下4.0的变动，内容较多，暂先转载该篇优秀博文以做后续学习参考，原博文链接见文末。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;全局安装webpack&quot;&gt;&lt;strong&gt;全局安装webpack&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install webpack webpack-cli -g&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。&lt;/p&gt;
+
+&lt;h3 id=&quot;在当前项目安装webpack&quot;&gt;&lt;strong&gt;在当前项目安装webpack&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;新建webpack-demo目录，然后进行npm项目初始化 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm init 或者 npm init -y&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在刚创建出来的package.json中添加private字段 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;private&quot;: true    /**表示私有的**/&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果webpack已经全局安装，需要卸载 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm uninstall webpack webpack-cli -g  /**卸载全局安装的webpack**/&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在项目根目录下执行安装命令 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install webpack webpack-cli --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用npx打印出当前的webpack版本 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npx webpack -v&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;安装指定版本的webpack&quot;&gt;&lt;strong&gt;安装指定版本的webpack&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm info webpack /*查看webpack所有版本信息*/
+npm install webpace@4.29.6 --save-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;webpack的配置文件&quot;&gt;&lt;strong&gt;webpack的配置文件&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;在项目根目录新建文件webpack.config.js&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'path'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./index.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bundle.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'dist'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;webpack手动打包命令&quot;&gt;&lt;strong&gt;webpack手动打包命令&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;``` npx webpack /&lt;strong&gt;默认会使用根目录下的webpack.config.js配置文件进行打包&lt;/strong&gt;/
+npx webpack –config webpack.config.js /&lt;strong&gt;指定配置文件打包&lt;/strong&gt;/&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **使用npm scripts 简化webpack命令**
+
+1. 在package.json中的scripts字段下添加bundle字段
+`&quot;bundle&quot;: &quot;webpack&quot;`   
+
+2. 使用npm命令打包
+`npm run bundle`   
+
+## **使用file-loader打包图片**
+
+1. 安装file-loader
+`npm install file-loader --save-dev`   
+
+2. 在配置文件webpack.config.js中添加字段
+```js
+module: {
+    rules: [
+        {
+            test: /\.(jpg|png|svg|gif)$/,
+            use: {           
+                loader: 'file-loader',
+                options: {
+                   name: '[name].[ext]', /**原名字输出**/
+                   outputPath: 'images/', /**打包后存放图片的文件夹**/
+                }
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;使用url-loader打包图片&quot;&gt;&lt;strong&gt;使用url-loader打包图片&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装url-loader
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install url-loader --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在配置文件webpack.config.js中添加字段&lt;/p&gt;
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;jpg|png|svg|gif&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'url-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[name].[ext]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;outputPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'images/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  
+                 &lt;span class=&quot;na&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;204800&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**小于20kb的图片，打包成base64放到bundle.js文件**/&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用style-loader和css-loader打包css文件&quot;&gt;&lt;strong&gt;使用style-loader和css-loader打包css文件&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装style-loader 和 css-loader
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install style-loader css-loader --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在webpack.config.js文件中添加配置&lt;/p&gt;
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;css$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'style-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'css-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用sass-loader打包sass文件&quot;&gt;&lt;strong&gt;使用sass-loader打包.sass文件&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装sass-loader 和 node-sass
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install sass-loader node-sass --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在webpack.config.js文件中添加配置&lt;/p&gt;
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;sass$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'style-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'css-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sass-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;数组形式的loader是从下到上，从右到左执行 sass-loader -&amp;gt; css-loader -&amp;gt; style-loader&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用postcss-loader自动添加css厂商前缀&quot;&gt;&lt;strong&gt;使用postcss-loader自动添加css厂商前缀&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装postcss-loader
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install postcss-loader --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;postcss-loader需要配合autoprefixer插件使用
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install autoprefixer --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在项目根目录添加postcss.config.js文件
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'autoprefixer'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在webpack.config.js中添加配置
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;scss$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'style-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'css-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sass-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'postcss-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;确保所有的scss文件都会被所有loader处理,修改webpack.config.js中的配置
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;scss$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+         &lt;span class=&quot;s1&quot;&gt;'style-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'css-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;cm&quot;&gt;/**确保每个scss都被所有loader处理**/&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;importLoaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                 &lt;span class=&quot;cm&quot;&gt;/**分模块打包css**/&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+          &lt;span class=&quot;s1&quot;&gt;'sass-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s1&quot;&gt;'postcss-loader'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h3 id=&quot;使用file-loader打包字体文件&quot;&gt;&lt;strong&gt;使用file-loader打包字体文件&lt;/strong&gt;&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装file-loader
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install file-loader --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在webpack.config.js文件中添加modules
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;eot|ttf|svg&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;nl&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'file-loader'&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用插件使webpack打包更便捷&quot;&gt;&lt;strong&gt;使用插件使webpack打包更便捷&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装自动生成index.html插件 html-webpack-plugin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装html-webpack-plugin
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install html-webpack-plugin --save-dev&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;htmlWebpackPlugin 会在打包结束后，自动生成index.html文件，并把对应的js引入index.htm文件中&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在webpack.config.js中引入插件
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HtmlWebpackPlugin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'html-webpack-plugin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HtmlWebpackPlugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'src/index.html'&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**自动以src/index.html为模板，在dist目录下生成新的index.html文件**/&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用clean-webpacl-plugin插件自动删除dist插件再打包&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装插件clean-webpack-plugin
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install clean-webpack-plugin --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在webpack.config.js中使用插件&lt;/p&gt;
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CleanWebpackPlugin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'clean-webpack-plugin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CleanWebpackPlugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({})]&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**默认清除的是dist目录**/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;sourcemap配置&quot;&gt;&lt;strong&gt;sourceMap配置&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;sourceMap 映射src目录的源文件，能定位到哪行报错&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;开启sourceMap,在wepback.config.js中添加配置
+&lt;code class=&quot;highlighter-rouge&quot;&gt;devtool: 'source-map'&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;sourceMap的最佳实现
+```js
+devtool: ‘cheap-module-eval-source-map’ /&lt;strong&gt;开发环境中使用&lt;/strong&gt;/&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;devtool: ‘cheap-module-source-map’ /&lt;strong&gt;生产环境&lt;/strong&gt;/&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **使用WebpackDevServer提高开发效率**
+
+1. 安装webpack-dev-server
+`npm install webpack-dev-server --save-dev`
+
+2. 在webpack.config.js中配置devServer
+```js
+devServer: {
+    contentBase: './dist',
+    open: true,     /**open true 可以自动打开浏览器**/
+    proxy: {
+     &quot;/api&quot;: &quot;http://new.junbang.com/&quot; /**请求api代理转发**/ 
+    },
+    port: 8081,  /**端口号**/ 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;在package.json中添加watch命令
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&quot;watch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;webpack --watch&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;webpack-dev-server&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;使用：npm run watch 监听文件有变化自动打包
+使用：npm run start 可以自动监听,自动打包, 自动刷新浏览器&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;自定义server&quot;&gt;&lt;strong&gt;自定义server&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;需要安装express和webpack-dev-middleward这两个插件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install express webpack-dev-middleware --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;新建server.js 并引入插件
+```js
+const express = require(‘express’);
+const webpack = require(‘webpack’);
+const webpackDevMiddleware = require(‘webpack-dev-middleware’);
+const config = require(‘./webpack.config.js’);
+const complier = webpack(config);&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;const app = express();&lt;/p&gt;
+
+&lt;p&gt;app.use(webpackDevMiddleware(complier, {
+    publicPath: config.output.publicPath
+}));&lt;/p&gt;
+
+&lt;p&gt;app.listen(3000,() =&amp;gt; {
+    console.log(‘server is running on prot 3000’);
+});&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+3. 在package.json中设置serve命令   
+```js
+&quot;scripts&quot;: {
+    &quot;serve&quot;: &quot;node server.js&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;npm run serve 使用的就是我们server.js配置的服务器
+不过server.js还需要写很多，这只是简单的server&lt;/p&gt;
+
+&lt;h3 id=&quot;模块热更新hmr&quot;&gt;&lt;strong&gt;模块热更新HMR&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;开启模块热更新，在webpack.config.js中添加配置
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;devServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;hot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;hotOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/**hotOnly: false 浏览器可以自动刷新**/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;使用&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HMR&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;插件，在&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;webpack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;中引入插件&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;webpack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'webpack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;webpack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HotModuleReplacementPlugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;npm run start&lt;/code&gt;重启服务使新的配置生效&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;模块热更新hmr作用&quot;&gt;&lt;strong&gt;模块热更新HMR作用：&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;css编写. 修改无需重新刷新浏览器就可显示效果
+js模块发生改变可以指定更新当前js模块，不需要刷新浏览器&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;js模块热更新，在index.js文件中编写代码
+```js
+import number from ‘./number’;
+number();&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;if (module.hot) {
+    module.hot.accept(‘./number’, () =&amp;gt; {
+    /&lt;strong&gt;当number模块有改变重新渲染&lt;/strong&gt;/
+     number();
+    }
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **使用Babel处理ES6语法**
+
+1. 安装babel-loader 和 @babel/core
+`npm install --save-dev babel-loader @babel/core`   
+
+2. 在webpack.config.js中添加配置
+``` js
+module: {
+    rules: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: &quot;babel-loader&quot;,
+        options: {
+            presets: [&quot;@babel/preset-env&quot;]
+        }
+    }]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装@babel/preset-env模块对ES6语法进行翻译
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install @babel/preset-env --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在webpack.config.js中的modules rules babel-loader 中配置options对象
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/**或者在项目根目录下创建配置文件.bablerc**/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用@babel/polyfill 加上低版本没有的语法, 比如map() . Promise等
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install --save @babel/polyfill&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在所以代码运行之前,可以放在入口文件index.js最顶部
+&lt;code class=&quot;highlighter-rouge&quot;&gt;import &quot;@babel/polyfill&quot;;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;polyfill默认会把所有翻译过代码都加进来，有时候我们没有用到的新方法，也有了翻译的方法在里面了，所以我们要过滤掉，没用上的就不要加载进来了，这样包更小，所以在webpack.config.js babel-loader中修改配置
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'@babel/preset-env'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'usage'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;已经支持ES6语法的浏览器版本，没必要在翻译所以我们可以指定浏览器版本
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'@babel/preset-env'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;targets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;chrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;67&quot;&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**更多浏览器版本配置去babel官网查看**/&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+ &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'usage'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当指定了useBuiltIns: ‘usage’，会自动引入@babel/polyfill,所以可以去掉index.js import的@babel/polyfill,但是可以需要安装依赖
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install --save core-js&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果是写业务代码以上配置没问题，如果要写框架. 类库. 第三方模块什么的，为了避免变量的全局污染（因为polyfille翻译的变量挂载到全局变量）而使用plugin-transform-runtime插件&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;安装transform-runtime插件&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --save-dev @babel/plugin-transform-runtime
+npm install --save #babel/runtime
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在webpack.config.js中修改配置
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/node_modules/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-loader'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/plugin-transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;helpers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;regenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;useESModules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}]]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;因为我们配置了corejs: 2,所以要加装corejs的依赖
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install --save @babel/runtime-corejs2&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;配置react代码的打包&quot;&gt;&lt;strong&gt;配置React代码的打包&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;babel也可以打包react代码&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装react框架
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install react react-dom --save&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装@babel/preset-react
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install --save-dev @babel/preset-react&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在.babelrc中添加配置
+&lt;code class=&quot;highlighter-rouge&quot;&gt;presets: [&quot;@babel/preset-env&quot;,&quot;@babel/preset-react&quot;]&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;使用tree-shaking去掉没有引用的方法-模块&quot;&gt;&lt;strong&gt;使用Tree Shaking去掉没有引用的方法/ 模块&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Tree Shaking只支持 ES Module 就是import export不支持require(‘’)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在mode: ‘development’中配置Tree Shaking, 在webpack.config.js中
+    &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;optimization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;usedExports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在mode: ‘production’中 默认就有,不需要添加任何配置&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在package.json中配置不需要Tree Shaking的模块&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;sideEffects&quot;: false   /**所有模块都需要Tree Shaking**/
+&quot;sideEffects&quot;: ['@babel/polly-fill', '*.css']  /**对这两个模块不做Tree Shaking**/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;development-和-production-模式的区分打包&quot;&gt;&lt;strong&gt;Development 和 Production 模式的区分打包&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建webpack.common.js 放公有的配置项&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建webpack.dev.js 放开发独有的配置项&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建webpack.prod.js 放生产独有的配置项&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用webpack-merge 把webpack.common.js合并到其他两个文件&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install webpack-merge --save-dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在webpack.dev.js中引入插件&lt;br /&gt;
+```
+const merge = require(‘webpack-merge’);
+const commonConfig = require(‘./webpack.common.js’);&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;const devConfig = {
+…
+}
+module.exports = merge(commonConfig, devConfig);&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+在webpack.prod.js中也作跟webpack.dev.js同样的处理
+
+### **Code Splitting 代码分割**
+
+1. 同步加载模块 在webpack.config.js中配置splitChunks
+``` js
+optimization: {
+   splitChunks: {
+       chunks: 'all'
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;异步加载模块无需任何配置默认就会自动分割&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建一个异步加载的js模块&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/** webpackChunkName: &quot;lodash&quot; 给这个模块起这个文件名 **/&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* webpackChunkName: &quot;lodash&quot;*/&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'lodash'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'div'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHtml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'@'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bang'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;getComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装babel-plugin-dynamic-import-webpack对异步加载模块语法进行翻译
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install @babel/plugin-syntax-dynamic-import  --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在.babelrc配置文件中使用plugin-syntax-dynamic-import插件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;plugins: [&quot;@babel/plugin-syntax-dynamic-import&quot;]&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;splitchunksplugin配置参数详解&quot;&gt;&lt;strong&gt;SplitChunksPlugin配置参数详解&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/** 在webpack.config.js文件中 **/&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;optimization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;splitChunks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/** all:-- 所有模块都分割 **/&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/** async -- 只对异步加载的模块进行分割 **/&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/** initial -- 只对同步模块进行分割 **/&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;chunks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'all'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+        &lt;span class=&quot;nx&quot;&gt;minSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/** 大于30000b(30kb)才会分割 **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;maxSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/**  一般不配置，会对大文件再次分割 **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;minChunks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/**  引用这个模块超过一次就会分割 **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;maxAsyncRequests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**  同时只能加载分割5个库 **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;maxInitialRequests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/**  最多分割出3个文件 **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;automaticNameDelimiter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/** 文件名连接符  **/&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;cacheGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;cm&quot;&gt;/** 同步模块加载必需配置
+            vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                /** 如果模块同时满足cacheGroups和default， **/&lt;/span&gt;
+                &lt;span class=&quot;cm&quot;&gt;/** 根据priority来决定模块的归属谁的值大属于谁 **/&lt;/span&gt;
+                &lt;span class=&quot;nl&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'vendors.js'&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/** 打包成的文件名 **/&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/** 同步非node_modules里面的模块配置专用 **/&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nl&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;cm&quot;&gt;/** 已经打包过的模块忽略 **/&lt;/span&gt;
+                &lt;span class=&quot;cm&quot;&gt;/** 不再打包分割 **/&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;reuseExistingChunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'common.js'&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;lazy-loading-懒加载异步模块&quot;&gt;&lt;strong&gt;lazy loading 懒加载异步模块&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打包分析工具
+首先在打包的时候生成josn格式的描述文件，然后在package.json中添加命令
+```
+scripts: {
+ “dev-build”: “webpack –profile –json &amp;gt; stats.json –config webpack.dev.js”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+使用：`npm run dev-build`   
+生成的.stats.json文件可以用来分析
+
+### **使用Preloading, 空闲时候，静默加载我们的异步模块**
+
+1. 查看js文件中代码的使用率，打开控制台 command + shift + p
+2. 搜索 Coverage 选中show Coverage 然后点击录制按钮变红后刷新页面
+3. 在index.js中创建一个异步加载模块js的方法
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;document.addEventListener(‘click’, () =&amp;gt; {
+    import(/* webpackPrefetch: true */ ‘./click.js’).then(({default: func}) =&amp;gt; {
+     func();
+    });
+});&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;正常情况下呢，我们只有在点击的时候，才加载click.js,但是配置了Prefetch: true,就会空闲时主动加载我们的click.js。空闲时主动加载解决了异步加载慢的问题，因为文件加载过了，再点击加载就会使用缓存的文件。
+
+### **css文件代码分割**
+
+1. webpack 用style-loader处理的css会放到文件&amp;lt;head&amp;gt;标签中
+2. 使用mini-css-extract-plugin把css分割成单独文件
+`npm install --save-dev mini-css-extract-plugin`   
+
+3. 这个插件不支持热更新（截止目前），所以一般是生产环境才用   
+4. 在webpack.prod.js中 将style-loader替换为MiniCssExtractPlugin.loader   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;const MiniCssExtractPlugin = require(‘mini-css-extract-plugin’);
+plugins: [
+    new MiniCssExtractPlugin({});
+]
+module: {
+    rules: [
+       {
+           test: /.css$/,
+           use: [ MiniCssExtractPlugin.loader, ‘css-loader’, ‘postcss-loader’ ]
+    ]
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5. 过滤Tree Shakking, 在package.json中添加配置   
+`&quot;sideEffects&quot;: [&quot;*.css&quot;]`   
+
+6. 配置filename和chunkFilename, 在webpack.prod.js中
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;plugins: [
+    new MiniCssExtractPlugin({
+        filename: ‘[name].css’,
+        chunkFilename: ‘[name].chunk.css’
+    });
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;7. 使用optimize-css-assets-webpack-plugin对css合并和压缩
+`npm install --save-dev optimize-css-assets-webpack-plugin`   
+
+8. 在webpack.prod.js中使用optimize-css-assets-webpack-plugin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;const OptimizeCssAssetsPlugin = require(‘optimize-css-assets-webpack-plugin’);
+optimization: {
+    minimizer: [new OptimizeCssAssetsPlugin({})]
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **多个入口文件引用的css打包到一个css文件**
+
+1. 借助splitChunks, 在webpack.prod.js中添加配置
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;optimization: {
+    splitChunks: {
+        cacheGroups: {
+            styles: {
+                name: ‘styles’,
+                test: /.css$/,
+                chunks: ‘all’,
+                enforce: true
+            }
+        }
+    }
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2. 还可以把一个入口文件引入的所有css打包到对应的一个文件。这样每个入口引用的css，就会生成对应一个css文件。这个配置也借助splitChunks，在webpack.prod.js中配置
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;optimization: {
+    splitChunks: {
+        cacheGroups: {
+            mainStyles: {
+                name: ‘main’,
+                test: (m,c,entry = ‘main’) =&amp;gt; m.constructor.name === ‘CssModule &amp;amp;&amp;amp; recursiveIssuer(m) === entry,
+                chunks: ‘all’,
+                enforce: true
+            }
+        }
+    }
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **webpack与浏览器缓存**
+
+1. 在webpack.prod.js中配置contenthash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;output: {
+   filename: ‘[name].[contenthash].js’,
+   chunkFilename: ‘[name].[contenthash].js’
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+contenthash在文件没有改变时，它不会变，对应的文件有改变它的值就会变，这样浏览器加载的就是新文件
+
+### **通过webpack.ProvidePlugin插件自动帮我们引用没有import的模块**
+
+1. 在webpack.common.js中配置ProvidePlugin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;const webpack = request(‘webpack’);
+plugins: [
+    new webpack.ProvidePlugin({
+    $: ‘jquery’
+    })
+]&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;解决问题: 有的模块使用的是jquery,但是没有import jquery,$对象找不到，只在首页引入jquery是不行的,这时候借助webpack.ProvidePlugin,帮我们在使用$对象的模块引入jquery。
+
+### **让this都指向window**
+
+1. 安装
+imports-loader
+  `npm install imports-loader --save-dev`   
+2. 在webpack.common.js中添加配置
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;module: {
+    rules: [{
+        test: /.js$/,
+        exclude: /node_modules/,
+        use: [{
+            loader: ‘babel-loader’,
+        }, {
+            loader: ‘imports-loader?this=&amp;gt;window’
+        }]
+    }]
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **环境变量的使用**
+
+1. 在webpack.common.js中使用Env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;comst merge = require(‘webpack-merge’);
+const prodConfig = require(‘./webpack.prod.js);
+const devConfig = require(‘./webpack.dev.js’);
+module.exports = (env) =&amp;gt; {
+ if (env &amp;amp;&amp;amp; env.production) {
+    return merge(commonConfig, prodConfig);
+ } else {
+    return merge(commonConfig, devConfig);
+ }
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+2. 在package.json中修改命令
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;“scripts”: {
+    “dev-build”: “webpack – config ./webpack.common.js”,
+    “build”: “webpack –env.production  –config ./webpack.common.js”
+}&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+### **Library的打包**
+
+1. 创建一个自己的包模块library
+`npm init -y`   
+
+2. 在包目录下新文件src/math.js 和 src/string.js
+3. 在src/math.js中编写代码
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;export function add(a, b) {
+    return a + b;
+}
+export function minus(a, b) {
+    return a - b;
+}
+export function multiply(a, b) {
+    return a * b;
+}
+export function division(a, b) {
+    return a / b;
+}&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;在src/string.js中编写代码
+export function join(a, b) {
+ return a + “ “ + b;
+}
+```&lt;/li&gt;
+  &lt;li&gt;在src/index.js中编写代码
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import * as math from './math.js';
+import * as string from './string';
+export default { math, string }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在项目中安装webpack 和 webpack-cli
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install webpack webpack-cli --save&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在项目中创建webpack.config.js
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const path = require('path');
+module.exports =  {
+ mode: 'production',
+ entry: './src/index.js'
+ output: {
+     path: path.resolve(__dirname, 'dist'),
+     filename: 'library.js',
+     library: 'library',
+     libraryTarget: 'umd'
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在package.js中配置入口文件和打包命令
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;main: './src/index.js',
+scripts: {
+ &quot;build&quot;: &quot;webpack&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;别人使用我们的库可能用到的引入方式
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import library from 'library';&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;const library = require('library');&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;require(['library'], function() {});&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script src=&quot;./library.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过在webpack.config.js中配置libraryTarget: ‘umd’可以使用前面三种引用&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过在webpack.config.js中配置library: ‘library’可以使用&lt;script&gt;引用&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在自己的库中使用别人的库,这里引入lodash库&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install lodash --save&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在src/string.js中 使用lodash&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import _ from 'lodash';
+
+export function join(a, b) {
+    return _.join([a, b], ' ');
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;问题：默认的lodash也会被打包到我们的代码中，而别人不知道，也有可能在自己项目中，引入了自己的lodash,造成模块冗余，所以需要在webpack.config.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;externals: ['lodash']&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;注意：这个时候别人用我们的库需要手动引入lodash再引入library（我们的库）&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;让别人方便的使用我们的代码,可以在package.json中配置&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;main&quot;: &quot;./dist/library.js&quot;,&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在npm官网注册一个账号,并把我们的库上传到npm&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm adduser -- 回车添加账号和密码
+npm publish -- 把包上传到npm仓库
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装我们的库&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install library&lt;/code&gt; &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;我们自己创建的库名跟npm上的库名不能相同，不然有可能上传不了。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pwa的打包配置&quot;&gt;&lt;strong&gt;PWA的打包配置&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;PWA作用是缓存页面，当服务器挂掉了，还是可以看到原来缓存的页面&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装workbox-webpack-plugin插件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install workbox-webpack-plugin --save-dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在webpack.prod.js中使用workbox-webpack-plugin插件
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const WorkboxPlugin = require('workbox-webpack-plugin');
+plugins: [
+ new WorkboxPlugin.GenerateSW({
+     clientsClaim: true,
+     skipWaiting: true
+ })
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在index.js中看看浏览器是否支持PWA,并注册我们要缓存的文件
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if('serviceWorker' in navigator) {
+ window.addEventListener('load', () =&amp;gt; {
+     navigator.serviceWorker.register('/service-worker.js)
+         .then(registration =&amp;gt; {
+              console.log('service-worker registed');
+         }).catch(error =&amp;gt; {
+              console.log('service-worker register error');
+         });
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;这样注册了service-worker.js之后，本来我们需要npm run dev 把服务开启之后能访问，如果关掉服务再刷新，因为已经访问成功过一次，有了缓存，所以还是可以看到页面&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;webpack打包typescript&quot;&gt;&lt;strong&gt;webpack打包TypeScript&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;装ts-loader 和 typescript
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install ts-loader typescript --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在webpack.config.js中添加配置
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const path = require('path');
+ module.exports = {
+entry: './srcindex.tsx',
+module: {
+   rules: [{
+     test: /\.[tsx]|[ts]?$/,
+     use: 'ts-loader',
+     exclude: /node_modules/
+   }]
+},
+output: {
+   filename: 'bundle.js',
+   path: path.resolve(__dirname, 'dist')
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在项目根目录创建tsconfig.json(必需)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;compilerOptions&quot;: {
+ &quot;outDir&quot;: &quot;./dist&quot;,
+ &quot;module&quot;: &quot;es6&quot;,
+ &quot;target&quot;: &quot;es5&quot;,
+ &quot;allowJs&quot;: true,
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;注意：TypeScript 不能对引用的外部模块校验，比如调用lodash中的join()方法，不传参数也不报错。如需要提示，需安装@types/lodash，这样不传参数也会有提示哦。 更多库的@type检测请上网搜索！&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;安装@types/lodash
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install @types/lodash --save-dev&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;webpackdevserver实现请求转发&quot;&gt;&lt;strong&gt;webpackDevServer实现请求转发&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在webpack.config.js中配置proxy
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;devServer: {
+ proxy: {
+    '/api': 'http://new.junbang.vip'
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;更复杂的配置 比如把请求header.json 变成demo.json
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;devServer: {
+ proxy: {
+     '/api': {
+          treget: 'http://new.junbang.vip',
+          pathRewrite: {
+              'header.json': 'demo.json'
+          }
+      }
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;如果后台对origin做了限制可以加配置
+&lt;code class=&quot;highlighter-rouge&quot;&gt;changeOrigin: true /**建议始终都加**/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;webpackdevserver解决单页面应用路由问题&quot;&gt;&lt;strong&gt;WebpackDevServer解决单页面应用路由问题&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在webpack.config.js中
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;devServver: {
+ historyApiFallback: {
+     rewrites: [{
+         from: /\.*/,
+         to: 'index.html'
+     }]
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;上面的配置等价于historyApiFallback: true，这个配置只在开发有用，上线需要对线上服务器也配置。配置好了，访问不了的页面就会显示首页&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;eslint-在wepback中的配置&quot;&gt;&lt;strong&gt;Eslint 在wepback中的配置&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Eslint是什么？Eslint是约束代码的规范&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装Eslint
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install eslint --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;生成配置文件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npx eslint --init&lt;/code&gt;&lt;br /&gt;
+在根目录发现文件.eslintrc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用babel-eslint
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install babel-eslint --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在.eslintrc.js中配置
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;parser&quot;: &quot;babel-eslint&quot;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用命令校验src目录下的js
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npx eslint src&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;忽略规则,在.eslintrc.js中
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;rules&quot;: {
+  &quot;react/jsx-filename-extension&quot;: 0
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;把规则置成0就可以忽略 1是警告 2是报错&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;在webpack使用eslint-loader校验代码&quot;&gt;&lt;strong&gt;在webpack使用eslint-loader校验代码&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装eslint-loader
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install eslint-loader --save-dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在webpack.config.js中添加配置
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module: {
+  rules: [{
+ test: /\.js$/,
+ exclude: /node_modules/,
+ use: ['babel-loader', 'eslint-loader']
+  }]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;想要在&lt;code class=&quot;highlighter-rouge&quot;&gt;npm run serve&lt;/code&gt;的时候把eslint校验的错误在浏览器上输出, 可以在webpack.config.js中配置&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;devServer: {
+    overlay: true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意：在webpack中使用eslint-loader检测代码会影响打包速度。可以在git 生命钩子，提交代码前校验代码，不符合不给提交&lt;/p&gt;
+
+&lt;h3 id=&quot;webpack性能优化&quot;&gt;&lt;strong&gt;webpack性能优化&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;提升webpack打包速度&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1)跟上技术的迭代，使用最新版node/npm/yarn/webpack&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2)尽量少用loader,loader也应该检测尽量少的代码&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;3)比如校验js文件的时候，忽略/node_modules/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;4)或者只对src下面的文件校验
+&lt;code class=&quot;highlighter-rouge&quot;&gt;include: path.resolve(__dirname, './src') &lt;/code&gt;
+5)合理使用插件，使用性能好的，官方推荐的&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;合理配置resolve参数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;test: /\.jsx?$/ '?' 表示'x'可有可无 =&amp;gt; js/jsx&lt;/code&gt;
+然后在webpack.config.js中添加配置&lt;/p&gt;
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;resolve: {
+extensions: ['.js', '.jsx']
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;表示我们加载import 的时候，不写文件后缀名，默认会找.js/.jsx&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;当我们import 一个文件夹，可能指定要找的文件名&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;resolve: {
+mainFiles: ['index', 'main']
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用第三方模块时候，因为我们不会去改动这些模块,但是每次打包都会重新分析一次这些第三方模块，浪费时间,所以希望只在第一次分析，后面直接用就行。所以&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1）新建webpack.dll.js文件&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const path = require('path');
+module.exports = {
+  mode: 'production',
+ entry: {
+ vendors: ['react', 'react-dom', 'lodash']
+},
+output: {
+  filename: '[name].dll.js',
+  path: path.resolve(__dirname, '../dll'),
+  library: ['name'] /** library 可以把当前模块暴露出去 **/
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;2) 把这些第三方模块引入index.html中，可以手动引入，也可以用插件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install add-assets-html-webpack-plugin --save-dev&lt;/code&gt;&lt;/p&gt;
+
+  &lt;p&gt;3) 在webpack.config.js中使用插件&lt;/p&gt;
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const AddAssetHtmlWebpackPlugin require('add-asset-html-webpack-plugin');
+
+new AddAssetHtmlWebpackPlugin({
+ filepath: path.resolve(__dirname, '../dll/vendors.dll.js')
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;4) 在写代码使用到第三方模块时，使用vendors.dll.js
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install dll-plugin --save-dev&lt;/code&gt;&lt;/p&gt;
+
+  &lt;p&gt;5) 在webpack.config.js中配置&lt;/p&gt;
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const webpack = require('webpack');
+plugins: [
+new webpack.DllPlugn({
+  name: '[name]',
+  path: path.resolve(__dirname, '../dll/[name].manifest.json')
+}),
+new webpack.DllReferencePlugin({
+  manifest: path.resolve(__dirname, '../dll/vendors.manifest.json')
+ })
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+  &lt;p&gt;配置完成，第三方模块我们只需要手动打包一次，后面在打包项目的时候，就只会打包我们改动代码的目录src&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;多页面打包配置&quot;&gt;&lt;strong&gt;多页面打包配置&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;首先需要配置多个入口，生成多个js文件&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;entry: {
+  main: './src/index.js',
+  list: './src/list.js'
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;其次多new 几个HtmlWebpackPlugin,生成那就的html文件&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;new HtmlWebpackPlugin({
+  template: 'src/index.html',
+  filename: 'index.html',
+  chunks: ['runtime', 'vendors', 'main']
+}),
+new HtmlWebpackPlugin({
+  template: 'src/index.html'
+  filename: 'list.html',
+  chunks: ['runtime', 'vendors', 'list']
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;可能遍历configs.entry自动生成&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;
+参考资料：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;转自简书&lt;a href=&quot;https://www.jianshu.com/p/25bde7e9b9ce&quot;&gt;説好的妹紙呢&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 19 Aug 2019 01:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/Webpack/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/Webpack/</guid>
+        
+        <category>Tools</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>JS垃圾收集机制原理</title>
+        <description>&lt;h4 id=&quot;1-原理&quot;&gt;&lt;strong&gt;1. 原理：&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  找出那些不再继续使用的变量，然后释放其占用的内存，垃圾收集器会按照固定的时间间隔，或是在代码执行中预订的收集时间，去周期性的执行这个操作，完成垃圾的清理。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-局部变量的生命周期&quot;&gt;&lt;strong&gt;2. 局部变量的生命周期:&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  在函数执行的过程中，才存在有局部变量，在这个过程中，浏览器引擎会为局部变量在栈或是堆内存上分配相应的空间，以便存储这些值。在函数执行结束后，局部变量就没有存在的必要了，因此可以释放它们所占用的内存以供将来使用。这种情况下会比较好判断变量有没有必要存在了，但是作用域还没有结束，当前变量还被其他地方调用了，那么垃圾收集器就得跟踪这些变量哪个有用哪个没用，做上相应的标记。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-垃圾清理实现策略一标记清除&quot;&gt;&lt;strong&gt;3. 垃圾清理实现策略一：标记清除：&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  当变量进入环境时，如在函数中var一个变量，此时将这个变量标记为进入环境，当变量离开环境的时候，则将其标记为离开环境，可以通过翻转某一个位来标记一个变量何时进入了环境。但标记不是重点，重点是标记了之后怎么来将其处理。垃圾收集器会在运行的时候给存储在内存中的所有变量都加上标记，然后，它会去掉环境中的变量以及被环境中的变量应用的标记，在此之后再把加上标记的变量都将被视为准备删除的变量。最后，垃圾收集器完成内存的清楚工作，销毁那些带标记的值并收回它们所占用的内存空间。&lt;/p&gt;
+
+&lt;h4 id=&quot;4-垃圾清理实现策略二引用计数&quot;&gt;&lt;strong&gt;4. 垃圾清理实现策略二：引用计数&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  跟踪记录每个值被引用的次数，当这个值的引用次数变成0的时候，说明没有办法再访问这个这个值，就将其占用的内存空间收回来，下次再运行垃圾收集器的时候，就会释放哪些引用次数为0的值所占用的内存了。&lt;/p&gt;
+
+&lt;p&gt;  但存在的一个问题是，如果有循环引用，即A有个指针指向B，B也有一个指针指向A，在采用标记清楚策略的实现中，这将是个噩梦。如果DOM元素和原生JS对象之间创建了循环引用，那就带来内存泄露的问题，解决方法是把DOM和BOM对象转换成真正的JS对象。&lt;/p&gt;
+
+&lt;h4 id=&quot;5-垃圾收集的时间间隔&quot;&gt;&lt;strong&gt;5. 垃圾收集的时间间隔：&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  原来IE的垃圾收集器的启动方式是，当内存分配量达到256个变量、4096个对象字面量和数组元素或是64kb的字符串这三者任何一个临界值时，就开始启动垃圾收集器。但一个脚本中可能会在其生命周期中一直保有那么多变量，那么垃圾收集器就得一直的去运行，那导致的性能问题是很严重的。所以后面的优化方法是：触发垃圾收集的变量分配的临界值被调整为动态修正。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;JS是一门具有自动垃圾收集机制的编程语言，开发人员不必担心内存分配和回收的问题，对其垃圾收集例程总结如下：&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;  离开作用域的值将被自动标记为可以回收，因此在垃圾收集期间被删除；&lt;/p&gt;
+
+&lt;p&gt;  &lt;strong&gt;“标记清除”&lt;/strong&gt;是目前主流的垃圾收集算法，其思想是给当前不使用的值加上标记，然后再回收其内存；&lt;/p&gt;
+
+&lt;p&gt;  另一种收集算法是“引用计数”，其思想是跟踪记录所有值被引用的次数，JS引擎目前都不在使用该算法，但在IE中访问非原生JS对象（如DOM元素）时，这种算法仍然可能会导致问题，当代码中存在循环引用现象时亦会导致问题；&lt;/p&gt;
+
+&lt;p&gt;  解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处，为了确保有效地回收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环变量的引用。&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 18 Aug 2019 04:15:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/</guid>
+        
+        <category>Javascript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>MVVM框架理解</title>
+        <description>&lt;p&gt;说起这个MVVM模型，就不得不说MVC框架。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tNc79ly1g5sew3t04hj30k009fq32.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;将整个前端页面分成View，Controller，Modal，视图上发生变化，通过Controller（控件）将响应传入到Model（数据源），由数据源改变View上面的数据。&lt;/p&gt;
+
+&lt;p&gt;整个过程看起来是行云流水，业务逻辑放在Model当中，页面渲染逻辑放在View当中，但在实际运用上却存在一个问题：那就是&lt;strong&gt;MVC框架允许View和Model直接进行通信！！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;换句话说，View和Model之间随着业务量的不断庞大，会出现蜘蛛网一样难以处理的依赖关系，完全背离了开发所应该遵循的&lt;strong&gt;“开放封闭原则”&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;面对这个问题，MVVM框架就出现了，它与MVC框架的主要区别有两点： &lt;br /&gt;
+&lt;strong&gt;1、 实现数据与视图的分离&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;2、 通过数据来驱动视图，开发者只需要关心数据变化，DOM操作被封装了。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5sewbb03uj30l50cddg8.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到MVVM分别指View，Model，View-Model，View通过View-Model的DOM Listeners将事件绑定到Model上，而Model则通过Data Bindings来管理View中的数据，View-Model从中起到一个连接桥的作用。&lt;/p&gt;
+
+&lt;h3 id=&quot;mvvm的实现原理&quot;&gt;MVVM的实现原理：&lt;/h3&gt;
+
+&lt;p&gt;MVVM的实现主要是三个核心点：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;响应式：vue如何监听data的属性变化&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;模板解析：vue的模板是如何被解析的&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;渲染：vue模板是如何被渲染成HTML的&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;响应式&quot;&gt;响应式：&lt;/h3&gt;
+
+&lt;p&gt;对于MVVM来说，data一般是放在一个对象当中，就比如这样：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         var obj = {
+             name: 'zhangsan',
+             age: 25
+         }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;当我们访问或修改obj的属性的时候，比如：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         console.log（obj.name）  //访问
+         obj.age = 22            //修改
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;但是这样的操作vue本身是没有办法感知到的，那么应该如何让vue知道我们进行了访问或是修改的操作呢？
+那就要使用Object.defineProperty&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var vm = {}
+        var data = {
+            name: 'zhangsan',
+            age: 20
+        }
+
+        var key, value
+        for (key in data) {
+            (function (key) {
+                Object.defineProperty(vm, key, {
+                    get: function () {
+                        console.log('get', data[key]) // 监听
+                        return data[key]
+                    },
+                    set: function (newVal) {
+                        console.log('set', newVal) // 监听
+                        data[key] = newVal
+                    }
+                })
+            })(key)
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;通过Object.defineProperty将data里的每一个属性的访问与修改都变成了一个函数，在函数get和set中我们即可监听到data的属性发生了改变。&lt;/p&gt;
+
+&lt;h3 id=&quot;模板解析&quot;&gt;模板解析：&lt;/h3&gt;
+
+&lt;p&gt;首先模板是什么？&lt;/p&gt;
+
+&lt;p&gt;模板本质上是一串字符串，它看起来和html的格式很相像，实际上有很大的区别，因为模板本身还带有逻辑运算，比如v-if，v-for等等，但它最后还是要转换为html来显示。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;app&quot;&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;input v-model=&quot;title&quot; /&amp;gt;
+    &amp;lt;button v-on:click=&quot;add&quot;&amp;gt;submit&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;ul&amp;gt;
+      &amp;lt;li v-for=&quot;item in list&quot;&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;模板在vue中必须转换为JS代码，原因在于：在前端环境下，只有JS才是一个图灵完备语言，才能实现逻辑运算，以及渲染为html页面。&lt;/p&gt;
+
+&lt;p&gt;这里就引出了vue中一个特别重要的函数——&lt;strong&gt;render&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;render函数中的核心就是with函数。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;with函数将某个对象添加到作用域链的顶部，如果在 statement中有某个未使用命名空间的变量，跟作用域链中的某个属性同名，则这个变量将指向这个属性值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;举个例子：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;       var obj = {
+            name: 'zhangsan',
+            age: 20,
+            getAddress: function () {
+                alert('beijing')
+            }
+        }
+        function fn1() {
+            with(obj) {
+                alert(age)
+                alert(name)
+                getAddress()
+            }
+        }
+        fn1()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;with将obj这个对象放在了自己函数的作用域链的顶部，当执行下列函数时，就会自动到obj这个对象去寻找同名的属性。&lt;/p&gt;
+
+&lt;p&gt;而在render函数中，with的用法是这样：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;app&quot;&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;input v-model=&quot;title&quot; /&amp;gt;
+    &amp;lt;button v-on:click=&quot;add&quot;&amp;gt;submit&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;ul&amp;gt;
+      &amp;lt;li v-for=&quot;item in list&quot;&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // 对应的js文件
+        var data = {
+            title: '',
+            list: []
+        }
+        // 初始化 Vue 实例
+        var vm = new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                add: function () {
+                    this.list.push(this.title)
+                    this.title = ''
+                }
+            }
+        })
+
+        
+        with(this){  // this 就是 vm
+            return _c(
+                'div',
+                {
+                    attrs:{&quot;id&quot;:&quot;app&quot;}
+                },
+                [
+                    _c(
+                        'div',
+                        [
+                            _c(
+                                'input',
+                                {
+                                    directives:[
+                                        {
+                                            name:&quot;model&quot;,
+                                            rawName:&quot;v-model&quot;,
+                                            value:(title),
+                                            expression:&quot;title&quot;
+                                        }
+                                    ],
+                                    domProps:{
+                                        &quot;value&quot;:(title)
+                                    },
+                                    on:{
+                                        &quot;input&quot;:function($event){
+                                            if($event.target.composing)return;
+                                            title=$event.target.value
+                                        }
+                                    }
+                                }
+                            ),
+                            _v(&quot; &quot;),
+                            _c(
+                                'button',
+                                {
+                                    on:{
+                                        &quot;click&quot;:add
+                                    }
+                                },
+                                [_v(&quot;submit&quot;)]
+                            )
+                        ]
+                    ),
+                    _v(&quot; &quot;),
+                    _c('div',
+                        [
+                            _c(
+                                'ul',
+                                _l((list),function(item){return _c('li',[_v(_s(item))])})
+                            )
+                        ]
+                    )
+                ]
+            )
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在一开始，因为new操作符，所以this指向了vm，通过with我们将vm这个对象放在作用域链的顶部，因为在函数内部我们会多次调用vm内部的属性，所以使用with可以缩短变量长度，提供系统运行效率。&lt;/p&gt;
+
+&lt;p&gt;其中的_c函数表示的是创建一个新的html元素，其基本用法为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_c(element,{attrs},[children...])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其中的element表示所要创建的html元素类型，attrs表示所要创建的元素的属性，children表示该html元素的子元素。&lt;/p&gt;
+
+&lt;p&gt;_v函数表示创建一个文本节点，_l函数表示创建一个数组。&lt;/p&gt;
+
+&lt;p&gt;最终render函数返回的是一个虚拟DOM。&lt;/p&gt;
+
+&lt;h3 id=&quot;如何将模板渲染为html&quot;&gt;如何将模板渲染为html&lt;/h3&gt;
+
+&lt;p&gt;模板渲染为html分为两种情况，第一种是初次渲染的时候，第二种是渲染之后数据发生改变的时候，它们都需要调用updateComponent,其形式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vm._update(vnode){
+  const prevVnode = vm._vnode
+  vm._vnode = vnode
+  if (!prevVnode){
+    vm.$el = vm.__patch__(vm.$el,vnode)
+  } else {
+    vm.$el = vm.__patch__(prevVnode,vnode)
+  }
+}
+
+function updateComponent(){
+  vm._update(vm._render())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;首先读取当前的虚拟DOM——vm._vnode,判断其是否为空，若为空，则为初次渲染，将虚拟DOM全部渲染到所对应的容器当中（vm.$el），若不为空，则是数据发生了修改，通过响应式我们可以监听到这一情况，使用diff算法完成新旧对比并修改。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;转自&lt;/strong&gt;-&lt;a href=&quot;https://segmentfault.com/a/1190000015895017&quot;&gt;&lt;strong&gt;原文链接&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 09 Aug 2019 05:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/</guid>
+        
+        <category>WEB</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>jQuery-Selectors</title>
+        <description>&lt;h3 id=&quot;基本选择器&quot;&gt;基本选择器&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;ID选择器&lt;/strong&gt;
+ $(‘###ID’)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Element选择器&lt;/strong&gt;
+ $(‘element’)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Class选择器&lt;/strong&gt;
+ $(‘.className’)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;通配符选择器&lt;/strong&gt;
+ $(‘*’)–选中所有元素，不建议使用&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;多项选择器&quot;&gt;多项选择器&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;$(“selector1,selector2,selectorN”); 将每一个选择器匹配到的元素合并后一起返回。 可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。 顺序会遵循html的顺序&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;层级选择器&quot;&gt;层级选择器&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;$(‘ancestor descendant’)  &lt;strong&gt;祖先后代选择器&lt;/strong&gt;  在给定的祖先元素下面匹配所有的后代元素;
+  代码举例省略&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$(‘parent&amp;gt;child’)  &lt;strong&gt;子选择器&lt;/strong&gt; 在给定的父元素下匹配所有的子元素&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
+&amp;lt;body&amp;gt;
+	&amp;lt;h3&amp;gt;必备基础&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;HTML&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;CSS&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;JavaScript&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;jQuery&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;h3&amp;gt;热门技术&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;vue.js&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;es6&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;less/sass&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+      $(function(){
+        $('ul&amp;gt;li').css('color','red');
+      });
+    &amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/006tNc79ly1g5rdd2dkjsj307r0grwee.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$(‘prev~siblings’) &lt;strong&gt;兄弟选择器&lt;/strong&gt; 匹配pre后面所有siblings()元素;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
+&amp;lt;body&amp;gt;
+	&amp;lt;h3&amp;gt;必备基础&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;HTML&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;CSS&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;JavaScript&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;jQuery&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;h3&amp;gt;热门技术&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;vue.js&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;es6&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;less/sass&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+      $(function(){
+        $('b~li').css('background','green');
+      });
+    &amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/006tNc79ly1g5rdd91vx3j308e0h60sm.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$(‘prev+next’)   &lt;strong&gt;同级选择器&lt;/strong&gt; 匹配所有紧跟在prev元素后的next元素 &lt;em&gt;prev和next同级&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
+&amp;lt;body&amp;gt;
+	&amp;lt;h3&amp;gt;必备基础&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;HTML&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;CSS&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;JavaScript&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;jQuery&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;h3&amp;gt;热门技术&amp;lt;/h3&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;b&amp;gt;分类&amp;lt;/b&amp;gt;
+		&amp;lt;li&amp;gt;vue.js&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;es6&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;less/sass&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+	&amp;lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+      $(function(){
+        $('ul+h3').css('color','red'); //prev和next同级
+      });
+    &amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tNc79ly1g5rddfs0t9j308q0gtjrb.jpg&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;属性选择器&quot;&gt;属性选择器&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$( ‘[attribute]’)  属性名&lt;/li&gt;
+  &lt;li&gt;$( ‘[attribute=value]’) 属性值&lt;/li&gt;
+  &lt;li&gt;$( ‘[attribute=!value]’) 非属性值&lt;/li&gt;
+  &lt;li&gt;$( ‘[attribute^=value]’) 匹配属性值以value开头（含有value）的所有元素。&lt;/li&gt;
+  &lt;li&gt;$( ‘[attribute$=value]’) 匹配属性值以value结尾（含有value）的所有元素。&lt;/li&gt;
+  &lt;li&gt;$( ‘[attribute*=value]’) 匹配属性值包含value（含有value）的所有元素。&lt;/li&gt;
+  &lt;li&gt;$( ‘[selector1] [selector2]… [selectorN]’)  匹配1~N的交集&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;过滤器&quot;&gt;过滤器&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;child&lt;/strong&gt;
+ ：first-child:子元素的某一个标签 第一个 
+ ：last-child:子元素的某一个标签 最后一个 
+ ：nth-child:子元素标签 第几个 
+ ：nth-last-child:子元素倒数第几个 
+ ：only-child:父元素后面仅有一个标签&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  $('x &amp;gt; p:first-child')	 //X下第一个标签是P标签的节点
+  $('x &amp;gt; p:last-child') 	 //X下倒数第一个标签是P标签的节点
+  $('x &amp;gt; p:nth-child(n)') 	 //x下第n个标签是P标签的节点
+  $('x &amp;gt; p:nth-last-child(n)')	 //x下倒数第n个是P标签的节点
+  $('x &amp;gt; p:only-child') 		 //x下只有一个标签是P标签的节点
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;type&lt;/strong&gt;
+和child类似，child侧重找子节点，找某个元素必需满足该元素在在父节点下处于相同位置 
+type侧重节点类型，type不强调所有标签的排序，只要有该元素就可以。
+ ：first-of-type:子元素的某一个标签 第一个 
+ ：last-of-type:子元素的某一个标签 最后一个 
+ ：nth-of-type:子元素标签 第几个 
+ ：nth-last-of-type:子元素倒数第几个 
+ ：only-of-type:父元素后面仅有一个标签&lt;/p&gt;
+
+    &lt;p&gt;​&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$('x &amp;gt; p:first-of-type')	 //X下第一个P标签节点
+$('x &amp;gt; p:last-of-type') 	 //X下倒数第一个P标签节点
+$('x &amp;gt; p:nth-of-type(n)') 	 //x下第n个P标签节点
+$('x &amp;gt; p:nth-last-of-type(n)')	 //x下倒数第n个P标签节点
+$('x &amp;gt; p:only-of-type') 		 //x下只有一个P标签的节点
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;过滤器参数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;n:匹配子元素序号。必须为整数，从1开始&lt;/li&gt;
+  &lt;li&gt;even:匹配所有偶数元素&lt;/li&gt;
+  &lt;li&gt;odd:匹配所有奇数元素&lt;/li&gt;
+  &lt;li&gt;formual:使用特殊公式如(an+b)进行选择。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;表单选择器&quot;&gt;表单选择器&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;表单元素&lt;/strong&gt;
+  &lt;img src=&quot;http://ww4.sinaimg.cn/large/006tNc79ly1g5rddoc0nyj30lu0cwt8w.jpg&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;表单状态&lt;/strong&gt;
+  &lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5rddvp06aj30mg09f3yq.jpg&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;查找过滤&quot;&gt;查找过滤&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;.find() 搜索所有与指定表达式匹配的元素,返回所有后代（包括孩子、孙子等等后代）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;.children() 返回所有被选元素的直接子元素，返回子元素（孩子）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;.parent() 返回被选元素的直接父元素&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;.next()  .prev()返回所选元素中紧邻的后面（前面）的元素集合&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;.eq() 获取当前链式操作中第n(可正可负)个jQuery对象(这里索引从0开始)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;.siblings()获得匹配集合中每个元素的同辈元素，通过选择器进行筛选是可选的&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;.filter()筛选出与指定表达式匹配的元素集合。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;参数&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;expr:字符串值，包含供匹配当前元素集合的选择器表达式。&lt;/li&gt;
+  &lt;li&gt;object:现有的jQuery对象，以匹配当前的元素。&lt;/li&gt;
+  &lt;li&gt;element:一个用于匹配元素的BOM元素。&lt;/li&gt;
+  &lt;li&gt;fn:一个函数用来作为测试元素的集合。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 08 Jul 2019 01:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/jQuery-Selectors/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/jQuery-Selectors/</guid>
+        
+        <category>WEB/jQuery</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>HTML5音/视频</title>
+        <description>&lt;h3 id=&quot;一html5-视频&quot;&gt;一、HTML5 视频&lt;/h3&gt;
+
+&lt;p&gt;video 元素支持三种视频格式：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;格式&lt;/td&gt;
+      &lt;td&gt;IE&lt;/td&gt;
+      &lt;td&gt;Firefox&lt;/td&gt;
+      &lt;td&gt;Opera&lt;/td&gt;
+      &lt;td&gt;Chrome&lt;/td&gt;
+      &lt;td&gt;Safari&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ogg&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;3.5+&lt;/td&gt;
+      &lt;td&gt;10.5+&lt;/td&gt;
+      &lt;td&gt;5.0+&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MPEG 4&lt;/td&gt;
+      &lt;td&gt;9.0+&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;5.0+&lt;/td&gt;
+      &lt;td&gt;3.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;WebM&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;4.0+&lt;/td&gt;
+      &lt;td&gt;10.6+&lt;/td&gt;
+      &lt;td&gt;6.0+&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件
+MPEG4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件
+WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件&lt;/p&gt;
+
+&lt;p&gt;在 HTML5 中显示视频：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&amp;gt;
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;controls 属性供添加播放、暂停和音量控件。
+包含宽度和高度属性也是不错的主意。
+**&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;video&amp;gt; 与 &amp;lt;/video&amp;gt;&lt;/code&gt; **之间插入的内容是供不支持 video 元素的浏览器显示的：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video src=&quot;movie.ogg&quot; width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&amp;gt;
+Your browser does not support the video tag.
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式：&lt;/strong&gt;
+&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&amp;gt;
+  &amp;lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&amp;gt;
+  &amp;lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&amp;gt;
+Your browser does not support the video tag.
+&amp;lt;/video&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;video&amp;gt;&lt;/code&gt; 标签的属性&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;属性&lt;/td&gt;
+      &lt;td&gt;值&lt;/td&gt;
+      &lt;td&gt;描述&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;autoplay&lt;/td&gt;
+      &lt;td&gt;autoplay&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则视频在就绪后马上播放。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;controls&lt;/td&gt;
+      &lt;td&gt;controls&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;height&lt;/td&gt;
+      &lt;td&gt;pixels&lt;/td&gt;
+      &lt;td&gt;设置视频播放器的高度。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;loop&lt;/td&gt;
+      &lt;td&gt;loop&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则当媒介文件完成播放后再次开始播放。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;preload&lt;/td&gt;
+      &lt;td&gt;preload&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;src&lt;/td&gt;
+      &lt;td&gt;url&lt;/td&gt;
+      &lt;td&gt;要播放的视频的 URL。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;width&lt;/td&gt;
+      &lt;td&gt;pixels&lt;/td&gt;
+      &lt;td&gt;设置视频播放器的宽度。AA&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;二html-5-video--dom&quot;&gt;二、HTML 5 Video + DOM&lt;/h3&gt;
+&lt;p&gt;大多数浏览器支持的视频方法、属性和事件：
+方法|属性|事件
+play()|currentSrc|play 
+pause()|currentTime|pause 
+load()|videoWidth |progress 
+canPlayType|videoHeight|error 
+            |duration|timeupdate 
+            |ended|ended 
+            |error|abort 
+            |paused|empty 
+            |muted|emptied 
+            |seeking|waiting 
+            |volume|loadedmetadata 
+            |height|
+            |width|&lt;/p&gt;
+
+&lt;p&gt;注释：在所有属性中，只有 videoWidth 和 videoHeight 属性是立即可用的。在视频的元数据已加载后，其他属性才可用。&lt;/p&gt;
+
+&lt;h3 id=&quot;三html-音频&quot;&gt;三、HTML 音频&lt;/h3&gt;
+
+&lt;p&gt;audio 元素支持三种音频格式：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        |IE 9  |Firefox 3.5 |Opera 10.5 |Chrome 3.0  |Safari 3.0 |      Ogg Vorbis|          |√           |√          |√           |               |      MP3        |√     |                  |               |√           |√         |      Wav         |          |√           |               |√           |√         |     
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如需在 HTML5 中播放音频：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio src=&quot;song.ogg&quot; controls=&quot;controls&quot;&amp;gt;
+&amp;lt;/audio&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;control 属性供添加播放、暂停和音量控件。&lt;/strong&gt;
+&lt;strong&gt;&lt;audio&gt; 与 &lt;/audio&gt; 之间插入的内容是供不支持 audio 元素的浏览器显示的：&lt;/strong&gt;
+&lt;strong&gt;实例：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio src=&quot;song.ogg&quot; controls=&quot;controls&quot;&amp;gt;
+Your browser does not support the audio tag.
+&amp;lt;/audio&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：
+&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio controls=&quot;controls&quot;&amp;gt;
+  &amp;lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&amp;gt;
+  &amp;lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;
+Your browser does not support the audio tag.
+&amp;lt;/audio&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;**&lt;audio&gt; 标签的属性**&lt;/audio&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;属性&lt;/td&gt;
+      &lt;td&gt;值&lt;/td&gt;
+      &lt;td&gt;描述&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;autoplay&lt;/td&gt;
+      &lt;td&gt;autoplay&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则音频在就绪后马上播放。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;controls&lt;/td&gt;
+      &lt;td&gt;controls&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;loop&lt;/td&gt;
+      &lt;td&gt;loop&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则每当音频结束时重新开始播放。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;preload&lt;/td&gt;
+      &lt;td&gt;preload&lt;/td&gt;
+      &lt;td&gt;如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;src&lt;/td&gt;
+      &lt;td&gt;url&lt;/td&gt;
+      &lt;td&gt;要播放的音频的 URL。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Wed, 15 May 2019 04:37:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/</guid>
+        
+        <category>WEB/Html</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>input标签的兼容问题</title>
+        <description>&lt;h3 id=&quot;1-input需要清掉哪些默认样式和兼容问题如何解决&quot;&gt;1. input需要清掉哪些默认样式，和兼容问题如何解决？&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-如何解决ie8一下的input框文字偏上问题&quot;&gt;2. 如何解决IE8一下的input框文字偏上问题？&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`input{ float:left; line-height:30px\9;}`
+\9  是针对所有IE浏览器的CSS hack解决；以上可解决框内的文字偏移问题；
+框外的文字不对齐，需框外元素，input共同设置`vertical-align：middle`；即可（垂直居中，对应`text-align:center`;）
+这个是css hack 写法,  \9:支持IE浏览器
+\0:支持IE8浏览器.   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-input高度最好不要给100而是给实际的32px兼容ie浏览器更好&quot;&gt;3. input高度最好不要给100%，而是给实际的32px；兼容IE浏览器更好；&lt;/h3&gt;
+</description>
+        <pubDate>Fri, 10 May 2019 06:10:03 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/input%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/input%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>CSS图片旋转-transform</title>
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zh-CN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=utf-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.mainDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;-webkit-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;-moz-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;            &lt;span class=&quot;err&quot;&gt;//旋转0度，倍放1&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;-webkit-transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                        &lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;动画持续时间&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;-moz-transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;.mainDiv&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;-webkit-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;-moz-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;black&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+       &lt;span class=&quot;nl&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;gray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;css3特效&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mainDiv&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;您好&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 08 May 2019 01:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/CSS3-transform/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/CSS3-transform/</guid>
+        
+        <category>WEB/CSS</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>轮播图实现原理</title>
+        <description>&lt;p&gt;通过以下的5个过程，实现轮播图的轮播效果&lt;/p&gt;
+&lt;h3 id=&quot;1-动态生成结构&quot;&gt;1. 动态生成结构&lt;/h3&gt;
+
+&lt;p&gt;创建元素和插入元素的方法分别是什么？ 
+创建元素：document.creatElement( tagName ) var li = document.creatElement(“li”)； 
+插入元素：appendChild( element ) ol.appendChild(“li”);
+通过什么方法复制第一张图片元素？ 
+通过cloneNode()方法来复制元素：eg . var firstImg = ulLis[0].cloneNode(true)；
+其中cloneNode方法中，如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点&lt;/p&gt;
+
+&lt;h3 id=&quot;2-鼠标经过按钮&quot;&gt;2. 鼠标经过按钮&lt;/h3&gt;
+
+&lt;p&gt;鼠标经过时如何改变按钮样式？ 
+a. 清除所有按钮的样式 
+for (var j = 0; j &amp;lt; olLis.length; j++) { olLis[j].className = “”; }
+b. 给当前鼠标所在按钮添加特殊样式 
+this.className = “current”;
+鼠标经过按钮时如何计算图片盒子移动的距离? 
+通过按钮索引值（this.index）和图片的宽度（imgWidth）来计算图片盒子要移动的距离（target） 
+`target = - this.index * imgWidth&lt;/p&gt;
+
+&lt;h3 id=&quot;3-鼠标点击箭头&quot;&gt;3. 鼠标点击箭头&lt;/h3&gt;
+
+&lt;p&gt;通过什么属性改变左右箭头的隐藏和显示？ 
+通过控制左右箭头盒子的display属性来控制左右箭头盒子的显示（block）和隐藏（none）
+通过什么机制来统一左/右箭头点击时图片切换为当前图片的上/下一张？ 
+利用全局变量来统一左右箭头切换图片，在左右箭头点击时，通过pic来计算图片盒子移动的目标位置 
+var target = -pic * imgWidth;
+当点击左箭头时：pic– –这样target比当前位置数值大imgWidth 图片盒子向右移动一张图片的距离 显示出上一张图片
+当点击右箭头时：pic++ 这样target比当前位置数值小imgWidth 图片盒子向左移动一张图片的距离 显示出下一张图片&lt;/p&gt;
+
+&lt;h3 id=&quot;4-按钮随之变化&quot;&gt;4. 按钮随之变化&lt;/h3&gt;
+&lt;p&gt;square的取值范围以及其与pic对应情况&lt;/p&gt;
+
+&lt;h3 id=&quot;5-添加自动滚动&quot;&gt;5. 添加自动滚动&lt;/h3&gt;
+
+&lt;p&gt;图片自动播放下一张和点击右箭头的操作相同&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HTML:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;all&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'box'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/1.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/2.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/3.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/4.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/5.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arr&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;CSS:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;style type=&quot;text/css&quot;&amp;gt;
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    &amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;JS:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+    //要做事先找人
+    var box = document.getElementById(&quot;box&quot;);
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var ulLis = ul.children;//所有的图片
+    var imgWidth = screen.offsetWidth;
+    var arr = document.getElementById(&quot;arr&quot;);
+    var arrRight = document.getElementById(&quot;right&quot;);
+    var arrLeft = document.getElementById(&quot;left&quot;);
+    var timer = null;
+    //alert(imgWidth);
+
+    //1.动态生成结构
+    //1.1根据图片的数量动态生成按钮
+    for (var i = 0; i &amp;lt; ulLis.length; i++) {
+        //动态生成按钮
+        var li = document.createElement(&quot;li&quot;);
+        //给li添加序号
+        //索引号是从0开始的
+        //序号=索引号+1
+        li.innerHTML = i + 1;
+        //追加到ol下面
+        ol.appendChild(li);
+    }
+    var olLis = ol.children;//必须生成之后才能获取到
+    olLis[0].className = &quot;current&quot;;
+
+    //1.2把第一张图片追加到最后
+    //复制第一张图片
+    var firstImg = ulLis[0].cloneNode(true);
+    //追加到ul后面
+    ul.appendChild(firstImg);
+
+    //2.鼠标经过按钮
+    //循环遍历 给每一个按钮绑定鼠标经过事件
+    for (var j = 0; j &amp;lt; olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onmouseover = function () {
+            //按钮排他
+            //干掉所有人
+            for (var k = 0; k &amp;lt; olLis.length; k++) {
+                olLis[k].className = &quot;&quot;;
+            }
+            //留下我自己
+            this.className = &quot;current&quot;;
+            //根据索引号 通过动画函数移动ul
+            //图片移动的位置 和 当前按钮索引号 和 图片宽度有关 而且是负数
+            var target = -this.index * imgWidth;
+            animate(ul, target);
+
+            //将应该显示的图片的索引号 和 鼠标经过的按钮的索引号 进行统一
+            pic = this.index;
+            //将应该亮起的按钮的索引号 和 鼠标经过的按钮的索引号 进行统一
+            square = this.index;
+        }
+    }
+
+    //3.鼠标点击箭头
+    //鼠标经过box显示arr 清理定时器停止自动播放
+    box.onmouseover = function () {
+        arr.style.display = &quot;block&quot;;
+        clearInterval(timer);
+    }
+    //鼠标离开box隐藏arr 设置定时器继续自动播放
+    box.onmouseout = function () {
+        arr.style.display = &quot;none&quot;;
+        timer = setInterval(playNext, 1000);
+    }
+
+    //点击 右箭头 显示下一张
+    var pic = 0;//pic表示当前图片的索引
+    var square = 0;//square表示当前按钮的索引
+    arrRight.onclick = function () {
+        playNext();
+    }
+    arrLeft.onclick = function () {
+        //判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
+        if (pic == 0) {
+            pic = ulLis.length - 1;
+            ul.style.left = -(ulLis.length - 1) * imgWidth + &quot;px&quot;;
+        }
+        pic--;
+        //通过动画函数对ul进行移动
+        //target 和 图片索引 和 图片宽度 有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+
+        //按钮也应该自动播放
+        //如果当前按钮的索引号square大于第一个按钮的索引号0 就--
+        if (square &amp;gt; 0) {
+            square--;
+        } else {
+            //如果square等于零 说明到第一个了 这时就应该把他变成最后一个
+            square = olLis.length - 1;
+        }
+        //干掉所有人
+        for (var i = 0; i &amp;lt; olLis.length; i++) {
+            olLis[i].className = &quot;&quot;;
+        }
+        //留下我自己
+        olLis[square].className = &quot;current&quot;;
+    }
+
+    //4.添加自动滚动
+    timer = setInterval(playNext, 1000)
+
+    function playNext() {
+        //先判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
+        //如果相等马上跳过去然后在执行动画效果 从而实现无缝滚动
+        //并且把索引号也归零
+        if (pic == ulLis.length - 1) {
+            ul.style.left = 0;
+            pic = 0;
+        }
+        pic++;//pic++相当于 pic=pic+1;
+        //通过动画函数对ul进行移动
+        //target 和 图片索引 和 图片宽度 有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+
+        //按钮也应该自动播放
+        //如果当前按钮的索引号square小于最后一个按钮的索引号olLis.length - 1 就++
+        if (square &amp;lt; olLis.length - 1) {
+            square++;
+        } else {
+            square = 0;
+        }
+
+        //干掉所有人
+        for (var i = 0; i &amp;lt; olLis.length; i++) {
+            olLis[i].className = &quot;&quot;;
+        }
+        //留下我自己
+        olLis[square].className = &quot;current&quot;;
+    }
+
+    //5.完善鼠标经过
+
+
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = 25;
+            //left值越小越靠左
+            //obj.offsetLeft小于target
+            //obj在target的左侧
+            //应该向右走
+            //向右走step是正
+            /*if (obj.offsetLeft &amp;lt; target) {
+             step = 9;
+             }
+             if (obj.offsetLeft &amp;gt; target) {
+             //向左走是负
+             step = -9;
+             }*/
+            var step = obj.offsetLeft &amp;lt; target ? step : -step;
+
+            //Math.abs(obj.offsetLeft - target) 这个表示对象到目标的距离
+            //如果对象到目标的距离比一步迈出的距离要大 我就要继续走
+
+            if (Math.abs(obj.offsetLeft - target) &amp;gt; Math.abs(step)) {
+                obj.style.left = obj.offsetLeft + step + &quot;px&quot;;
+            } else {
+                //再迈一步就超过目标了
+                obj.style.left = target + &quot;px&quot;;//手动把对象放置到目标上
+                clearInterval(obj.timer);//清理定时器
+            }
+        }, 15)
+    }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;总结两种常见轮播图的实现思路&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1--通过修改每一张图片的透明度让其每隔一段时间将其中的某一张图片透明度设为1而其他的设为0从而实现图频轮流播放的效果该种思路比较简单首先让一组图片绝对定位并使其重叠通过函数切换控制图片的透明度和定时器来触发该函数改变不同图片的透明度&quot;&gt;1.  通过修改每一张图片的透明度，让其每隔一段时间将其中的某一张图片透明度设为1，而其他的设为0，从而实现图频轮流播放的效果。该种思路比较简单，首先让一组图片绝对定位，并使其重叠，通过函数切换控制图片的透明度和定时器来触发该函数，改变不同图片的透明度。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/*此时li为childID；parentID即为parentID*/&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;autoPlay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;childTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pictures&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pictures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//显示一张图片&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;//首先将所有图片的透明度设为0；&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;hideItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;//将要显示的透明度改变让其显示&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;// 在这里用setTimeout模拟setInterval的效果&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//将所有的图片透明度设为0&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hideItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parentID&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2--滑动形式通过改变元素的left值让图片呈现左右滑动的效果&quot;&gt;2.  滑动形式，通过改变元素的left值让图片呈现左右滑动的效果。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/*此时li为childID；parentID即为parentID*/
+var autoSlide = function(parentID,childTag) {
+    var parent = 
+document.getElementById(parentID);
+    parent.style.position = &quot;relative&quot;;
+    var items = parent.getElementsByTagName(childTag);
+    var width = items[0].offsetWidth;
+    var index = 0;
+
+    function slide() {
+        if (index &amp;gt; items.length - 2) {
+            index = 0;
+        } else {
+            index++;
+        }
+        moveWide = -width * index;
+        parent.style.left = moveWide + &quot;px&quot;;
+        setTimeout(slide, 1500);
+    }
+
+    slide();
+} 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 18 Apr 2019 03:00:46 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
+        
+        <category>WEB/Html/CSS/Javascript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Markdown语法</title>
+        <description>&lt;h3 id=&quot;一标题&quot;&gt;一、标题&lt;/h3&gt;
+
+&lt;p&gt;在想要设置为标题的文字前面加#来表示
+一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。&lt;/p&gt;
+
+&lt;p&gt;注：标准语法在#后跟一个空格&lt;/p&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;h1 id=&quot;这是一级标题&quot;&gt;这是一级标题&lt;/h1&gt;
+&lt;h2 id=&quot;这是二级标题&quot;&gt;这是二级标题&lt;/h2&gt;
+&lt;h3 id=&quot;这是三级标题&quot;&gt;这是三级标题&lt;/h3&gt;
+&lt;h4 id=&quot;这是四级标题&quot;&gt;这是四级标题&lt;/h4&gt;
+&lt;h5 id=&quot;这是五级标题&quot;&gt;这是五级标题&lt;/h5&gt;
+&lt;h6 id=&quot;这是六级标题&quot;&gt;这是六级标题&lt;/h6&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;二字体&quot;&gt;二、字体&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;
+要加粗的文字左右分别用两个*号包起来&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;
+要倾斜的文字左右分别用一个*号包起来&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;em&gt;斜体加粗&lt;/em&gt;&lt;/strong&gt;
+要倾斜和加粗的文字左右分别用三个*号包起来&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;del&gt;删除线&lt;/del&gt;
+要加删除线的文字左右分别用两个~~号包起来&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;这是加粗的文字&lt;/strong&gt; &lt;br /&gt;
+&lt;em&gt;这是倾斜的文字&lt;/em&gt; &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;这是斜体加粗的文字&lt;/em&gt;&lt;/strong&gt; &lt;br /&gt;
+&lt;del&gt;这是加删除线的文字&lt;/del&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;三引用&quot;&gt;三、引用&lt;/h3&gt;
+&lt;p&gt;在引用的文字前加&amp;gt;即可。引用也可以嵌套，如加两个»三个»&amp;gt;
+n个…&lt;/p&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这是引用的内容&lt;/p&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;这是引用的内容&lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;blockquote&gt;
+        &lt;blockquote&gt;
+          &lt;blockquote&gt;
+            &lt;blockquote&gt;
+              &lt;blockquote&gt;
+                &lt;blockquote&gt;
+                  &lt;blockquote&gt;
+                    &lt;p&gt;这是引用的内容&lt;/p&gt;
+                  &lt;/blockquote&gt;
+                &lt;/blockquote&gt;
+              &lt;/blockquote&gt;
+            &lt;/blockquote&gt;
+          &lt;/blockquote&gt;
+        &lt;/blockquote&gt;
+      &lt;/blockquote&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;四分割线&quot;&gt;四、分割线&lt;/h3&gt;
+&lt;p&gt;三个或者三个以上的 - 或者 * 都可以，显示效果是一样的。&lt;/p&gt;
+
+&lt;p&gt;示例：略&lt;/p&gt;
+
+&lt;h3 id=&quot;五图片&quot;&gt;五、图片&lt;/h3&gt;
+
+&lt;p&gt;语法：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![图片alt](图片地址 ''图片title'')
+
+图片alt就是显示在图片下面的文字，相当于对图片内容的解释。
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg &quot;区块链&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;六超链接&quot;&gt;六、超链接&lt;/h3&gt;
+
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[超链接名](超链接地址 &quot;超链接title&quot;)
+title可加可不加
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[简书](http://jianshu.com)
+[百度](http://baidu.com)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注：Markdown本身语法不支持链接在新页面中打开，如果想要在新页面中打开的话可以用html语言的a标签代替。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&amp;gt;超链接名&amp;lt;/a&amp;gt;
+
+示例
+&amp;lt;a href=&quot;https://www.jianshu.com/u/1f5ac0cf6a8b&quot; target=&quot;_blank&quot;&amp;gt;简书&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;七列表&quot;&gt;七、列表&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;无序列表&lt;/strong&gt; &lt;br /&gt;
+语法：
+无序列表用 - + * 任何一种都可以&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 列表内容
++ 列表内容
+* 列表内容
+
+注意：- + * 跟内容之间都要有一个空格
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;有序列表&lt;/strong&gt; &lt;br /&gt;
+语法：数字加点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 列表内容
+2. 列表内容
+3. 列表内容
+
+注意：序号跟内容之间要有空格   
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;列表嵌套&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;上一级和下一级之间敲三个空格即可&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;八表格&quot;&gt;八、表格&lt;/h3&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第二行分割表头和内容。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;有一个就行，为了对齐，此处多加了几个，文字默认居左&lt;/li&gt;
+  &lt;li&gt;两边加：表示文字居中&lt;/li&gt;
+  &lt;li&gt;右边加：表示文字居右 &lt;br /&gt;
+注：原生的语法两边都要用 | 包起来。此处省略&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;姓名|技能|排行
+--|:--:|--:
+刘备|哭|大哥
+关羽|打|二哥
+张飞|骂|三弟
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;注：各编辑器有差异&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;效果如下：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;姓名&lt;/td&gt;
+      &lt;td&gt;技能&lt;/td&gt;
+      &lt;td&gt;排行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;刘备&lt;/td&gt;
+      &lt;td&gt;哭&lt;/td&gt;
+      &lt;td&gt;大哥&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;关羽&lt;/td&gt;
+      &lt;td&gt;打&lt;/td&gt;
+      &lt;td&gt;二哥&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;张飞&lt;/td&gt;
+      &lt;td&gt;骂&lt;/td&gt;
+      &lt;td&gt;三弟&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;九代码&quot;&gt;九、代码&lt;/h3&gt;
+&lt;p&gt;语法：单行代码：代码之间分别用一个反引号包起来&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`代码内容`
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(```)
+  代码...
+  代码...
+  代码...
+(```)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注：为了防止转译，前后三个反引号处加了小括号，实际是没有的。这里只是用来演示，实际中去掉两边小括号即可。&lt;/p&gt;
+
+&lt;p&gt;示例：  &lt;br /&gt;
+单行代码&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`create database hero;`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;代码块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(```)
+    function fun(){
+         echo &quot;这是一句非常牛逼的代码&quot;;
+    }
+    fun();
+(```)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;效果如下&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;单行代码 &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;create database hero;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;代码块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function fun(){
+  echo &quot;这是一句非常牛逼的代码&quot;;
+}
+fun();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;十流程图&quot;&gt;十、流程图&lt;/h3&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(```)flow
+st=&amp;gt;start: 开始
+op=&amp;gt;operation: My Operation
+cond=&amp;gt;condition: Yes or No?
+e=&amp;gt;end
+st-&amp;gt;op-&amp;gt;cond
+cond(yes)-&amp;gt;e
+cond(no)-&amp;gt;op
+&amp;amp;(```)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果如下：&lt;/strong&gt; &lt;br /&gt;
+&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/6860761-9d9524ba31047696.png&quot; alt=&quot;流程图&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Apr 2019 01:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/Markdown%E8%AF%AD%E6%B3%95/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/Markdown%E8%AF%AD%E6%B3%95/</guid>
+        
+        <category>Tools</category>
+        
+        
+      </item>
     
   </channel>
 </rss>

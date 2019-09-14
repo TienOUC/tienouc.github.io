@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Webpack笔记</title>
+  <meta name="description" content="      网易云免费课程-Webpack打包工具用法  ">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Webpack笔记">
+  <meta name="twitter:description" content="      网易云免费课程-Webpack打包工具用法  ">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Webpack笔记">
+  <meta property="og:description" content="      网易云免费课程-Webpack打包工具用法  ">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/08/Webpack/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+  <!-- Weibo -->
+  <!-- <li class="navigation__item">
+    <a href="http://weibo.com/Tien" title="@Tien 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+   -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:willtien@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-08-19 01:00:06 +0800" itemprop="datePublished" class="post-meta__date date">2019-08-19</time> &#8226; <span class="post-meta__tags tags">Tools</span>
+    </div>
+    <h1 class="post-title">Webpack笔记</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <ul>
+    <li>网易云免费课程-<a href="https://study.163.com/courses-search?keyword=Webpack打包工具用法">Webpack打包工具用法</a></li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><strong>在网易云课堂初学webpack3.0用法，学完再实践过程中发现4.0版本变动较大，就去官网查了一下4.0的变动，内容较多，暂先转载该篇优秀博文以做后续学习参考，原博文链接见文末。</strong></p>
+</blockquote>
+
+<h3 id="全局安装webpack"><strong>全局安装webpack</strong></h3>
+
+<p><code class="highlighter-rouge">npm install webpack webpack-cli -g</code></p>
+
+<p>全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。</p>
+
+<h3 id="在当前项目安装webpack"><strong>在当前项目安装webpack</strong></h3>
+
+<ol>
+  <li>
+    <p>新建webpack-demo目录，然后进行npm项目初始化 <br />
+<code class="highlighter-rouge">npm init 或者 npm init -y</code></p>
+  </li>
+  <li>
+    <p>在刚创建出来的package.json中添加private字段 <br />
+<code class="highlighter-rouge">"private": true    /**表示私有的**/</code></p>
+  </li>
+  <li>
+    <p>如果webpack已经全局安装，需要卸载 <br />
+<code class="highlighter-rouge">npm uninstall webpack webpack-cli -g  /**卸载全局安装的webpack**/</code></p>
+  </li>
+  <li>
+    <p>在项目根目录下执行安装命令 <br />
+<code class="highlighter-rouge">npm install webpack webpack-cli --save-dev</code></p>
+  </li>
+  <li>
+    <p>使用npx打印出当前的webpack版本 <br />
+<code class="highlighter-rouge">npx webpack -v</code></p>
+  </li>
+</ol>
+
+<h3 id="安装指定版本的webpack"><strong>安装指定版本的webpack</strong></h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm info webpack /*查看webpack所有版本信息*/
+npm install webpace@4.29.6 --save-dev
+</code></pre></div></div>
+<h3 id="webpack的配置文件"><strong>webpack的配置文件</strong></h3>
+
+<p>在项目根目录新建文件webpack.config.js</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="s1">'./index.js'</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'bundle.js'</span><span class="p">,</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="webpack手动打包命令"><strong>webpack手动打包命令</strong></h3>
+
+<p>``` npx webpack /<strong>默认会使用根目录下的webpack.config.js配置文件进行打包</strong>/
+npx webpack –config webpack.config.js /<strong>指定配置文件打包</strong>/</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **使用npm scripts 简化webpack命令**
+
+1. 在package.json中的scripts字段下添加bundle字段
+`"bundle": "webpack"`   
+
+2. 使用npm命令打包
+`npm run bundle`   
+
+## **使用file-loader打包图片**
+
+1. 安装file-loader
+`npm install file-loader --save-dev`   
+
+2. 在配置文件webpack.config.js中添加字段
+```js
+module: {
+    rules: [
+        {
+            test: /\.(jpg|png|svg|gif)$/,
+            use: {           
+                loader: 'file-loader',
+                options: {
+                   name: '[name].[ext]', /**原名字输出**/
+                   outputPath: 'images/', /**打包后存放图片的文件夹**/
+                }
+            }
+        }
+    ]
+}
+</code></pre></div></div>
+
+<h3 id="使用url-loader打包图片"><strong>使用url-loader打包图片</strong></h3>
+
+<ol>
+  <li>
+    <p>安装url-loader
+<code class="highlighter-rouge">npm install url-loader --save-dev</code></p>
+  </li>
+  <li>
+    <p>在配置文件webpack.config.js中添加字段</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">jpg|png|svg|gif</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+         <span class="na">use</span><span class="p">:</span> <span class="p">{</span>
+             <span class="na">loader</span><span class="p">:</span> <span class="s1">'url-loader'</span><span class="p">,</span>
+             <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="na">name</span><span class="p">:</span> <span class="s1">'[name].[ext]'</span><span class="p">,</span>
+                 <span class="na">outputPath</span><span class="p">:</span> <span class="s1">'images/'</span><span class="p">,</span>  
+                 <span class="na">limit</span><span class="p">:</span> <span class="mi">204800</span><span class="p">,</span> <span class="cm">/**小于20kb的图片，打包成base64放到bundle.js文件**/</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="使用style-loader和css-loader打包css文件"><strong>使用style-loader和css-loader打包css文件</strong></h3>
+
+<ol>
+  <li>
+    <p>安装style-loader 和 css-loader
+<code class="highlighter-rouge">npm install style-loader css-loader --save-dev</code></p>
+  </li>
+  <li>
+    <p>在webpack.config.js文件中添加配置</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+         <span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">]</span>
+     <span class="p">}</span>
+ <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="使用sass-loader打包sass文件"><strong>使用sass-loader打包.sass文件</strong></h3>
+
+<ol>
+  <li>
+    <p>安装sass-loader 和 node-sass
+<code class="highlighter-rouge">npm install sass-loader node-sass --save-dev</code></p>
+  </li>
+  <li>
+    <p>在webpack.config.js文件中添加配置</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">rules</span><span class="p">:</span> <span class="p">[{</span>
+     <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">sass$/</span><span class="p">,</span>
+     <span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">]</span>
+ <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <blockquote>
+      <p>数组形式的loader是从下到上，从右到左执行 sass-loader -&gt; css-loader -&gt; style-loader</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h3 id="使用postcss-loader自动添加css厂商前缀"><strong>使用postcss-loader自动添加css厂商前缀</strong></h3>
+
+<ol>
+  <li>
+    <p>安装postcss-loader
+<code class="highlighter-rouge">npm install postcss-loader --save-dev</code></p>
+  </li>
+  <li>
+    <p>postcss-loader需要配合autoprefixer插件使用
+<code class="highlighter-rouge">npm install autoprefixer --save-dev</code></p>
+  </li>
+  <li>在项目根目录添加postcss.config.js文件
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+     <span class="nx">require</span><span class="p">(</span><span class="s1">'autoprefixer'</span><span class="p">);</span>
+ <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>在webpack.config.js中添加配置
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">rules</span><span class="p">:</span> <span class="p">[{</span>
+     <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+     <span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">,</span> <span class="s1">'postcss-loader'</span><span class="p">]</span>
+ <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>确保所有的scss文件都会被所有loader处理,修改webpack.config.js中的配置
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+ <span class="nl">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+ <span class="nx">use</span><span class="p">:</span> <span class="p">[</span>
+         <span class="s1">'style-loader'</span><span class="p">,</span>
+         <span class="p">{</span>
+             <span class="na">loader</span><span class="p">:</span> <span class="s1">'css-loader'</span><span class="p">,</span>
+             <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="cm">/**确保每个scss都被所有loader处理**/</span>
+                 <span class="na">importLoaders</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                 <span class="cm">/**分模块打包css**/</span>
+                 <span class="na">modules</span><span class="p">:</span> <span class="kc">true</span>
+             <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s1">'sass-loader'</span><span class="p">,</span>
+          <span class="s1">'postcss-loader'</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <h3 id="使用file-loader打包字体文件"><strong>使用file-loader打包字体文件</strong></h3>
+  </li>
+  <li>
+    <p>安装file-loader
+<code class="highlighter-rouge">npm install file-loader --save-dev</code></p>
+  </li>
+  <li>在webpack.config.js文件中添加modules
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+ <span class="nl">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">eot|ttf|svg</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+ <span class="nx">use</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nl">loader</span><span class="p">:</span> <span class="s1">'file-loader'</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="使用插件使webpack打包更便捷"><strong>使用插件使webpack打包更便捷</strong></h3>
+
+<ul>
+  <li>安装自动生成index.html插件 html-webpack-plugin</li>
+</ul>
+
+<ol>
+  <li>安装html-webpack-plugin
+<code class="highlighter-rouge">npm install html-webpack-plugin --save-dev</code></li>
+</ol>
+
+<p>htmlWebpackPlugin 会在打包结束后，自动生成index.html文件，并把对应的js引入index.htm文件中</p>
+
+<ol>
+  <li>在webpack.config.js中引入插件
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">[</span>
+ <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+     <span class="na">template</span><span class="p">:</span> <span class="s1">'src/index.html'</span> <span class="cm">/**自动以src/index.html为模板，在dist目录下生成新的index.html文件**/</span>
+ <span class="p">})</span>
+<span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<ul>
+  <li>使用clean-webpacl-plugin插件自动删除dist插件再打包</li>
+</ul>
+
+<ol>
+  <li>
+    <p>安装插件clean-webpack-plugin
+<code class="highlighter-rouge">npm install clean-webpack-plugin --save-dev</code></p>
+  </li>
+  <li>
+    <p>在webpack.config.js中使用插件</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span>
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">({})]</span> <span class="cm">/**默认清除的是dist目录**/</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="sourcemap配置"><strong>sourceMap配置</strong></h3>
+
+<p>sourceMap 映射src目录的源文件，能定位到哪行报错</p>
+
+<ol>
+  <li>
+    <p>开启sourceMap,在wepback.config.js中添加配置
+<code class="highlighter-rouge">devtool: 'source-map'</code></p>
+  </li>
+  <li>
+    <p>sourceMap的最佳实现
+```js
+devtool: ‘cheap-module-eval-source-map’ /<strong>开发环境中使用</strong>/</p>
+  </li>
+</ol>
+
+<p>devtool: ‘cheap-module-source-map’ /<strong>生产环境</strong>/</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **使用WebpackDevServer提高开发效率**
+
+1. 安装webpack-dev-server
+`npm install webpack-dev-server --save-dev`
+
+2. 在webpack.config.js中配置devServer
+```js
+devServer: {
+    contentBase: './dist',
+    open: true,     /**open true 可以自动打开浏览器**/
+    proxy: {
+     "/api": "http://new.junbang.com/" /**请求api代理转发**/ 
+    },
+    port: 8081,  /**端口号**/ 
+}
+</code></pre></div></div>
+<ol>
+  <li>在package.json中添加watch命令
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"scripts"</span><span class="p">:</span> <span class="p">{</span>
+ <span class="s2">"watch"</span><span class="p">:</span> <span class="s2">"webpack --watch"</span><span class="err">，</span>
+ <span class="s2">"start"</span><span class="p">:</span> <span class="s2">"webpack-dev-server"</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>使用：npm run watch 监听文件有变化自动打包
+使用：npm run start 可以自动监听,自动打包, 自动刷新浏览器</p>
+  </li>
+</ol>
+
+<h3 id="自定义server"><strong>自定义server</strong></h3>
+
+<ol>
+  <li>
+    <p>需要安装express和webpack-dev-middleward这两个插件
+<code class="highlighter-rouge">npm install express webpack-dev-middleware --save-dev</code></p>
+  </li>
+  <li>
+    <p>新建server.js 并引入插件
+```js
+const express = require(‘express’);
+const webpack = require(‘webpack’);
+const webpackDevMiddleware = require(‘webpack-dev-middleware’);
+const config = require(‘./webpack.config.js’);
+const complier = webpack(config);</p>
+  </li>
+</ol>
+
+<p>const app = express();</p>
+
+<p>app.use(webpackDevMiddleware(complier, {
+    publicPath: config.output.publicPath
+}));</p>
+
+<p>app.listen(3000,() =&gt; {
+    console.log(‘server is running on prot 3000’);
+});</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+3. 在package.json中设置serve命令   
+```js
+"scripts": {
+    "serve": "node server.js"
+}
+</code></pre></div></div>
+<p>npm run serve 使用的就是我们server.js配置的服务器
+不过server.js还需要写很多，这只是简单的server</p>
+
+<h3 id="模块热更新hmr"><strong>模块热更新HMR</strong></h3>
+
+<ol>
+  <li>开启模块热更新，在webpack.config.js中添加配置
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">devServer</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">hot</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+ <span class="nx">hotOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>  <span class="cm">/**hotOnly: false 浏览器可以自动刷新**/</span>
+<span class="p">}</span>
+<span class="err">使用</span><span class="nx">HMR</span><span class="err">插件，在</span><span class="nx">webpack</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span><span class="err">中引入插件</span>
+<span class="kd">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">{</span>
+ <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">HotModuleReplacementPlugin</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>使用<code class="highlighter-rouge">npm run start</code>重启服务使新的配置生效</p>
+  </li>
+</ol>
+
+<h3 id="模块热更新hmr作用"><strong>模块热更新HMR作用：</strong></h3>
+
+<blockquote>
+  <p>css编写. 修改无需重新刷新浏览器就可显示效果
+js模块发生改变可以指定更新当前js模块，不需要刷新浏览器</p>
+</blockquote>
+
+<ol>
+  <li>js模块热更新，在index.js文件中编写代码
+```js
+import number from ‘./number’;
+number();</li>
+</ol>
+
+<p>if (module.hot) {
+    module.hot.accept(‘./number’, () =&gt; {
+    /<strong>当number模块有改变重新渲染</strong>/
+     number();
+    }
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **使用Babel处理ES6语法**
+
+1. 安装babel-loader 和 @babel/core
+`npm install --save-dev babel-loader @babel/core`   
+
+2. 在webpack.config.js中添加配置
+``` js
+module: {
+    rules: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+            presets: ["@babel/preset-env"]
+        }
+    }]
+}
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>安装@babel/preset-env模块对ES6语法进行翻译
+<code class="highlighter-rouge">npm install @babel/preset-env --save-dev</code></p>
+  </li>
+  <li>在webpack.config.js中的modules rules babel-loader 中配置options对象
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">options</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">presets</span><span class="p">:</span> <span class="p">[</span><span class="s2">"@babel/preset-env"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="cm">/**或者在项目根目录下创建配置文件.bablerc**/</span>
+<span class="p">{</span>
+ <span class="s2">"presets"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"@babel/preset-env"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>使用@babel/polyfill 加上低版本没有的语法, 比如map() . Promise等
+<code class="highlighter-rouge">npm install --save @babel/polyfill</code></p>
+  </li>
+  <li>
+    <p>在所以代码运行之前,可以放在入口文件index.js最顶部
+<code class="highlighter-rouge">import "@babel/polyfill";</code></p>
+  </li>
+  <li>polyfill默认会把所有翻译过代码都加进来，有时候我们没有用到的新方法，也有了翻译的方法在里面了，所以我们要过滤掉，没用上的就不要加载进来了，这样包更小，所以在webpack.config.js babel-loader中修改配置
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">options</span><span class="p">:</span> <span class="p">[[</span><span class="s1">'@babel/preset-env'</span><span class="p">,</span> <span class="p">{</span>
+ <span class="na">useBuiltIns</span><span class="p">:</span> <span class="s1">'usage'</span>
+<span class="p">}]]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>已经支持ES6语法的浏览器版本，没必要在翻译所以我们可以指定浏览器版本
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">options</span><span class="p">:</span> <span class="p">[[</span><span class="s1">'@babel/preset-env'</span><span class="p">,</span> <span class="p">{</span>
+ <span class="na">targets</span><span class="p">:</span> <span class="p">{</span>
+     <span class="na">chrome</span><span class="p">:</span> <span class="s2">"67"</span> <span class="cm">/**更多浏览器版本配置去babel官网查看**/</span>
+ <span class="p">},</span>
+ <span class="na">useBuiltIns</span><span class="p">:</span> <span class="s1">'usage'</span>
+<span class="p">}]]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>当指定了useBuiltIns: ‘usage’，会自动引入@babel/polyfill,所以可以去掉index.js import的@babel/polyfill,但是可以需要安装依赖
+<code class="highlighter-rouge">npm install --save core-js</code></p>
+  </li>
+  <li>
+    <p>如果是写业务代码以上配置没问题，如果要写框架. 类库. 第三方模块什么的，为了避免变量的全局污染（因为polyfille翻译的变量挂载到全局变量）而使用plugin-transform-runtime插件</p>
+  </li>
+  <li>安装transform-runtime插件</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save-dev @babel/plugin-transform-runtime
+npm install --save #babel/runtime
+</code></pre></div></div>
+
+<ol>
+  <li>在webpack.config.js中修改配置
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+<span class="nl">rules</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+    <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+    <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">plugins</span><span class="p">:</span> <span class="p">[[</span><span class="s2">"@babel/plugin-transform-runtime"</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">corejs</span><span class="p">:</span> <span class="mi">2</span>
+            <span class="na">helpers</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">regenerator</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="na">useESModules</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}]]</span>
+    <span class="p">}</span>
+<span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>因为我们配置了corejs: 2,所以要加装corejs的依赖
+<code class="highlighter-rouge">npm install --save @babel/runtime-corejs2</code></li>
+</ol>
+
+<h3 id="配置react代码的打包"><strong>配置React代码的打包</strong></h3>
+
+<p>babel也可以打包react代码</p>
+
+<ol>
+  <li>
+    <p>安装react框架
+<code class="highlighter-rouge">npm install react react-dom --save</code></p>
+  </li>
+  <li>
+    <p>安装@babel/preset-react
+<code class="highlighter-rouge">npm install --save-dev @babel/preset-react</code></p>
+  </li>
+  <li>
+    <p>在.babelrc中添加配置
+<code class="highlighter-rouge">presets: ["@babel/preset-env","@babel/preset-react"]</code></p>
+  </li>
+</ol>
+
+<h3 id="使用tree-shaking去掉没有引用的方法-模块"><strong>使用Tree Shaking去掉没有引用的方法/ 模块</strong></h3>
+<p>Tree Shaking只支持 ES Module 就是import export不支持require(‘’)</p>
+
+<ol>
+  <li>在mode: ‘development’中配置Tree Shaking, 在webpack.config.js中
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">optimization</span><span class="p">:</span> <span class="p">{</span>
+ <span class="nl">usedExports</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在mode: ‘production’中 默认就有,不需要添加任何配置</p>
+  </li>
+  <li>在package.json中配置不需要Tree Shaking的模块</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"sideEffects": false   /**所有模块都需要Tree Shaking**/
+"sideEffects": ['@babel/polly-fill', '*.css']  /**对这两个模块不做Tree Shaking**/
+</code></pre></div></div>
+
+<h3 id="development-和-production-模式的区分打包"><strong>Development 和 Production 模式的区分打包</strong></h3>
+
+<ol>
+  <li>
+    <p>创建webpack.common.js 放公有的配置项</p>
+  </li>
+  <li>
+    <p>创建webpack.dev.js 放开发独有的配置项</p>
+  </li>
+  <li>
+    <p>创建webpack.prod.js 放生产独有的配置项</p>
+  </li>
+  <li>
+    <p>使用webpack-merge 把webpack.common.js合并到其他两个文件</p>
+  </li>
+</ol>
+
+<p><code class="highlighter-rouge">npm install webpack-merge --save-dev</code></p>
+
+<ol>
+  <li>在webpack.dev.js中引入插件<br />
+```
+const merge = require(‘webpack-merge’);
+const commonConfig = require(‘./webpack.common.js’);</li>
+</ol>
+
+<p>const devConfig = {
+…
+}
+module.exports = merge(commonConfig, devConfig);</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+在webpack.prod.js中也作跟webpack.dev.js同样的处理
+
+### **Code Splitting 代码分割**
+
+1. 同步加载模块 在webpack.config.js中配置splitChunks
+``` js
+optimization: {
+   splitChunks: {
+       chunks: 'all'
+   }
+}
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>异步加载模块无需任何配置默认就会自动分割</p>
+  </li>
+  <li>
+    <p>创建一个异步加载的js模块</p>
+  </li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/** webpackChunkName: "lodash" 给这个模块起这个文件名 **/</span>
+<span class="kd">function</span> <span class="nx">getComponent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">import</span><span class="p">(</span><span class="cm">/* webpackChunkName: "lodash"*/</span> <span class="s1">'lodash'</span><span class="p">).</span><span class="nx">then</span><span class="p">(({</span><span class="na">default</span><span class="p">:</span> <span class="nx">_</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
+        <span class="nx">element</span><span class="p">.</span><span class="nx">innerHtml</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">join</span><span class="p">([</span><span class="s1">'@'</span><span class="p">,</span> <span class="s1">'bang'</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="nx">element</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">getComponent</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">element</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>安装babel-plugin-dynamic-import-webpack对异步加载模块语法进行翻译
+<code class="highlighter-rouge">npm install @babel/plugin-syntax-dynamic-import  --save-dev</code></p>
+  </li>
+  <li>
+    <p>在.babelrc配置文件中使用plugin-syntax-dynamic-import插件
+<code class="highlighter-rouge">plugins: ["@babel/plugin-syntax-dynamic-import"]</code></p>
+  </li>
+</ol>
+
+<h3 id="splitchunksplugin配置参数详解"><strong>SplitChunksPlugin配置参数详解</strong></h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/** 在webpack.config.js文件中 **/</span>
+<span class="nx">optimization</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">splitChunks</span><span class="p">:</span> <span class="p">{</span>
+        <span class="cm">/** all:-- 所有模块都分割 **/</span>
+        <span class="cm">/** async -- 只对异步加载的模块进行分割 **/</span>
+        <span class="cm">/** initial -- 只对同步模块进行分割 **/</span>
+        <span class="nl">chunks</span><span class="p">:</span> <span class="s1">'all'</span><span class="p">,</span> 
+        <span class="nx">minSize</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>  <span class="cm">/** 大于30000b(30kb)才会分割 **/</span>
+        <span class="nx">maxSize</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="cm">/**  一般不配置，会对大文件再次分割 **/</span>
+        <span class="nx">minChunks</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="cm">/**  引用这个模块超过一次就会分割 **/</span>
+        <span class="nx">maxAsyncRequests</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="cm">/**  同时只能加载分割5个库 **/</span>
+        <span class="nx">maxInitialRequests</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="cm">/**  最多分割出3个文件 **/</span>
+        <span class="nx">automaticNameDelimiter</span><span class="p">:</span> <span class="s2">"~"</span><span class="p">,</span> <span class="cm">/** 文件名连接符  **/</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="nx">cacheGroups</span><span class="p">:</span> <span class="p">{</span>
+            <span class="cm">/** 同步模块加载必需配置
+            vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                /** 如果模块同时满足cacheGroups和default， **/</span>
+                <span class="cm">/** 根据priority来决定模块的归属谁的值大属于谁 **/</span>
+                <span class="nl">priority</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> 
+                <span class="nx">filename</span><span class="p">:</span> <span class="s1">'vendors.js'</span> <span class="cm">/** 打包成的文件名 **/</span>
+            <span class="p">},</span>
+        <span class="cm">/** 同步非node_modules里面的模块配置专用 **/</span>
+            <span class="k">default</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nl">priority</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+                <span class="cm">/** 已经打包过的模块忽略 **/</span>
+                <span class="cm">/** 不再打包分割 **/</span>
+                <span class="nx">reuseExistingChunk</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nx">filename</span><span class="p">:</span> <span class="s1">'common.js'</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="lazy-loading-懒加载异步模块"><strong>lazy loading 懒加载异步模块</strong></h3>
+
+<ol>
+  <li>打包分析工具
+首先在打包的时候生成josn格式的描述文件，然后在package.json中添加命令
+```
+scripts: {
+ “dev-build”: “webpack –profile –json &gt; stats.json –config webpack.dev.js”</li>
+</ol>
+
+<p>}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+使用：`npm run dev-build`   
+生成的.stats.json文件可以用来分析
+
+### **使用Preloading, 空闲时候，静默加载我们的异步模块**
+
+1. 查看js文件中代码的使用率，打开控制台 command + shift + p
+2. 搜索 Coverage 选中show Coverage 然后点击录制按钮变红后刷新页面
+3. 在index.js中创建一个异步加载模块js的方法
+</code></pre></div></div>
+<p>document.addEventListener(‘click’, () =&gt; {
+    import(/* webpackPrefetch: true */ ‘./click.js’).then(({default: func}) =&gt; {
+     func();
+    });
+});</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>正常情况下呢，我们只有在点击的时候，才加载click.js,但是配置了Prefetch: true,就会空闲时主动加载我们的click.js。空闲时主动加载解决了异步加载慢的问题，因为文件加载过了，再点击加载就会使用缓存的文件。
+
+### **css文件代码分割**
+
+1. webpack 用style-loader处理的css会放到文件&lt;head&gt;标签中
+2. 使用mini-css-extract-plugin把css分割成单独文件
+`npm install --save-dev mini-css-extract-plugin`   
+
+3. 这个插件不支持热更新（截止目前），所以一般是生产环境才用   
+4. 在webpack.prod.js中 将style-loader替换为MiniCssExtractPlugin.loader   
+</code></pre></div></div>
+<p>const MiniCssExtractPlugin = require(‘mini-css-extract-plugin’);
+plugins: [
+    new MiniCssExtractPlugin({});
+]
+module: {
+    rules: [
+       {
+           test: /.css$/,
+           use: [ MiniCssExtractPlugin.loader, ‘css-loader’, ‘postcss-loader’ ]
+    ]
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5. 过滤Tree Shakking, 在package.json中添加配置   
+`"sideEffects": ["*.css"]`   
+
+6. 配置filename和chunkFilename, 在webpack.prod.js中
+</code></pre></div></div>
+<p>plugins: [
+    new MiniCssExtractPlugin({
+        filename: ‘[name].css’,
+        chunkFilename: ‘[name].chunk.css’
+    });
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7. 使用optimize-css-assets-webpack-plugin对css合并和压缩
+`npm install --save-dev optimize-css-assets-webpack-plugin`   
+
+8. 在webpack.prod.js中使用optimize-css-assets-webpack-plugin
+</code></pre></div></div>
+<p>const OptimizeCssAssetsPlugin = require(‘optimize-css-assets-webpack-plugin’);
+optimization: {
+    minimizer: [new OptimizeCssAssetsPlugin({})]
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **多个入口文件引用的css打包到一个css文件**
+
+1. 借助splitChunks, 在webpack.prod.js中添加配置
+</code></pre></div></div>
+<p>optimization: {
+    splitChunks: {
+        cacheGroups: {
+            styles: {
+                name: ‘styles’,
+                test: /.css$/,
+                chunks: ‘all’,
+                enforce: true
+            }
+        }
+    }
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2. 还可以把一个入口文件引入的所有css打包到对应的一个文件。这样每个入口引用的css，就会生成对应一个css文件。这个配置也借助splitChunks，在webpack.prod.js中配置
+</code></pre></div></div>
+<p>optimization: {
+    splitChunks: {
+        cacheGroups: {
+            mainStyles: {
+                name: ‘main’,
+                test: (m,c,entry = ‘main’) =&gt; m.constructor.name === ‘CssModule &amp;&amp; recursiveIssuer(m) === entry,
+                chunks: ‘all’,
+                enforce: true
+            }
+        }
+    }
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **webpack与浏览器缓存**
+
+1. 在webpack.prod.js中配置contenthash
+</code></pre></div></div>
+<p>output: {
+   filename: ‘[name].[contenthash].js’,
+   chunkFilename: ‘[name].[contenthash].js’
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+contenthash在文件没有改变时，它不会变，对应的文件有改变它的值就会变，这样浏览器加载的就是新文件
+
+### **通过webpack.ProvidePlugin插件自动帮我们引用没有import的模块**
+
+1. 在webpack.common.js中配置ProvidePlugin
+</code></pre></div></div>
+<p>const webpack = request(‘webpack’);
+plugins: [
+    new webpack.ProvidePlugin({
+    $: ‘jquery’
+    })
+]</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>解决问题: 有的模块使用的是jquery,但是没有import jquery,$对象找不到，只在首页引入jquery是不行的,这时候借助webpack.ProvidePlugin,帮我们在使用$对象的模块引入jquery。
+
+### **让this都指向window**
+
+1. 安装
+imports-loader
+  `npm install imports-loader --save-dev`   
+2. 在webpack.common.js中添加配置
+</code></pre></div></div>
+<p>module: {
+    rules: [{
+        test: /.js$/,
+        exclude: /node_modules/,
+        use: [{
+            loader: ‘babel-loader’,
+        }, {
+            loader: ‘imports-loader?this=&gt;window’
+        }]
+    }]
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **环境变量的使用**
+
+1. 在webpack.common.js中使用Env
+</code></pre></div></div>
+<p>comst merge = require(‘webpack-merge’);
+const prodConfig = require(‘./webpack.prod.js);
+const devConfig = require(‘./webpack.dev.js’);
+module.exports = (env) =&gt; {
+ if (env &amp;&amp; env.production) {
+    return merge(commonConfig, prodConfig);
+ } else {
+    return merge(commonConfig, devConfig);
+ }
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+2. 在package.json中修改命令
+</code></pre></div></div>
+<p>“scripts”: {
+    “dev-build”: “webpack – config ./webpack.common.js”,
+    “build”: “webpack –env.production  –config ./webpack.common.js”
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### **Library的打包**
+
+1. 创建一个自己的包模块library
+`npm init -y`   
+
+2. 在包目录下新文件src/math.js 和 src/string.js
+3. 在src/math.js中编写代码
+</code></pre></div></div>
+<p>export function add(a, b) {
+    return a + b;
+}
+export function minus(a, b) {
+    return a - b;
+}
+export function multiply(a, b) {
+    return a * b;
+}
+export function division(a, b) {
+    return a / b;
+}</p>
+<ol>
+  <li>在src/string.js中编写代码
+export function join(a, b) {
+ return a + “ “ + b;
+}
+```</li>
+  <li>在src/index.js中编写代码
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import * as math from './math.js';
+import * as string from './string';
+export default { math, string }
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在项目中安装webpack 和 webpack-cli
+<code class="highlighter-rouge">npm install webpack webpack-cli --save</code></p>
+  </li>
+  <li>在项目中创建webpack.config.js
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const path = require('path');
+module.exports =  {
+ mode: 'production',
+ entry: './src/index.js'
+ output: {
+     path: path.resolve(__dirname, 'dist'),
+     filename: 'library.js',
+     library: 'library',
+     libraryTarget: 'umd'
+ }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>在package.js中配置入口文件和打包命令
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main: './src/index.js',
+scripts: {
+ "build": "webpack"
+}
+</code></pre></div>    </div>
+  </li>
+  <li>别人使用我们的库可能用到的引入方式
+    <ul>
+      <li><code class="highlighter-rouge">import library from 'library';</code></li>
+      <li><code class="highlighter-rouge">const library = require('library');</code></li>
+      <li><code class="highlighter-rouge">require(['library'], function() {});</code></li>
+      <li><code class="highlighter-rouge">&lt;script src="./library.js"&gt;&lt;/script&gt;</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>通过在webpack.config.js中配置libraryTarget: ‘umd’可以使用前面三种引用</p>
+  </li>
+  <li>
+    <p>通过在webpack.config.js中配置library: ‘library’可以使用<script>引用</script></p>
+  </li>
+  <li>在自己的库中使用别人的库,这里引入lodash库</li>
+</ol>
+
+<p><code class="highlighter-rouge">npm install lodash --save</code></p>
+
+<ol>
+  <li>在src/string.js中 使用lodash</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import _ from 'lodash';
+
+export function join(a, b) {
+    return _.join([a, b], ' ');
+}
+</code></pre></div></div>
+
+<ol>
+  <li>问题：默认的lodash也会被打包到我们的代码中，而别人不知道，也有可能在自己项目中，引入了自己的lodash,造成模块冗余，所以需要在webpack.config.</li>
+</ol>
+
+<p><code class="highlighter-rouge">externals: ['lodash']</code></p>
+
+<p>注意：这个时候别人用我们的库需要手动引入lodash再引入library（我们的库）</p>
+
+<ol>
+  <li>让别人方便的使用我们的代码,可以在package.json中配置</li>
+</ol>
+
+<p><code class="highlighter-rouge">"main": "./dist/library.js",</code></p>
+
+<ol>
+  <li>在npm官网注册一个账号,并把我们的库上传到npm</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm adduser -- 回车添加账号和密码
+npm publish -- 把包上传到npm仓库
+</code></pre></div></div>
+
+<ol>
+  <li>安装我们的库</li>
+</ol>
+
+<p><code class="highlighter-rouge">npm install library</code> <br />
+<strong><em>我们自己创建的库名跟npm上的库名不能相同，不然有可能上传不了。</em></strong></p>
+
+<h3 id="pwa的打包配置"><strong>PWA的打包配置</strong></h3>
+
+<p>PWA作用是缓存页面，当服务器挂掉了，还是可以看到原来缓存的页面</p>
+
+<ol>
+  <li>安装workbox-webpack-plugin插件
+<code class="highlighter-rouge">npm install workbox-webpack-plugin --save-dev</code></li>
+  <li>在webpack.prod.js中使用workbox-webpack-plugin插件
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const WorkboxPlugin = require('workbox-webpack-plugin');
+plugins: [
+ new WorkboxPlugin.GenerateSW({
+     clientsClaim: true,
+     skipWaiting: true
+ })
+]
+</code></pre></div>    </div>
+  </li>
+  <li>在index.js中看看浏览器是否支持PWA,并注册我们要缓存的文件
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if('serviceWorker' in navigator) {
+ window.addEventListener('load', () =&gt; {
+     navigator.serviceWorker.register('/service-worker.js)
+         .then(registration =&gt; {
+              console.log('service-worker registed');
+         }).catch(error =&gt; {
+              console.log('service-worker register error');
+         });
+ }
+}
+</code></pre></div>    </div>
+    <p>这样注册了service-worker.js之后，本来我们需要npm run dev 把服务开启之后能访问，如果关掉服务再刷新，因为已经访问成功过一次，有了缓存，所以还是可以看到页面</p>
+  </li>
+</ol>
+
+<h3 id="webpack打包typescript"><strong>webpack打包TypeScript</strong></h3>
+
+<ol>
+  <li>
+    <p>装ts-loader 和 typescript
+<code class="highlighter-rouge">npm install ts-loader typescript --save-dev</code></p>
+  </li>
+  <li>在webpack.config.js中添加配置
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const path = require('path');
+ module.exports = {
+entry: './srcindex.tsx',
+module: {
+   rules: [{
+     test: /\.[tsx]|[ts]?$/,
+     use: 'ts-loader',
+     exclude: /node_modules/
+   }]
+},
+output: {
+   filename: 'bundle.js',
+   path: path.resolve(__dirname, 'dist')
+}
+}
+</code></pre></div>    </div>
+  </li>
+  <li>在项目根目录创建tsconfig.json(必需)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "compilerOptions": {
+ "outDir": "./dist",
+ "module": "es6",
+ "target": "es5",
+ "allowJs": true,
+  }
+}
+</code></pre></div>    </div>
+    <p>注意：TypeScript 不能对引用的外部模块校验，比如调用lodash中的join()方法，不传参数也不报错。如需要提示，需安装@types/lodash，这样不传参数也会有提示哦。 更多库的@type检测请上网搜索！</p>
+  </li>
+  <li>安装@types/lodash
+<code class="highlighter-rouge">npm install @types/lodash --save-dev</code></li>
+</ol>
+
+<h3 id="webpackdevserver实现请求转发"><strong>webpackDevServer实现请求转发</strong></h3>
+
+<ol>
+  <li>在webpack.config.js中配置proxy
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>devServer: {
+ proxy: {
+    '/api': 'http://new.junbang.vip'
+ }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>更复杂的配置 比如把请求header.json 变成demo.json
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>devServer: {
+ proxy: {
+     '/api': {
+          treget: 'http://new.junbang.vip',
+          pathRewrite: {
+              'header.json': 'demo.json'
+          }
+      }
+ }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>如果后台对origin做了限制可以加配置
+<code class="highlighter-rouge">changeOrigin: true /**建议始终都加**/</code></li>
+</ol>
+
+<h3 id="webpackdevserver解决单页面应用路由问题"><strong>WebpackDevServer解决单页面应用路由问题</strong></h3>
+
+<ol>
+  <li>在webpack.config.js中
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>devServver: {
+ historyApiFallback: {
+     rewrites: [{
+         from: /\.*/,
+         to: 'index.html'
+     }]
+ }
+}
+</code></pre></div>    </div>
+    <p>上面的配置等价于historyApiFallback: true，这个配置只在开发有用，上线需要对线上服务器也配置。配置好了，访问不了的页面就会显示首页</p>
+  </li>
+</ol>
+
+<h3 id="eslint-在wepback中的配置"><strong>Eslint 在wepback中的配置</strong></h3>
+
+<ol>
+  <li>Eslint是什么？Eslint是约束代码的规范</li>
+  <li>
+    <p>安装Eslint
+<code class="highlighter-rouge">npm install eslint --save-dev</code></p>
+  </li>
+  <li>
+    <p>生成配置文件
+<code class="highlighter-rouge">npx eslint --init</code><br />
+在根目录发现文件.eslintrc.</p>
+  </li>
+  <li>
+    <p>使用babel-eslint
+<code class="highlighter-rouge">npm install babel-eslint --save-dev</code></p>
+  </li>
+  <li>
+    <p>在.eslintrc.js中配置
+<code class="highlighter-rouge">"parser": "babel-eslint"</code></p>
+  </li>
+  <li>
+    <p>使用命令校验src目录下的js
+<code class="highlighter-rouge">npx eslint src</code></p>
+  </li>
+  <li>忽略规则,在.eslintrc.js中
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"rules": {
+  "react/jsx-filename-extension": 0
+}
+</code></pre></div>    </div>
+    <p>把规则置成0就可以忽略 1是警告 2是报错</p>
+  </li>
+</ol>
+
+<h3 id="在webpack使用eslint-loader校验代码"><strong>在webpack使用eslint-loader校验代码</strong></h3>
+
+<ol>
+  <li>安装eslint-loader
+<code class="highlighter-rouge">npm install eslint-loader --save-dev</code></li>
+  <li>在webpack.config.js中添加配置
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module: {
+  rules: [{
+ test: /\.js$/,
+ exclude: /node_modules/,
+ use: ['babel-loader', 'eslint-loader']
+  }]
+}
+</code></pre></div>    </div>
+  </li>
+  <li>想要在<code class="highlighter-rouge">npm run serve</code>的时候把eslint校验的错误在浏览器上输出, 可以在webpack.config.js中配置</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>devServer: {
+    overlay: true
+}
+</code></pre></div></div>
+
+<p>注意：在webpack中使用eslint-loader检测代码会影响打包速度。可以在git 生命钩子，提交代码前校验代码，不符合不给提交</p>
+
+<h3 id="webpack性能优化"><strong>webpack性能优化</strong></h3>
+
+<ol>
+  <li>提升webpack打包速度</li>
+</ol>
+
+<blockquote>
+  <p>1)跟上技术的迭代，使用最新版node/npm/yarn/webpack</p>
+</blockquote>
+
+<blockquote>
+  <p>2)尽量少用loader,loader也应该检测尽量少的代码</p>
+</blockquote>
+
+<blockquote>
+  <p>3)比如校验js文件的时候，忽略/node_modules/</p>
+</blockquote>
+
+<blockquote>
+  <p>4)或者只对src下面的文件校验
+<code class="highlighter-rouge">include: path.resolve(__dirname, './src') </code>
+5)合理使用插件，使用性能好的，官方推荐的</p>
+</blockquote>
+
+<ol>
+  <li>合理配置resolve参数</li>
+</ol>
+
+<blockquote>
+  <p><code class="highlighter-rouge">test: /\.jsx?$/ '?' 表示'x'可有可无 =&gt; js/jsx</code>
+然后在webpack.config.js中添加配置</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resolve: {
+extensions: ['.js', '.jsx']
+}
+</code></pre></div>  </div>
+</blockquote>
+
+<blockquote>
+  <p>表示我们加载import 的时候，不写文件后缀名，默认会找.js/.jsx</p>
+</blockquote>
+
+<ol>
+  <li>当我们import 一个文件夹，可能指定要找的文件名</li>
+</ol>
+
+<blockquote>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resolve: {
+mainFiles: ['index', 'main']
+}
+</code></pre></div>  </div>
+</blockquote>
+
+<ol>
+  <li>使用第三方模块时候，因为我们不会去改动这些模块,但是每次打包都会重新分析一次这些第三方模块，浪费时间,所以希望只在第一次分析，后面直接用就行。所以</li>
+</ol>
+
+<blockquote>
+  <p>1）新建webpack.dll.js文件</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const path = require('path');
+module.exports = {
+  mode: 'production',
+ entry: {
+ vendors: ['react', 'react-dom', 'lodash']
+},
+output: {
+  filename: '[name].dll.js',
+  path: path.resolve(__dirname, '../dll'),
+  library: ['name'] /** library 可以把当前模块暴露出去 **/
+ }
+}
+</code></pre></div>  </div>
+
+  <p>2) 把这些第三方模块引入index.html中，可以手动引入，也可以用插件
+<code class="highlighter-rouge">npm install add-assets-html-webpack-plugin --save-dev</code></p>
+
+  <p>3) 在webpack.config.js中使用插件</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const AddAssetHtmlWebpackPlugin require('add-asset-html-webpack-plugin');
+
+new AddAssetHtmlWebpackPlugin({
+ filepath: path.resolve(__dirname, '../dll/vendors.dll.js')
+})
+</code></pre></div>  </div>
+
+  <p>4) 在写代码使用到第三方模块时，使用vendors.dll.js
+<code class="highlighter-rouge">npm install dll-plugin --save-dev</code></p>
+
+  <p>5) 在webpack.config.js中配置</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const webpack = require('webpack');
+plugins: [
+new webpack.DllPlugn({
+  name: '[name]',
+  path: path.resolve(__dirname, '../dll/[name].manifest.json')
+}),
+new webpack.DllReferencePlugin({
+  manifest: path.resolve(__dirname, '../dll/vendors.manifest.json')
+ })
+]
+</code></pre></div>  </div>
+  <p>配置完成，第三方模块我们只需要手动打包一次，后面在打包项目的时候，就只会打包我们改动代码的目录src</p>
+</blockquote>
+
+<h3 id="多页面打包配置"><strong>多页面打包配置</strong></h3>
+
+<ol>
+  <li>首先需要配置多个入口，生成多个js文件</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>entry: {
+  main: './src/index.js',
+  list: './src/list.js'
+}
+</code></pre></div></div>
+
+<ol>
+  <li>其次多new 几个HtmlWebpackPlugin,生成那就的html文件</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new HtmlWebpackPlugin({
+  template: 'src/index.html',
+  filename: 'index.html',
+  chunks: ['runtime', 'vendors', 'main']
+}),
+new HtmlWebpackPlugin({
+  template: 'src/index.html'
+  filename: 'list.html',
+  chunks: ['runtime', 'vendors', 'list']
+})
+</code></pre></div></div>
+
+<ol>
+  <li>可能遍历configs.entry自动生成</li>
+</ol>
+
+<p><br />
+参考资料：</p>
+<ul>
+  <li>转自简书<a href="https://www.jianshu.com/p/25bde7e9b9ce">説好的妹紙呢</a></li>
+</ul>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/" title="link to 圣杯布局">圣杯布局</a></h2>
+       <p class="excerpt">1. 建立框架​  先写 header, footer 和 container 三个 &lt;div&gt;&lt;div id="header"&gt;#header&lt;/div&gt;&lt;div id="container"&gt;&lt;/div&gt;&lt;div id="footer"&gt;#footer&lt;/div&gt;​  我们将 container 的内边距设置为左右两边各自的宽度。它看起来就像这样：2. 加入三栏​  此时我们有了基本框架，可以把三栏塞进...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-09-07 02:15:06 +0800" class="post-list__meta--date date">2019-09-07</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/" title="link to JS垃圾收集机制原理">JS垃圾收集机制原理</a></h2>
+       <p class="excerpt">1. 原理：  找出那些不再继续使用的变量，然后释放其占用的内存，垃圾收集器会按照固定的时间间隔，或是在代码执行中预订的收集时间，去周期性的执行这个操作，完成垃圾的清理。2. 局部变量的生命周期:  在函数执行的过程中，才存在有局部变量，在这个过程中，浏览器引擎会为局部变量在栈或是堆内存上分配相应的空间，以便存储这些值。在函数执行结束后，局部变量就没有存在的必要了，因此可以释放它们所占用的内存以供将来使用。这种情况下会比较好判断变量有没有必要存在了，但是作用域还没有结束，当前变量还被其他地...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-08-18 04:15:06 +0800" class="post-list__meta--date date">2019-08-18</time> &#8226; <span class="post-list__meta--tags tags">Javascript</span><a class="btn-border-small" href=/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/" data-toggle="tooltip" data-placement="top" title="JS垃圾收集机制原理">上一篇：  <span>JS垃圾收集机制原理</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/" data-toggle="tooltip" data-placement="top" title="圣杯布局">下一篇：  <span>圣杯布局</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+    <div id="disqus_thread">disqus</div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/08/Webpack/";
+        this.page.identifier = "/2019/08/Webpack/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

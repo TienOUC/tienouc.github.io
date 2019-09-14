@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>JS垃圾收集机制原理</title>
+  <meta name="description" content="1. 原理：">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JS垃圾收集机制原理">
+  <meta name="twitter:description" content="1. 原理：">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="JS垃圾收集机制原理">
+  <meta property="og:description" content="1. 原理：">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+  <!-- Weibo -->
+  <!-- <li class="navigation__item">
+    <a href="http://weibo.com/Tien" title="@Tien 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+   -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:willtien@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-08-18 04:15:06 +0800" itemprop="datePublished" class="post-meta__date date">2019-08-18</time> &#8226; <span class="post-meta__tags tags">Javascript</span>
+    </div>
+    <h1 class="post-title">JS垃圾收集机制原理</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="1-原理"><strong>1. 原理：</strong></h4>
+
+<p>  找出那些不再继续使用的变量，然后释放其占用的内存，垃圾收集器会按照固定的时间间隔，或是在代码执行中预订的收集时间，去周期性的执行这个操作，完成垃圾的清理。</p>
+
+<h4 id="2-局部变量的生命周期"><strong>2. 局部变量的生命周期:</strong></h4>
+
+<p>  在函数执行的过程中，才存在有局部变量，在这个过程中，浏览器引擎会为局部变量在栈或是堆内存上分配相应的空间，以便存储这些值。在函数执行结束后，局部变量就没有存在的必要了，因此可以释放它们所占用的内存以供将来使用。这种情况下会比较好判断变量有没有必要存在了，但是作用域还没有结束，当前变量还被其他地方调用了，那么垃圾收集器就得跟踪这些变量哪个有用哪个没用，做上相应的标记。</p>
+
+<h4 id="3-垃圾清理实现策略一标记清除"><strong>3. 垃圾清理实现策略一：标记清除：</strong></h4>
+
+<p>  当变量进入环境时，如在函数中var一个变量，此时将这个变量标记为进入环境，当变量离开环境的时候，则将其标记为离开环境，可以通过翻转某一个位来标记一个变量何时进入了环境。但标记不是重点，重点是标记了之后怎么来将其处理。垃圾收集器会在运行的时候给存储在内存中的所有变量都加上标记，然后，它会去掉环境中的变量以及被环境中的变量应用的标记，在此之后再把加上标记的变量都将被视为准备删除的变量。最后，垃圾收集器完成内存的清楚工作，销毁那些带标记的值并收回它们所占用的内存空间。</p>
+
+<h4 id="4-垃圾清理实现策略二引用计数"><strong>4. 垃圾清理实现策略二：引用计数</strong></h4>
+
+<p>  跟踪记录每个值被引用的次数，当这个值的引用次数变成0的时候，说明没有办法再访问这个这个值，就将其占用的内存空间收回来，下次再运行垃圾收集器的时候，就会释放哪些引用次数为0的值所占用的内存了。</p>
+
+<p>  但存在的一个问题是，如果有循环引用，即A有个指针指向B，B也有一个指针指向A，在采用标记清楚策略的实现中，这将是个噩梦。如果DOM元素和原生JS对象之间创建了循环引用，那就带来内存泄露的问题，解决方法是把DOM和BOM对象转换成真正的JS对象。</p>
+
+<h4 id="5-垃圾收集的时间间隔"><strong>5. 垃圾收集的时间间隔：</strong></h4>
+
+<p>  原来IE的垃圾收集器的启动方式是，当内存分配量达到256个变量、4096个对象字面量和数组元素或是64kb的字符串这三者任何一个临界值时，就开始启动垃圾收集器。但一个脚本中可能会在其生命周期中一直保有那么多变量，那么垃圾收集器就得一直的去运行，那导致的性能问题是很严重的。所以后面的优化方法是：触发垃圾收集的变量分配的临界值被调整为动态修正。</p>
+
+<blockquote>
+  <p><strong><em>JS是一门具有自动垃圾收集机制的编程语言，开发人员不必担心内存分配和回收的问题，对其垃圾收集例程总结如下：</em></strong></p>
+</blockquote>
+
+<p>  离开作用域的值将被自动标记为可以回收，因此在垃圾收集期间被删除；</p>
+
+<p>  <strong>“标记清除”</strong>是目前主流的垃圾收集算法，其思想是给当前不使用的值加上标记，然后再回收其内存；</p>
+
+<p>  另一种收集算法是“引用计数”，其思想是跟踪记录所有值被引用的次数，JS引擎目前都不在使用该算法，但在IE中访问非原生JS对象（如DOM元素）时，这种算法仍然可能会导致问题，当代码中存在循环引用现象时亦会导致问题；</p>
+
+<p>  解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处，为了确保有效地回收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环变量的引用。</p>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/08/Webpack/" title="link to Webpack笔记">Webpack笔记</a></h2>
+       <p class="excerpt">      网易云免费课程-Webpack打包工具用法    在网易云课堂初学webpack3.0用法，学完再实践过程中发现4.0版本变动较大，就去官网查了一下4.0的变动，内容较多，暂先转载该篇优秀博文以做后续学习参考，原博文链接见文末。全局安装webpacknpm install webpack webpack-cli -g全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。在当前项目安装w...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-08-19 01:00:06 +0800" class="post-list__meta--date date">2019-08-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/08/Webpack/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/" title="link to MVVM框架理解">MVVM框架理解</a></h2>
+       <p class="excerpt">说起这个MVVM模型，就不得不说MVC框架。将整个前端页面分成View，Controller，Modal，视图上发生变化，通过Controller（控件）将响应传入到Model（数据源），由数据源改变View上面的数据。整个过程看起来是行云流水，业务逻辑放在Model当中，页面渲染逻辑放在View当中，但在实际运用上却存在一个问题：那就是MVC框架允许View和Model直接进行通信！！换句话说，View和Model之间随着业务量的不断庞大，会出现蜘蛛网一样难以处理的依赖关系，完全背离了开...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-08-09 05:00:06 +0800" class="post-list__meta--date date">2019-08-09</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="MVVM框架理解">上一篇：  <span>MVVM框架理解</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2019/08/Webpack/" data-toggle="tooltip" data-placement="top" title="Webpack笔记">下一篇：  <span>Webpack笔记</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+    <div id="disqus_thread">disqus</div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/";
+        this.page.identifier = "/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/";
+    };
+
+    var disqus_shortname = 'vno-jekyll';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
