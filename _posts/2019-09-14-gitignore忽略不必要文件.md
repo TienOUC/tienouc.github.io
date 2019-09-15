@@ -29,6 +29,6 @@ vendor/
 
 #### 3. Github DeskTop 中添加
    
-**![](https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27vt98j30gl07274e.jpg)**
-
-**![](https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27luccj30fp0c83ym.jpg)**
+**+ ![](https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27vt98j30gl07274e.jpg)**
+<br>
+**+![](https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27luccj30fp0c83ym.jpg)**
