@@ -35,15 +35,15 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: vno-jekyll
+    #disqus: disqusID
     # duoshuo: 
     
 # Social
 social:
-    weibo: Tien
+    #weibo: Tien
     github: TienOUC
     #twitter: 
-   # gplus: 
+    #gplus: 
     mail: tianfeng_ouc@outlook.com
 
 # Google Analytics
