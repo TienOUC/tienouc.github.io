@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "jQuery-Selectors"
+title: "jQuery Selectors"
 date: 2019-07-07 17:00:06 
 description: "工具"
 tag: WEB/jQuery
