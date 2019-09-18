@@ -5,8 +5,8 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Sep 2019 20:20:46 +0800</pubDate>
-    <lastBuildDate>Mon, 16 Sep 2019 20:20:46 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Sep 2019 15:51:49 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Sep 2019 15:51:49 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -2029,6 +2029,81 @@ $('x &amp;gt; p:only-of-type') 		 //x下只有一个P标签的节点
       </item>
     
       <item>
+        <title>如何使用中国区停服后的iTunes Store</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1先决条件&quot;&gt;&lt;strong&gt;1.先决条件&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;h4 id=&quot;11-有外网环境你懂的&quot;&gt;1.1 有外网环境（你懂的）&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;  &lt;a href=&quot;https://www.webdigi.co.uk/blog/2015/how-to-setup-your-own-private-secure-free-vpn-on-the-amazon-aws-cloud-in-10-minutes/&quot;&gt;造梯教程&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;12-安装快捷指令app并添加app-store地区切换指令&quot;&gt;1.2 安装快捷指令APP，并添加&lt;a href=&quot;https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e&quot;&gt;【APP Store地区切换指令】&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;用Safari打开链接    https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2操作演示&quot;&gt;&lt;strong&gt;2.操作演示&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&quot;21-打开梯子按钮保持网络通畅&quot;&gt;2.1 打开梯子按钮，保持网络通畅&lt;/h4&gt;
+
+&lt;h4 id=&quot;22-执行-app-store地区切换指令-地址切换到国外一般首选美国&quot;&gt;2.2 执行 &lt;strong&gt;APP Store地区切换指令&lt;/strong&gt; ，地址切换到国外，一般首选美国🇺🇸&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;1) 执行APP Store地区切换指令
+&lt;!-- ![执行APP Store地区切换指令](https://tva1.sinaimg.cn/large/006y8mN6ly1g73orrf4nrj30u01sz0uv.jpg) --&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73orrf4nrj30u01sz0uv.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;2) 切换地区
+&lt;!-- ![切换地区](https://tva1.sinaimg.cn/large/006y8mN6ly1g73osolq49j30u01szaay.jpg) --&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73osolq49j30u01szaay.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3) 切换成功
+&lt;!-- ![切换成功](https://tva1.sinaimg.cn/large/006y8mN6ly1g73ot0i6qtj30u01szadr.jpg) --&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ot0i6qtj30u01szadr.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;4）打开iTunes Store
+&lt;!-- ![打开iTunes Store](https://tva1.sinaimg.cn/large/006y8mN6ly1g73oz9gpezj30u01szjsd.jpg) --&gt;
+[打开iTunes Store]&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73oz9gpezj30u01szjsd.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;23-噔噔蹬蹬新世界大门已打开愉快地租借或者购买吧&quot;&gt;2.3 噔噔蹬蹬！新世界大门已打开，愉快地租借或者购买吧！&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;爆米花准备
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73otk2yg6j30u01sz79l.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73otzm5i3j30u01szq74.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ouc329hj30u01szq67.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ouqp79rj30u01sz0tb.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
+&lt;br /&gt;
+&lt;!-- &lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73p0k2we2j31sz0u00t6.jpg&quot; &gt; --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 19 May 2019 01:00:06 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</guid>
+        
+        <category>Tools</category>
+        
+        
+      </item>
+    
+      <item>
         <title>HTML5音/视频</title>
         <description>&lt;h3 id=&quot;一html5-视频&quot;&gt;一、HTML5 视频&lt;/h3&gt;
 
@@ -2310,426 +2385,6 @@ Your browser does not support the audio tag.
         <guid isPermaLink="true">http://localhost:4000/2019/05/CSS3-transform/</guid>
         
         <category>WEB/CSS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>轮播图实现原理</title>
-        <description>&lt;p&gt;通过以下的5个过程，实现轮播图的轮播效果&lt;/p&gt;
-&lt;h3 id=&quot;1-动态生成结构&quot;&gt;1. 动态生成结构&lt;/h3&gt;
-
-&lt;p&gt;创建元素和插入元素的方法分别是什么？ 
-创建元素：document.creatElement( tagName ) var li = document.creatElement(“li”)； 
-插入元素：appendChild( element ) ol.appendChild(“li”);
-通过什么方法复制第一张图片元素？ 
-通过cloneNode()方法来复制元素：eg . var firstImg = ulLis[0].cloneNode(true)；
-其中cloneNode方法中，如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点&lt;/p&gt;
-
-&lt;h3 id=&quot;2-鼠标经过按钮&quot;&gt;2. 鼠标经过按钮&lt;/h3&gt;
-
-&lt;p&gt;鼠标经过时如何改变按钮样式？ 
-a. 清除所有按钮的样式 
-for (var j = 0; j &amp;lt; olLis.length; j++) { olLis[j].className = “”; }
-b. 给当前鼠标所在按钮添加特殊样式 
-this.className = “current”;
-鼠标经过按钮时如何计算图片盒子移动的距离? 
-通过按钮索引值（this.index）和图片的宽度（imgWidth）来计算图片盒子要移动的距离（target） 
-`target = - this.index * imgWidth&lt;/p&gt;
-
-&lt;h3 id=&quot;3-鼠标点击箭头&quot;&gt;3. 鼠标点击箭头&lt;/h3&gt;
-
-&lt;p&gt;通过什么属性改变左右箭头的隐藏和显示？ 
-通过控制左右箭头盒子的display属性来控制左右箭头盒子的显示（block）和隐藏（none）
-通过什么机制来统一左/右箭头点击时图片切换为当前图片的上/下一张？ 
-利用全局变量来统一左右箭头切换图片，在左右箭头点击时，通过pic来计算图片盒子移动的目标位置 
-var target = -pic * imgWidth;
-当点击左箭头时：pic– –这样target比当前位置数值大imgWidth 图片盒子向右移动一张图片的距离 显示出上一张图片
-当点击右箭头时：pic++ 这样target比当前位置数值小imgWidth 图片盒子向左移动一张图片的距离 显示出下一张图片&lt;/p&gt;
-
-&lt;h3 id=&quot;4-按钮随之变化&quot;&gt;4. 按钮随之变化&lt;/h3&gt;
-&lt;p&gt;square的取值范围以及其与pic对应情况&lt;/p&gt;
-
-&lt;h3 id=&quot;5-添加自动滚动&quot;&gt;5. 添加自动滚动&lt;/h3&gt;
-
-&lt;p&gt;图片自动播放下一张和点击右箭头的操作相同&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HTML:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;all&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'box'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/1.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/2.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/3.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/4.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;images/5.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;500&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;200&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arr&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;CSS:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;style type=&quot;text/css&quot;&amp;gt;
-        * {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            border: 0;
-        }
-
-        .all {
-            width: 500px;
-            height: 200px;
-            padding: 7px;
-            border: 1px solid #ccc;
-            margin: 100px auto;
-            position: relative;
-        }
-
-        .screen {
-            width: 500px;
-            height: 200px;
-            /*overflow: hidden;*/
-            position: relative;
-        }
-
-        .screen li {
-            width: 500px;
-            height: 200px;
-            overflow: hidden;
-            float: left;
-        }
-
-        .screen ul {
-            position: absolute;
-            left: 0;
-            top: 0px;
-            width: 3000px;
-        }
-
-        .all ol {
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            line-height: 20px;
-            text-align: center;
-        }
-
-        .all ol li {
-            float: left;
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border: 1px solid #ccc;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .all ol li.current {
-            background: yellow;
-        }
-
-        #arr {
-            display: none;
-        }
-
-        #arr span {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            margin-top: -20px;
-            background: #000;
-            cursor: pointer;
-            line-height: 40px;
-            text-align: center;
-            font-weight: bold;
-            font-family: '黑体';
-            font-size: 30px;
-            color: #fff;
-            opacity: 0.3;
-            border: 1px solid #fff;
-        }
-
-        #arr #right {
-            right: 5px;
-            left: auto;
-        }
-    &amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;JS:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script&amp;gt;
-    //要做事先找人
-    var box = document.getElementById(&quot;box&quot;);
-    var screen = box.children[0];
-    var ul = screen.children[0];
-    var ol = screen.children[1];
-    var ulLis = ul.children;//所有的图片
-    var imgWidth = screen.offsetWidth;
-    var arr = document.getElementById(&quot;arr&quot;);
-    var arrRight = document.getElementById(&quot;right&quot;);
-    var arrLeft = document.getElementById(&quot;left&quot;);
-    var timer = null;
-    //alert(imgWidth);
-
-    //1.动态生成结构
-    //1.1根据图片的数量动态生成按钮
-    for (var i = 0; i &amp;lt; ulLis.length; i++) {
-        //动态生成按钮
-        var li = document.createElement(&quot;li&quot;);
-        //给li添加序号
-        //索引号是从0开始的
-        //序号=索引号+1
-        li.innerHTML = i + 1;
-        //追加到ol下面
-        ol.appendChild(li);
-    }
-    var olLis = ol.children;//必须生成之后才能获取到
-    olLis[0].className = &quot;current&quot;;
-
-    //1.2把第一张图片追加到最后
-    //复制第一张图片
-    var firstImg = ulLis[0].cloneNode(true);
-    //追加到ul后面
-    ul.appendChild(firstImg);
-
-    //2.鼠标经过按钮
-    //循环遍历 给每一个按钮绑定鼠标经过事件
-    for (var j = 0; j &amp;lt; olLis.length; j++) {
-        olLis[j].index = j;
-        olLis[j].onmouseover = function () {
-            //按钮排他
-            //干掉所有人
-            for (var k = 0; k &amp;lt; olLis.length; k++) {
-                olLis[k].className = &quot;&quot;;
-            }
-            //留下我自己
-            this.className = &quot;current&quot;;
-            //根据索引号 通过动画函数移动ul
-            //图片移动的位置 和 当前按钮索引号 和 图片宽度有关 而且是负数
-            var target = -this.index * imgWidth;
-            animate(ul, target);
-
-            //将应该显示的图片的索引号 和 鼠标经过的按钮的索引号 进行统一
-            pic = this.index;
-            //将应该亮起的按钮的索引号 和 鼠标经过的按钮的索引号 进行统一
-            square = this.index;
-        }
-    }
-
-    //3.鼠标点击箭头
-    //鼠标经过box显示arr 清理定时器停止自动播放
-    box.onmouseover = function () {
-        arr.style.display = &quot;block&quot;;
-        clearInterval(timer);
-    }
-    //鼠标离开box隐藏arr 设置定时器继续自动播放
-    box.onmouseout = function () {
-        arr.style.display = &quot;none&quot;;
-        timer = setInterval(playNext, 1000);
-    }
-
-    //点击 右箭头 显示下一张
-    var pic = 0;//pic表示当前图片的索引
-    var square = 0;//square表示当前按钮的索引
-    arrRight.onclick = function () {
-        playNext();
-    }
-    arrLeft.onclick = function () {
-        //判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
-        if (pic == 0) {
-            pic = ulLis.length - 1;
-            ul.style.left = -(ulLis.length - 1) * imgWidth + &quot;px&quot;;
-        }
-        pic--;
-        //通过动画函数对ul进行移动
-        //target 和 图片索引 和 图片宽度 有关 而且是负数
-        var target = -pic * imgWidth;
-        animate(ul, target);
-
-        //按钮也应该自动播放
-        //如果当前按钮的索引号square大于第一个按钮的索引号0 就--
-        if (square &amp;gt; 0) {
-            square--;
-        } else {
-            //如果square等于零 说明到第一个了 这时就应该把他变成最后一个
-            square = olLis.length - 1;
-        }
-        //干掉所有人
-        for (var i = 0; i &amp;lt; olLis.length; i++) {
-            olLis[i].className = &quot;&quot;;
-        }
-        //留下我自己
-        olLis[square].className = &quot;current&quot;;
-    }
-
-    //4.添加自动滚动
-    timer = setInterval(playNext, 1000)
-
-    function playNext() {
-        //先判断当前图片的索引pic是否等于最后一张图片的索引ulLis.length-1
-        //如果相等马上跳过去然后在执行动画效果 从而实现无缝滚动
-        //并且把索引号也归零
-        if (pic == ulLis.length - 1) {
-            ul.style.left = 0;
-            pic = 0;
-        }
-        pic++;//pic++相当于 pic=pic+1;
-        //通过动画函数对ul进行移动
-        //target 和 图片索引 和 图片宽度 有关 而且是负数
-        var target = -pic * imgWidth;
-        animate(ul, target);
-
-        //按钮也应该自动播放
-        //如果当前按钮的索引号square小于最后一个按钮的索引号olLis.length - 1 就++
-        if (square &amp;lt; olLis.length - 1) {
-            square++;
-        } else {
-            square = 0;
-        }
-
-        //干掉所有人
-        for (var i = 0; i &amp;lt; olLis.length; i++) {
-            olLis[i].className = &quot;&quot;;
-        }
-        //留下我自己
-        olLis[square].className = &quot;current&quot;;
-    }
-
-    //5.完善鼠标经过
-
-
-    function animate(obj, target) {
-        clearInterval(obj.timer);
-        obj.timer = setInterval(function () {
-            var step = 25;
-            //left值越小越靠左
-            //obj.offsetLeft小于target
-            //obj在target的左侧
-            //应该向右走
-            //向右走step是正
-            /*if (obj.offsetLeft &amp;lt; target) {
-             step = 9;
-             }
-             if (obj.offsetLeft &amp;gt; target) {
-             //向左走是负
-             step = -9;
-             }*/
-            var step = obj.offsetLeft &amp;lt; target ? step : -step;
-
-            //Math.abs(obj.offsetLeft - target) 这个表示对象到目标的距离
-            //如果对象到目标的距离比一步迈出的距离要大 我就要继续走
-
-            if (Math.abs(obj.offsetLeft - target) &amp;gt; Math.abs(step)) {
-                obj.style.left = obj.offsetLeft + step + &quot;px&quot;;
-            } else {
-                //再迈一步就超过目标了
-                obj.style.left = target + &quot;px&quot;;//手动把对象放置到目标上
-                clearInterval(obj.timer);//清理定时器
-            }
-        }, 15)
-    }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;总结两种常见轮播图的实现思路&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;1--通过修改每一张图片的透明度让其每隔一段时间将其中的某一张图片透明度设为1而其他的设为0从而实现图频轮流播放的效果该种思路比较简单首先让一组图片绝对定位并使其重叠通过函数切换控制图片的透明度和定时器来触发该函数改变不同图片的透明度&quot;&gt;1.  通过修改每一张图片的透明度，让其每隔一段时间将其中的某一张图片透明度设为1，而其他的设为0，从而实现图频轮流播放的效果。该种思路比较简单，首先让一组图片绝对定位，并使其重叠，通过函数切换控制图片的透明度和定时器来触发该函数，改变不同图片的透明度。&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;cm&quot;&gt;/*此时li为childID；parentID即为parentID*/&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;autoPlay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;childTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pictures&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pictures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;//显示一张图片&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-                &lt;span class=&quot;c1&quot;&gt;//首先将所有图片的透明度设为0；&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;hideItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;c1&quot;&gt;//将要显示的透明度改变让其显示&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;c1&quot;&gt;// 在这里用setTimeout模拟setInterval的效果&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;showItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;//将所有的图片透明度设为0&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hideItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parentID&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2--滑动形式通过改变元素的left值让图片呈现左右滑动的效果&quot;&gt;2.  滑动形式，通过改变元素的left值让图片呈现左右滑动的效果。&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/*此时li为childID；parentID即为parentID*/
-var autoSlide = function(parentID,childTag) {
-    var parent = 
-document.getElementById(parentID);
-    parent.style.position = &quot;relative&quot;;
-    var items = parent.getElementsByTagName(childTag);
-    var width = items[0].offsetWidth;
-    var index = 0;
-
-    function slide() {
-        if (index &amp;gt; items.length - 2) {
-            index = 0;
-        } else {
-            index++;
-        }
-        moveWide = -width * index;
-        parent.style.left = moveWide + &quot;px&quot;;
-        setTimeout(slide, 1500);
-    }
-
-    slide();
-} 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Thu, 18 Apr 2019 03:00:46 +0800</pubDate>
-        <link>http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/04/%E8%BD%AE%E6%92%AD%E5%9B%BE%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
-        
-        <category>WEB/Html/CSS/Javascript</category>
         
         
       </item>
