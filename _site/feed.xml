@@ -5,8 +5,8 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Sep 2019 15:56:05 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Sep 2019 15:56:05 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Sep 2019 20:55:27 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Sep 2019 20:55:27 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -40,12 +40,9 @@ vendor/
 &lt;h4 id=&quot;3-github-desktop-中添加&quot;&gt;3. Github DeskTop 中添加&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27vt98j30gl07274e.jpg&quot; alt=&quot;&quot; /&gt;&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27luccj30fp0c83ym.jpg&quot; alt=&quot;&quot; /&gt;&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27vt98j30gl07274e.jpg&quot; alt=&quot;&quot; /&gt;&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g6zf27luccj30fp0c83ym.jpg&quot; alt=&quot;&quot; /&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 15 Sep 2019 06:16:01 +0800</pubDate>
@@ -235,7 +232,7 @@ vendor/
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;在网易云课堂初学webpack3.0用法，学完再实践过程中发现4.0版本变动较大，就去官网查了一下4.0的变动，内容较多，暂先转载该篇优秀博文以做后续学习参考，原博文链接见文末。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;在网易云课堂初学webpack3.0用法，在实践过程中发现4.0版本变动较大，暂先转载该篇优秀博文并结合官方文档以做后续学习参考，原博文链接见文末。&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;全局安装webpack&quot;&gt;&lt;strong&gt;全局安装webpack&lt;/strong&gt;&lt;/h3&gt;
@@ -1479,7 +1476,7 @@ new HtmlWebpackPlugin({
       </item>
     
       <item>
-        <title>JS垃圾收集机制原理</title>
+        <title>Js垃圾收集机制原理</title>
         <description>&lt;h4 id=&quot;1-原理&quot;&gt;&lt;strong&gt;1. 原理：&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;p&gt;  找出那些不再继续使用的变量，然后释放其占用的内存，垃圾收集器会按照固定的时间间隔，或是在代码执行中预订的收集时间，去周期性的执行这个操作，完成垃圾的清理。&lt;/p&gt;

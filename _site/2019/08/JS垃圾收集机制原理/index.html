@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>JS垃圾收集机制原理</title>
+  <title>Js垃圾收集机制原理</title>
   <meta name="description" content="1. 原理：">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JS垃圾收集机制原理">
+  <meta name="twitter:title" content="Js垃圾收集机制原理">
   <meta name="twitter:description" content="1. 原理：">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="JS垃圾收集机制原理">
+  <meta property="og:title" content="Js垃圾收集机制原理">
   <meta property="og:description" content="1. 原理：">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
@@ -72,14 +72,6 @@
   <ul class="navigation">
 
   <!--  -->
-  <!-- Weibo -->
-  <!-- <li class="navigation__item">
-    <a href="http://weibo.com/Tien" title="@Tien 的微博" target="_blank">
-      <i class='social fa fa-weibo'></i>
-      <span class="label">Weibo</span>
-    </a>
-  </li>
-   -->
 
   
   <!-- Github -->
@@ -134,7 +126,7 @@
     <div class="post-meta">
       <time datetime="2019-08-18 04:15:06 +0800" itemprop="datePublished" class="post-meta__date date">2019-08-18</time> &#8226; <span class="post-meta__tags tags">Javascript</span>
     </div>
-    <h1 class="post-title">JS垃圾收集机制原理</h1>
+    <h1 class="post-title">Js垃圾收集机制原理</h1>
   </header>
 
   <section class="post">
@@ -182,7 +174,7 @@
    <!-- <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
        <h2 class="post-list__post-title post-title"><a href="/2019/08/Webpack/" title="link to Webpack笔记">Webpack笔记</a></h2>
-       <p class="excerpt">      网易云免费课程-Webpack打包工具用法    在网易云课堂初学webpack3.0用法，学完再实践过程中发现4.0版本变动较大，就去官网查了一下4.0的变动，内容较多，暂先转载该篇优秀博文以做后续学习参考，原博文链接见文末。全局安装webpacknpm install webpack webpack-cli -g全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。在当前项目安装w...&hellip;</p>
+       <p class="excerpt">      网易云免费课程-Webpack打包工具用法    在网易云课堂初学webpack3.0用法，在实践过程中发现4.0版本变动较大，暂先转载该篇优秀博文并结合官方文档以做后续学习参考，原博文链接见文末。全局安装webpacknpm install webpack webpack-cli -g全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。在当前项目安装webpack      新建w...&hellip;</p>
        <div class="post-list__meta"><time datetime="2019-08-19 01:00:06 +0800" class="post-list__meta--date date">2019-08-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/08/Webpack/>继续阅读</a></div>
    </div>
    
@@ -216,26 +208,6 @@
 
 <!-- disqus <comments.html里设置>-->
 <!-- <section class="post-comments">
-  
-    <div id="disqus_thread">disqus</div>
-    <script>
-    
-    var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/";
-        this.page.identifier = "/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/";
-    };
-
-    var disqus_shortname = 'vno-jekyll';
-    
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
-    
   
   
   
