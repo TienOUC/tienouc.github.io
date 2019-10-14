@@ -3,7 +3,7 @@ layout: post
 title: "Js之 toString() 和 String() 的区别"
 date: 2019-07-05 19:00:00
 description: ""
-Tag: Js
+tag: Javascript
 ---
 > **null, undefined 没有toString方法**
    
