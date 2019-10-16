@@ -126,6 +126,27 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/" title="访问 Node.js如何设置允许跨域">Node.js如何设置允许跨域</a></h2>
+      <p class="excerpt">      设置允许所有域名跨域：  app.all("*",function(req,res,next){    //设置允许跨域的域名，*代表允许任意域名跨域    res.header("Access-Control-Allow-Origin","*");    //允许的header类型    res.header("Access-Control-Allow-Headers","content-type");    //跨域允许的请求方式     res.header("Acces...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-14 00:00:00 +0800" class="post-list__meta--date date">2019-10-14</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/MogoDB/" title="访问 MogoDB(MacOS)">MogoDB(MacOS)</a></h2>
+      <p class="excerpt">一、安装  主要有如下三种安装方式，本文主要介绍对入门友好的第三种方式 +（1）手动命令安装 +（2）采用Homebrew +（3）下载安装包。      MongoDB Download        将解压后的文件放入 /usr/local ，默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按 shift + command +G 输入 /usr/local 后回车便能看到这个隐藏的目录了。        配置环境变量，打开终端，输...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-10 19:45:00 +0800" class="post-list__meta--date date">2019-10-10</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/MogoDB/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" title="访问 Js一元运算-数据类型转换">Js一元运算-数据类型转换</a></h2>
+      <p class="excerpt">今天碰到个下面这段代码中  ` =+ ` 一时半会儿不得其解，上stack overflow  查了一下才知道这个是日常比较少见的数据类型转换用法。function(dx, dy){            rect.attr({x: orig_x+dx,y: orig_y+dy, fill:"orange"});        },function(x,y){            orig_x=+rect.attr("x");            orig_y=+rect.attr("...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-09-19 03:15:00 +0800" class="post-list__meta--date date">2019-09-19</time> &#8226; <span class="post-list__meta--tags tags">Javascript</span><a class="btn-border-small" href=/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2019/09/gitignore%E5%BF%BD%E7%95%A5%E4%B8%8D%E5%BF%85%E8%A6%81%E6%96%87%E4%BB%B6/" title="访问 gitignore忽略不必要文件">gitignore忽略不必要文件</a></h2>
       <p class="excerpt">忽略文件的原则是：      忽略操作系统自动生成的文件，比如缩略图等；    忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如Java编译产生的.class文件；      忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。    .gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！1. 先在项目路径下添加.gitignore文件。2. 编辑.gitignore文件，其...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-09-15 06:16:01 +0800" class="post-list__meta--date date">2019-09-15</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/09/gitignore%E5%BF%BD%E7%95%A5%E4%B8%8D%E5%BF%85%E8%A6%81%E6%96%87%E4%BB%B6/>继续阅读</a></div>
@@ -160,34 +181,13 @@
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/07/jQuery-Selectors/" title="访问 jQuery Selectors">jQuery Selectors</a></h2>
-      <p class="excerpt">基本选择器      ID选择器 $(‘###ID’)        Element选择器 $(‘element’)        Class选择器 $(‘.className’)        通配符选择器 $(‘*’)–选中所有元素，不建议使用  多项选择器  $(“selector1,selector2,selectorN”); 将每一个选择器匹配到的元素合并后一起返回。 可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。 顺序会遵循html的顺序层级选择器      $(‘...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-07-08 01:00:06 +0800" class="post-list__meta--date date">2019-07-08</time> &#8226; <span class="post-list__meta--tags tags">WEB/jQuery</span><a class="btn-border-small" href=/2019/07/jQuery-Selectors/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" title="访问 如何使用中国区停服后的iTunes Store">如何使用中国区停服后的iTunes Store</a></h2>
-      <p class="excerpt">1.先决条件1.1 有外网环境（你懂的）      参考资料      造梯教程1.2 安装快捷指令APP，并添加【APP Store地区切换指令】      用Safari打开链接    https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e  2.操作演示2.1 打开梯子按钮，保持网络通畅2.2 执行 APP Store地区切换指令 ，地址切换到国外，一般首选美国🇺🇸      1) 执行APP Store地区...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-05-19 01:00:06 +0800" class="post-list__meta--date date">2019-05-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/" title="访问 HTML5音/视频">HTML5音/视频</a></h2>
-      <p class="excerpt">一、HTML5 视频video 元素支持三种视频格式：            格式      IE      Firefox      Opera      Chrome      Safari              Ogg      No      3.5+      10.5+      5.0+      No              MPEG 4      9.0+      No      No      5.0+      3.0+              WebM  ...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-05-15 04:37:00 +0800" class="post-list__meta--date date">2019-05-15</time> &#8226; <span class="post-list__meta--tags tags">WEB/Html</span><a class="btn-border-small" href=/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
 
 <nav class="pagination" role="navigation">
     
-    <span class="pagination__page-number">1 / 2</span>
+    <span class="pagination__page-number">1 / 3</span>
     
         <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/2/#blog">更早 &rarr;</a>
     

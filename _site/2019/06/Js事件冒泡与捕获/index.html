@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Js事件冒泡与捕获</title>
+  <meta name="description" content="1.事件传递有两种方式：冒泡与捕获。">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Js事件冒泡与捕获">
+  <meta name="twitter:description" content="1.事件传递有两种方式：冒泡与捕获。">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Js事件冒泡与捕获">
+  <meta property="og:description" content="1.事件传递有两种方式：冒泡与捕获。">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/06/Js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-06-17 04:00:03 +0800" itemprop="datePublished" class="post-meta__date date">2019-06-17</time> &#8226; <span class="post-meta__tags tags">Js</span>
+    </div>
+    <h1 class="post-title">Js事件冒泡与捕获</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="1事件传递有两种方式冒泡与捕获">1.事件传递有两种方式：冒泡与捕获。</h3>
+
+<p>事件传递定义了元素事件触发的顺序。 如果你将 <code class="highlighter-rouge">&lt;p&gt;</code> 元素插入到 <code class="highlighter-rouge">&lt;div&gt; </code>元素中，用户点击 <code class="highlighter-rouge">&lt;p&gt;</code> 元素, 哪个元素的 “click” 事件先被触发呢？</p>
+
+<blockquote>
+  <p>在冒泡中，内部元素的事件会先被触发，然后再触发外部元素，即： <code class="highlighter-rouge">&lt;p&gt; </code>元素的点击事件先触发，然后会触发 <code class="highlighter-rouge">&lt;div&gt; </code>元素的点击事件。
+在捕获中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <code class="highlighter-rouge">&lt;div&gt; </code>元素的点击事件先触发 ，然后再触发 <code class="highlighter-rouge">&lt;p&gt; </code>元素的点击事件。</p>
+</blockquote>
+
+<p>addEventListener() 方法可以指定 “useCapture” 参数来设置传递类型：
+<code class="highlighter-rouge">addEventListener(event, function, useCapture);</code></p>
+
+<blockquote>
+  <ul>
+    <li><strong>默认值为 false, 即冒泡传递，当值为 true 时, 事件使用捕获传递。</strong></li>
+  </ul>
+</blockquote>
+
+<p><strong>实例：</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>W3Cschool教程(w3cschool.cn)<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">coral</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>实例演示了在添加不同事件监听时，冒泡与捕获的不同。<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"myDiv"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"myP"</span><span class="nt">&gt;</span>点击段落，我是冒泡。<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"myDiv2"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"myP2"</span><span class="nt">&gt;</span>点击段落，我是捕获。 <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myP"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"你点击了 P 元素!"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myDiv"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">" 你点击了 DIV 元素 !"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myP2"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"你点击了 P2 元素!"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myDiv2"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"你点击了 DIV2 元素 !"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<blockquote>
+  <p><strong>提示：DOM事件流同时支持两种事件模型：捕获型事件和冒泡型事件，捕获型事件首先发生。捕获型事件和冒泡型事件会触及DOM中的所有对象，从document对象开始，也在document对象结束。</strong></p>
+</blockquote>
+
+<h3 id="2浏览器支持">2.浏览器支持</h3>
+<p>IE 8 及更早 IE 版本，Opera 7.0及其更早版本不支持 addEventListener() 和 removeEventListener() 方法。但是，对于这类浏览器版本可以使用 detachEvent() 方法来移除事件句柄:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>element.attachEvent(event, function);
+element.detachEvent(event, function);
+</code></pre></div></div>
+<p><strong>跨浏览器解决方法:</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var x = document.getElementById("myBtn"); 
+if (x.addEventListener) {                    // 所有主流浏览器，除了 IE 8 及更早版本
+    x.addEventListener("click", myFunction); 
+} else if (x.attachEvent) {                  // IE 8 及更早版本 
+    x.attachEvent("onclick", myFunction); 
+}
+</code></pre></div></div>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/" title="link to Js之 toString() 和 String() 的区别">Js之 toString() 和 String() 的区别</a></h2>
+       <p class="excerpt">  null, undefined 没有toString方法举例说明Eg1:console.log([1,2,3,4].constructor.toString().indexOf("Array") &gt; -1 );//console.log(String([1,2, 3,4].constructor).indexOf("Array") &gt; -1);  返回TrueTrue==============Eg2:var test = null;var test_1;  // Stri...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-07-06 03:00:00 +0800" class="post-list__meta--date date">2019-07-06</time> &#8226; <span class="post-list__meta--tags tags">Javascript</span><a class="btn-border-small" href=/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" title="link to 如何使用中国区停服后的iTunes Store">如何使用中国区停服后的iTunes Store</a></h2>
+       <p class="excerpt">1.先决条件1.1 有外网环境（你懂的）      参考资料      造梯教程1.2 安装快捷指令APP，并添加【APP Store地区切换指令】      用Safari打开链接    https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e  2.操作演示2.1 打开梯子按钮，保持网络通畅2.2 执行 APP Store地区切换指令 ，地址切换到国外，一般首选美国🇺🇸      1) 执行APP Store地区...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-05-19 01:00:06 +0800" class="post-list__meta--date date">2019-05-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" data-toggle="tooltip" data-placement="top" title="如何使用中国区停服后的iTunes Store">上一篇：  <span>如何使用中国区停服后的iTunes Store</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/" data-toggle="tooltip" data-placement="top" title="Js之 toString() 和 String() 的区别">下一篇：  <span>Js之 toString() 和 String() 的区别</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

@@ -5,9 +5,340 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Sep 2019 20:55:27 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Sep 2019 20:55:27 +0800</lastBuildDate>
+    <pubDate>Wed, 16 Oct 2019 22:06:47 +0800</pubDate>
+    <lastBuildDate>Wed, 16 Oct 2019 22:06:47 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Node.js如何设置允许跨域</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;设置允许所有域名跨域&quot;&gt;设置允许所有域名跨域：&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.header(&quot;Access-Control-Allow-Origin&quot;,&quot;*&quot;);
+    //允许的header类型
+    res.header(&quot;Access-Control-Allow-Headers&quot;,&quot;content-type&quot;);
+    //跨域允许的请求方式 
+    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;设置允许指定域名httpwwwabccom跨域&quot;&gt;设置允许指定域名“http://www.ABC.com”跨域：&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.header(&quot;Access-Control-Allow-Origin&quot;,&quot;http://www.ABC.com&quot;);
+    //允许的header类型
+    res.header(&quot;Access-Control-Allow-Headers&quot;,&quot;content-type&quot;);
+    //跨域允许的请求方式 
+    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;设置允许多个域名跨域&quot;&gt;设置允许多个域名跨域：&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
+    if( req.headers.origin.toLowerCase() == &quot;http://www.ABC.com&quot;
+        || req.headers.origin.toLowerCase() ==&quot;http://127.0.0.1&quot; ) {
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header(&quot;Access-Control-Allow-Origin&quot;, req.headers.origin);
+    }
+    //允许的header类型
+    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type&quot;);
+    //跨域允许的请求方式 
+    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();    
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;如果允许的域名较多可以将允许跨域的域名放到数组当中&quot;&gt;如果允许的域名较多，可以将允许跨域的域名放到数组当中：&lt;/h4&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
+    var orginList=[
+        &quot;http://www.ABC.com&quot;,
+        &quot;http://www.alibaba.com&quot;,
+        &quot;http://www.qq.com&quot;,
+        &quot;http://www.baidu.com&quot;
+    ]
+    if(orginList.includes(req.headers.origin.toLowerCase())){
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header(&quot;Access-Control-Allow-Origin&quot;,req.headers.origin);
+    }
+    //允许的header类型
+    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type&quot;);
+    //跨域允许的请求方式
+    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/</guid>
+        
+        <category>NodeJS</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>MogoDB(MacOS)</title>
+        <description>&lt;h4 id=&quot;一安装&quot;&gt;&lt;strong&gt;一、安装&lt;/strong&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;主要有如下三种安装方式，本文主要介绍对入门友好的第三种方式 &lt;br /&gt;
++（1）手动命令安装 &lt;br /&gt;
++（2）采用Homebrew &lt;br /&gt;
++（3）下载安装包。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.mongodb.com/download-center?jmp=nav#community&quot;&gt;MongoDB Download&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将解压后的文件放入 /usr/local ，默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按 shift + command +G 输入 /usr/local 后回车便能看到这个隐藏的目录了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;配置环境变量，打开终端，输入“open -e .bash_profile”，在打开的文件中加入。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;export PATH=${PATH}:/usr/local/MongoDB/bin&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;用Command+S保存配置，关闭上面的.bash_profile编辑窗口，然后在下图中输入”source .bash_profile”使配置生效。输入”mongod -version”，回车后如果看到下面的版本号则说明MongoDB已经成功安装到了Mac上。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在根目录下新建 data 文件夹，里面再建一个 db 文件夹，安装MongoDB时并不会自动生成，需要我们手动创建，可以在命令行输入创建，也可以直接在Finder中手动新建。&lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;如遇到找不到data/db的问题，&lt;code class=&quot;highlighter-rouge&quot;&gt;   sudo mkdir -p /data/db &lt;/code&gt; 创建路径即可，或者直接自定义路径&lt;code class=&quot;highlighter-rouge&quot;&gt;  mongod --dbpath /usr/local/mongoDB/data/db   &lt;/code&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;二运行&quot;&gt;&lt;strong&gt;二、运行&lt;/strong&gt;&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;打开命令行输入&lt;code class=&quot;highlighter-rouge&quot;&gt;   mongod&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下 /data/db 文件夹位置对不对，不行就重新删掉建一个， 打开浏览器，输入localhost:27017 ，会出现这样一行文字。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;It looks like you are trying to access MongoDB over HTTP on the native driver port.&lt;/code&gt;      打开新的terminal，输入  &lt;code class=&quot;highlighter-rouge&quot;&gt;mongo&lt;/code&gt;    &lt;br /&gt;
+可以对数据库进行操作，要停止MongoDB的时候一定要正确的退出，不然下次再次连接数据库会出现问题，使用下面的两行代码可以完成这一操作。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;use admin;
+db.shutdownServer();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;三可视化工具&quot;&gt;&lt;strong&gt;三、可视化工具&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Robot 3T是一个跨平台的MongoDB GUI客户端管理工具，支持Windows、MacOS、Linux。其特点是支持到MongoDB服务器的SSL连接，还支持使用SSH隧道连接。RoboMongo的查询界面同时支持树视图、表格视图、文本视图三种，也可以保存查询结果供以后使用。可以选择适合自己的版本下载。
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tjg6wbn0j312c0lndh7.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tjg6nfoej31290lnq3i.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;四简单应用&quot;&gt;&lt;strong&gt;四、简单应用&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据库插入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true,useUnifiedTopology: true})
+
+var app = mongoose.connection;
+app.on('error', console.error.bind(console, 'connection error:'))
+app.once('open', function () {
+    console.log('app is ok!')
+})
+
+//获取Schema对象
+var usersSchema = new mongoose.Schema({
+    us: {type: String, required: true},
+    ps: {type: String, required: true},
+    age: Number,
+    sex: {type: Number, default: 0}
+});
+
+//将schema对象转换为数据模型
+var User = mongoose.model('users', usersSchema)
+
+//数据库--插入
+User.insertMany({us:'Tien', ps:'123', age:18})
+.then((data)=&amp;gt;{
+    console.log(data)
+    console.log('插入成功!')
+})
+.catch((err)=&amp;gt;{
+    console.log('插入失败!')
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tjtym2pyj30wy0bu74d.jpg&quot; alt=&quot;数据库插入 4-1&quot; /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tjtyu6s0j31oi0fot9i.jpg&quot; alt=&quot;数据库插入 4-2&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据库删除&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true,useUnifiedTopology: true})
+
+var app = mongoose.connection;
+app.on('error', console.error.bind(console, 'connection error:'))
+app.once('open', function () {
+    console.log('app is ok!')
+})
+
+//获取Schema对象
+var usersSchema = new mongoose.Schema({
+    us: {type: String, required: true},
+    ps: {type: String, required: true},
+    age: Number,
+    sex: {type: Number, default: 0}
+});
+
+//将schema对象转换为数据模型
+var User = mongoose.model('users', usersSchema)
+
+//数据库--删除
+User.remove()
+.then((data)=&amp;gt;{
+    console.log('delete done!');
+})
+.catch((err)=&amp;gt;{
+    console.log('删除失败！')
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tk0ufb45j30x00byaa1.jpg&quot; alt=&quot;数据库删除数据 4-3&quot; /&gt;
+&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tk0ungbgj31ok0gs3zd.jpg&quot; alt=&quot;数据库删除数据 4-4&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据库查询&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true,useUnifiedTopology: true})
+
+var app = mongoose.connection;
+app.on('error', console.error.bind(console, 'connection error:'))
+app.once('open', function () {
+    console.log('app is ok!')
+})
+
+//获取Schema对象
+var usersSchema = new mongoose.Schema({
+    us: {type: String, required: true},
+    ps: {type: String, required: true},
+    age: Number,
+    sex: {type: Number, default: 0}
+});
+
+//将schema对象转换为数据模型
+var User = mongoose.model('users', usersSchema)
+
+//数据库--查询
+User.find({age:18})
+.then((data)=&amp;gt;{
+    console.log(data)
+    console.log('查询成功！')
+})
+.catch((err)=&amp;gt;{
+    console.log('查询失败！')
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g7tk7nm5ruj30wz0c2jrh.jpg&quot; alt=&quot;数据库查询 4-5&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Oct 2019 19:45:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/10/MogoDB/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/MogoDB/</guid>
+        
+        <category>NodeJS</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Js一元运算-数据类型转换</title>
+        <description>&lt;p&gt;今天碰到个下面这段代码中  ` =+ ` 一时半会儿不得其解，上&lt;a href=&quot;https://stackoverflow.com/questions/17106681/parseint-vs-unary-plus-when-to-use-which&quot;&gt;stack overflow&lt;/a&gt;  查了一下才知道这个是日常比较少见的数据类型转换用法。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function(dx, dy){
+            rect.attr({x: orig_x+dx,y: orig_y+dy, fill:&quot;orange&quot;});
+        },function(x,y){
+            orig_x=+rect.attr(&quot;x&quot;);
+            orig_y=+rect.attr(&quot;y&quot;);
+            rect.attr({fill:&quot;orange&quot;});
+        },function(){
+            rect.attr({fill:&quot;blue&quot;});
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这称之为正号(+)或是一元正号(unary plus)，而不是加号(+)，因为参与的运算子只会有一个，所以称为一元。&lt;/p&gt;
+
+&lt;p&gt;简单的来说，它是一种把其他类型的资料转为数字类型的语法，可以不限于字符串。建议只用在单纯的数字字符串上。&lt;/p&gt;
+
+&lt;p&gt;这种语法是从使用社群上发展出来的，教科书上很少会提及。这种语法有很多种，下面有张图里有6种是我从&lt;a href=&quot;https://stackoverflow.com/questions/17106681/parseint-vs-unary-plus-when-to-use-which&quot;&gt;这篇问答&lt;/a&gt;找来的，它是用&lt;a href=&quot;http://jsfiddle.net/EpUBN/8/&quot;&gt;代码产生&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image-static.segmentfault.com/178/037/1780371411-5824716d2aa3b&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看图中就大概知道，一元正号(+)的行为类似于parseFloat，而不是parseInt，相似于parseInt的是双波折号(~~)的语法。&lt;/p&gt;
+
+&lt;p&gt;一元正号(+)可以把像”123.456”的字符串，转换为数字类型的123.456。会使用一元正号(+)，而不用parseFloat其实是有原因的，大致上简单说明一下:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-快&quot;&gt;1. 快&lt;/h4&gt;
+&lt;p&gt;这种语法会被使用的主要原因，是经过测试过在某些浏览器与情况下它的效率超快。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-语法简单&quot;&gt;2. 语法简单&lt;/h4&gt;
+&lt;p&gt;打个正号(+)比打parseFloat或parseInt够简单了。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-某些特殊转置情况下使用&quot;&gt;3. 某些特殊转置情况下使用&lt;/h4&gt;
+&lt;p&gt;例如以下几个，有些开发者会用这些转置的结果，但建议你除非很确定要什么结果再使用。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a.空字符串/null/false: +’‘得出0数字，但用parseFloat或parseInt会得出NaN。 &lt;br /&gt;
+b.科学记号: +’2e3’得2000，与parseFloat一致，parseInt会得出2。 &lt;br /&gt;
+c.16进位: +’0xf’得15，parseFloat得0，parseInt会得出15。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其他的语法还有很多，例如1*‘123.456’或-(-‘123.456’)之类的, 总之这种就很少见, 也很少人在用了。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 19 Sep 2019 03:15:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+        
+        <category>Javascript</category>
+        
+        
+      </item>
     
       <item>
         <title>gitignore忽略不必要文件</title>
@@ -2026,362 +2357,45 @@ $('x &amp;gt; p:only-of-type') 		 //x下只有一个P标签的节点
       </item>
     
       <item>
-        <title>如何使用中国区停服后的iTunes Store</title>
-        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1先决条件&quot;&gt;&lt;strong&gt;1.先决条件&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&quot;11-有外网环境你懂的&quot;&gt;1.1 有外网环境（你懂的）&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;参考资料&lt;/strong&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-
-  &lt;p&gt;  &lt;a href=&quot;https://www.webdigi.co.uk/blog/2015/how-to-setup-your-own-private-secure-free-vpn-on-the-amazon-aws-cloud-in-10-minutes/&quot;&gt;造梯教程&lt;/a&gt;&lt;/p&gt;
+        <title>Js之 toString() 和 String() 的区别</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;null, undefined 没有toString方法&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;12-安装快捷指令app并添加app-store地区切换指令&quot;&gt;1.2 安装快捷指令APP，并添加&lt;a href=&quot;https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e&quot;&gt;【APP Store地区切换指令】&lt;/a&gt;&lt;/h4&gt;
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;用Safari打开链接    https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;举例说明&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Eg1:
+console.log([1,2,3,4].constructor.toString().indexOf(&quot;Array&quot;) &amp;gt; -1 );//
+console.log(String([1,2, 3,4].constructor).indexOf(&quot;Array&quot;) &amp;gt; -1);  
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2操作演示&quot;&gt;&lt;strong&gt;2.操作演示&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id=&quot;21-打开梯子按钮保持网络通畅&quot;&gt;2.1 打开梯子按钮，保持网络通畅&lt;/h4&gt;
+返回
+True
+True
 
-&lt;h4 id=&quot;22-执行-app-store地区切换指令-地址切换到国外一般首选美国&quot;&gt;2.2 执行 &lt;strong&gt;APP Store地区切换指令&lt;/strong&gt; ，地址切换到国外，一般首选美国🇺🇸&lt;/h4&gt;
+==============
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;1) 执行APP Store地区切换指令
-&lt;!-- ![执行APP Store地区切换指令](https://tva1.sinaimg.cn/large/006y8mN6ly1g73orrf4nrj30u01sz0uv.jpg) --&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73orrf4nrj30u01sz0uv.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;2) 切换地区
-&lt;!-- ![切换地区](https://tva1.sinaimg.cn/large/006y8mN6ly1g73osolq49j30u01szaay.jpg) --&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73osolq49j30u01szaay.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;3) 切换成功
-&lt;!-- ![切换成功](https://tva1.sinaimg.cn/large/006y8mN6ly1g73ot0i6qtj30u01szadr.jpg) --&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ot0i6qtj30u01szadr.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;4）打开iTunes Store
-&lt;!-- ![打开iTunes Store](https://tva1.sinaimg.cn/large/006y8mN6ly1g73oz9gpezj30u01szjsd.jpg) --&gt;
-[打开iTunes Store]&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73oz9gpezj30u01szjsd.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
+Eg2:
+var test = null;
+var test_1;
+  // String()
+console.log(String(test)); 
+console.log(String(test_1)); 
 
-&lt;h4 id=&quot;23-噔噔蹬蹬新世界大门已打开愉快地租借或者购买吧&quot;&gt;2.3 噔噔蹬蹬！新世界大门已打开，愉快地租借或者购买吧！&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;爆米花准备
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73otk2yg6j30u01sz79l.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73otzm5i3j30u01szq74.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ouc329hj30u01szq67.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;
-&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73ouqp79rj30u01sz0tb.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;
-&lt;br /&gt;
-&lt;!-- &lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g73p0k2we2j31sz0u00t6.jpg&quot; &gt; --&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  // toString()
+console.log(test.toString());
+console.log(test_1.toString());
 
+返回
+null
+undefined
+TypeError: Cannot read property 'toString' of null
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
-        <pubDate>Sun, 19 May 2019 01:00:06 +0800</pubDate>
-        <link>http://localhost:4000/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/</guid>
+        <pubDate>Sat, 06 Jul 2019 03:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
         
-        <category>Tools</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>HTML5音/视频</title>
-        <description>&lt;h3 id=&quot;一html5-视频&quot;&gt;一、HTML5 视频&lt;/h3&gt;
-
-&lt;p&gt;video 元素支持三种视频格式：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;格式&lt;/td&gt;
-      &lt;td&gt;IE&lt;/td&gt;
-      &lt;td&gt;Firefox&lt;/td&gt;
-      &lt;td&gt;Opera&lt;/td&gt;
-      &lt;td&gt;Chrome&lt;/td&gt;
-      &lt;td&gt;Safari&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ogg&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;3.5+&lt;/td&gt;
-      &lt;td&gt;10.5+&lt;/td&gt;
-      &lt;td&gt;5.0+&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;MPEG 4&lt;/td&gt;
-      &lt;td&gt;9.0+&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;5.0+&lt;/td&gt;
-      &lt;td&gt;3.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;WebM&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-      &lt;td&gt;4.0+&lt;/td&gt;
-      &lt;td&gt;10.6+&lt;/td&gt;
-      &lt;td&gt;6.0+&lt;/td&gt;
-      &lt;td&gt;No&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件
-MPEG4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件
-WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件&lt;/p&gt;
-
-&lt;p&gt;在 HTML5 中显示视频：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&amp;gt;
-&amp;lt;/video&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;controls 属性供添加播放、暂停和音量控件。
-包含宽度和高度属性也是不错的主意。
-**&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;video&amp;gt; 与 &amp;lt;/video&amp;gt;&lt;/code&gt; **之间插入的内容是供不支持 video 元素的浏览器显示的：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video src=&quot;movie.ogg&quot; width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&amp;gt;
-Your browser does not support the video tag.
-&amp;lt;/video&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式：&lt;/strong&gt;
-&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&amp;gt;
-  &amp;lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&amp;gt;
-  &amp;lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&amp;gt;
-Your browser does not support the video tag.
-&amp;lt;/video&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;video&amp;gt;&lt;/code&gt; 标签的属性&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;属性&lt;/td&gt;
-      &lt;td&gt;值&lt;/td&gt;
-      &lt;td&gt;描述&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;autoplay&lt;/td&gt;
-      &lt;td&gt;autoplay&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则视频在就绪后马上播放。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;controls&lt;/td&gt;
-      &lt;td&gt;controls&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;height&lt;/td&gt;
-      &lt;td&gt;pixels&lt;/td&gt;
-      &lt;td&gt;设置视频播放器的高度。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;loop&lt;/td&gt;
-      &lt;td&gt;loop&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则当媒介文件完成播放后再次开始播放。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;preload&lt;/td&gt;
-      &lt;td&gt;preload&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;src&lt;/td&gt;
-      &lt;td&gt;url&lt;/td&gt;
-      &lt;td&gt;要播放的视频的 URL。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;width&lt;/td&gt;
-      &lt;td&gt;pixels&lt;/td&gt;
-      &lt;td&gt;设置视频播放器的宽度。AA&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;二html-5-video--dom&quot;&gt;二、HTML 5 Video + DOM&lt;/h3&gt;
-&lt;p&gt;大多数浏览器支持的视频方法、属性和事件：
-方法|属性|事件
-play()|currentSrc|play 
-pause()|currentTime|pause 
-load()|videoWidth |progress 
-canPlayType|videoHeight|error 
-            |duration|timeupdate 
-            |ended|ended 
-            |error|abort 
-            |paused|empty 
-            |muted|emptied 
-            |seeking|waiting 
-            |volume|loadedmetadata 
-            |height|
-            |width|&lt;/p&gt;
-
-&lt;p&gt;注释：在所有属性中，只有 videoWidth 和 videoHeight 属性是立即可用的。在视频的元数据已加载后，其他属性才可用。&lt;/p&gt;
-
-&lt;h3 id=&quot;三html-音频&quot;&gt;三、HTML 音频&lt;/h3&gt;
-
-&lt;p&gt;audio 元素支持三种音频格式：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        |IE 9  |Firefox 3.5 |Opera 10.5 |Chrome 3.0  |Safari 3.0 |      Ogg Vorbis|          |√           |√          |√           |               |      MP3        |√     |                  |               |√           |√         |      Wav         |          |√           |               |√           |√         |     
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;如需在 HTML5 中播放音频：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio src=&quot;song.ogg&quot; controls=&quot;controls&quot;&amp;gt;
-&amp;lt;/audio&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;control 属性供添加播放、暂停和音量控件。&lt;/strong&gt;
-&lt;strong&gt;&lt;audio&gt; 与 &lt;/audio&gt; 之间插入的内容是供不支持 audio 元素的浏览器显示的：&lt;/strong&gt;
-&lt;strong&gt;实例：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio src=&quot;song.ogg&quot; controls=&quot;controls&quot;&amp;gt;
-Your browser does not support the audio tag.
-&amp;lt;/audio&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：
-&lt;strong&gt;实例&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;audio controls=&quot;controls&quot;&amp;gt;
-  &amp;lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&amp;gt;
-  &amp;lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;
-Your browser does not support the audio tag.
-&amp;lt;/audio&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;**&lt;audio&gt; 标签的属性**&lt;/audio&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;属性&lt;/td&gt;
-      &lt;td&gt;值&lt;/td&gt;
-      &lt;td&gt;描述&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;autoplay&lt;/td&gt;
-      &lt;td&gt;autoplay&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则音频在就绪后马上播放。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;controls&lt;/td&gt;
-      &lt;td&gt;controls&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;loop&lt;/td&gt;
-      &lt;td&gt;loop&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则每当音频结束时重新开始播放。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;preload&lt;/td&gt;
-      &lt;td&gt;preload&lt;/td&gt;
-      &lt;td&gt;如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;src&lt;/td&gt;
-      &lt;td&gt;url&lt;/td&gt;
-      &lt;td&gt;要播放的音频的 URL。&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-        <pubDate>Wed, 15 May 2019 04:37:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/</guid>
-        
-        <category>WEB/Html</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>input标签的兼容问题</title>
-        <description>&lt;h3 id=&quot;1-input需要清掉哪些默认样式和兼容问题如何解决&quot;&gt;1. input需要清掉哪些默认样式，和兼容问题如何解决？&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-如何解决ie8一下的input框文字偏上问题&quot;&gt;2. 如何解决IE8一下的input框文字偏上问题？&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`input{ float:left; line-height:30px\9;}`
-\9  是针对所有IE浏览器的CSS hack解决；以上可解决框内的文字偏移问题；
-框外的文字不对齐，需框外元素，input共同设置`vertical-align：middle`；即可（垂直居中，对应`text-align:center`;）
-这个是css hack 写法,  \9:支持IE浏览器
-\0:支持IE8浏览器.   
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-input高度最好不要给100而是给实际的32px兼容ie浏览器更好&quot;&gt;3. input高度最好不要给100%，而是给实际的32px；兼容IE浏览器更好；&lt;/h3&gt;
-</description>
-        <pubDate>Fri, 10 May 2019 06:10:03 +0800</pubDate>
-        <link>http://localhost:4000/2019/05/input%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/input%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>CSS图片旋转-transform</title>
-        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
-&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zh-CN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=utf-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.mainDiv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#ddd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;-webkit-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;-moz-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;            &lt;span class=&quot;err&quot;&gt;//旋转0度，倍放1&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;-webkit-transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                        &lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;动画持续时间&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;-moz-transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.mainDiv&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;-webkit-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;-moz-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;720deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;black&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-       &lt;span class=&quot;nl&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;gray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;css3特效&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mainDiv&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;您好&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 08 May 2019 01:00:06 +0800</pubDate>
-        <link>http://localhost:4000/2019/05/CSS3-transform/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/CSS3-transform/</guid>
-        
-        <category>WEB/CSS</category>
+        <category>Javascript</category>
         
         
       </item>
