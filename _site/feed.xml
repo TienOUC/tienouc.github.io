@@ -5,8 +5,8 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Oct 2019 21:01:35 +0800</pubDate>
-    <lastBuildDate>Sat, 19 Oct 2019 21:01:35 +0800</lastBuildDate>
+    <pubDate>Sat, 19 Oct 2019 21:02:56 +0800</pubDate>
+    <lastBuildDate>Sat, 19 Oct 2019 21:02:56 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -22,8 +22,6 @@
     &lt;li&gt;&lt;strong&gt;&lt;em&gt;同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;
-
-&lt;hr /&gt;
 
 &lt;h4 id=&quot;二-解决跨域的几种方法&quot;&gt;二、 &lt;strong&gt;解决跨域的几种方法&lt;/strong&gt;&lt;/h4&gt;
 
