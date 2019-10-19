@@ -5,17 +5,320 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 16 Oct 2019 22:06:47 +0800</pubDate>
-    <lastBuildDate>Wed, 16 Oct 2019 22:06:47 +0800</lastBuildDate>
+    <pubDate>Sat, 19 Oct 2019 21:01:35 +0800</pubDate>
+    <lastBuildDate>Sat, 19 Oct 2019 21:01:35 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>Node.js如何设置允许跨域</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;设置允许所有域名跨域&quot;&gt;设置允许所有域名跨域：&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+        <title>跨域及几种解决方法</title>
+        <description>&lt;h4 id=&quot;一-什么是跨域&quot;&gt;一、 &lt;strong&gt;什么是跨域&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。&lt;/p&gt;
+
+&lt;p&gt;例如：a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。注意：跨域限制访问，其实是浏览器的限制。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;二-解决跨域的几种方法&quot;&gt;二、 &lt;strong&gt;解决跨域的几种方法&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;h5 id=&quot;21-jsonp&quot;&gt;2.1 JSONP&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 动态创建一个script标签，动态加载一个js文件，载入成功之后会执行在url参数中指定的函数，并且把需要的json数据所谓参数传入。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;只能传递get请求，有一定的限制&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 原生方法
+(function (window,document) {
+    &quot;use strict&quot;;
+    var jsonp = function (url,data,callback) {
+
+        // 1.将传入的data数据转化为url字符串形式
+        // {id:1,name:'zhangsan'} =&amp;gt; id=1&amp;amp;name=zhangsan
+        var dataString = url.indexof('?') == -1? '?': '&amp;amp;';
+        for(var key in data){
+            dataString += key + '=' + data[key] + '&amp;amp;';
+        };
+
+        // 2 处理url中的回调函数
+        // cbFuncName回调函数的名字 ：my_json_cb_名字的前缀 + 随机数（把小数点去掉）
+        var cbFuncName = 'my_json_cb_' + Math.random().toString().replace('.','');
+        dataString += 'callback=' + cbFuncName;
+
+        // 3.创建一个script标签并插入到页面中
+        var scriptEle = document.createElement('script');
+        scriptEle.src = url + dataString;
+
+        // 4.挂载回调函数
+        window[cbFuncName] = function (data) {
+            callback(data);
+            // 处理完回调函数的数据之后，删除jsonp的script标签
+            document.body.removeChild(scriptEle);
+        }
+
+        // 5.append到页面中
+        document.body.appendChild(scriptEle);
+    }
+
+    // 因为jsonp是一个私有函数外部不能调用，所有jsonp函数作为window对象的一个方法，供外部调用
+    window.$jsonp = jsonp;
+
+})(window,document)
+
+// 原生方式精简版
+&amp;lt;script&amp;gt;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+ 
+    // 传参并指定回调执行函数为onBack
+    script.src = 'http://www.baidu.com/xx?a=b&amp;amp;callback=onBack';
+    document.head.appendChild(script);
+ 
+    // 回调执行函数
+    function onBack(res) {
+        alert(JSON.stringify(res));
+    }
+&amp;lt;/script&amp;gt;
+
+
+// jQuery
+$.ajax({
+    url: url,
+    type: 'get',
+    dataType: 'jsonp',  // 请求方式为jsonp
+    jsonpCallback: &quot;callback&quot;,    // 自定义回调函数名
+    data: {}
+});
+
+// 后端node.js代码
+var querystring = require('querystring');
+var http = require('http');
+var server = http.createServer();
+ 
+server.on('request', function(req, res) {
+    var params = qs.parse(req.url.split('?')[1]);
+    var fn = params.callback;
+ 
+    // jsonp返回设置
+    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+    res.write(fn + '(' + JSON.stringify(params) + ')');
+ 
+    res.end();
+});
+ 
+server.listen('8080');
+console.log('Server is running at port 8080...');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;22-cros跨域资源共享&quot;&gt;2.2 CROS跨域资源共享&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 服务器端对于cros的支持，设置Access-Control-Allow-Origin为你传输的origin的值，浏览器监测到响应的设置，支持跨域&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;跨域携带cookies&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;优缺点：支持所有的请求类型，get、post、put、delete、updata等等&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;所有浏览器都支持该功能(IE8+：IE8/9需要使用XDomainRequest对象来支持CORS）)，CORS也已经成为主流的跨域解决方案&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 原生
+...
+xhr.withCredentials = true
+...
+
+// jQuery
+$.ajax({
+    ...
+   xhrFields: {
+       withCredentials: true    // 前端设置是否带cookie
+   },
+   crossDomain: true,   // 会让请求头中包含跨域的额外信息，但不会含cookie
+    ...
+});
+
+// axios
+axios.defaults.withCredentials=true; // 让ajax携带cookie
+
+//服务端设置
+const app = express()
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*') // 访问控制允许来源：所有
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept') // 访问控制允许报头 X-Requested-With: xhr请求
+  res.header('Access-Control-Allow-Metheds', 'PUT, POST, GET, DELETE, OPTIONS') // 访问控制允许方法
+  res.header('X-Powered-By', 'nodejs') // 自定义头信息，表示服务端用nodejs
+  res.header('Content-Type', 'application/json;charset=utf-8')
+  res.header('Access-Control-Max-Age', '600')
+  next()
+})
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;23-windowname--iframe跨域&quot;&gt;2.3 window.name + iframe跨域&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 一般用于iframe的跨域问题，在一个窗口（window）的生命周期内，窗口载入的所有的页面都是共享一个window.name的，每个页面的window.name都有读写的权限，并且是持久存在一个再如果的所有页面中&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;&lt;em&gt;优缺点：通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。window.name支持非常长的name值(2MB)&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 在A页面设置函数
+
+var proxy = function(url, callback) {
+    var state = 0;
+    var iframe = document.createElement('iframe');
+ 
+    // 加载跨域页面
+    iframe.src = url;
+ 
+    // onload事件会触发2次，第1次加载跨域页，并留存数据于window.name
+    iframe.onload = function() {
+        if (state === 1) {
+            // 第2次onload(同域proxy页)成功后，读取同域window.name中数据
+            callback(iframe.contentWindow.name);
+            destoryFrame();
+ 
+        } else if (state === 0) {
+            // 第1次onload(跨域页)成功后，切换到同域代理页面
+            iframe.contentWindow.location = 'http://www.domain1.com/proxy.html';
+            state = 1;
+        }
+    };
+ 
+    document.body.appendChild(iframe);
+ 
+    // 获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）
+    function destoryFrame() {
+        iframe.contentWindow.document.write('');
+        iframe.contentWindow.close();
+        document.body.removeChild(iframe);
+    }
+};
+ 
+// 请求跨域b页面数据
+proxy('http://www.xxx.com/B.html', function(data){
+    alert(data);
+});
+
+
+// 在B页面设置window.name值
+&amp;lt;script&amp;gt;
+    window.name = 'B页面向A页面传递的数据';
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;24-h5属性-windowpostmessage&quot;&gt;2.4 H5属性 window.postMessage&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;页面和其打开的新窗口的数据传递&lt;/li&gt;
+    &lt;li&gt;多窗口之间消息传递&lt;/li&gt;
+    &lt;li&gt;页面与嵌套的iframe消息传递&lt;/li&gt;
+    &lt;li&gt;上面三个场景的跨域数据传递&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;用法：postMessage(data,origin)方法接受两个参数
+data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。
+origin： 协议+主机+端口号，也可以设置为”*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/”。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // A页面 
+&amp;lt;iframe id=&quot;iframe&quot; src=&quot;http://www.B.com/b.html&quot; style=&quot;display:none;&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&amp;lt;script&amp;gt;      
+    var iframe = document.getElementById('iframe');
+    iframe.onload = function() {
+        var data = {
+            msg: 'xxx'
+        };
+        // 向B传送跨域数据
+        iframe.contentWindow.postMessage(JSON.stringify(data), 'http://www.B.com');
+    };
+ 
+    // 接受B返回数据
+    window.addEventListener('message', function(e) {
+        alert('data from B ---&amp;gt; ' + e.data);
+    }, false);
+&amp;lt;/script&amp;gt;
+
+
+// B页面
+&amp;lt;script&amp;gt;
+    // 接收A的数据
+    window.addEventListener('message', function(e) {
+        alert('data from A ---&amp;gt; ' + e.data);
+ 
+        var data = JSON.parse(e.data);
+        if (data) {
+            data.number = 16;
+ 
+            // 处理后再发回A
+            window.parent.postMessage(JSON.stringify(data), 'http://www.A.com');
+        }
+    }, false);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;21-nodejs中间件代理跨域&quot;&gt;2.1 nodejs中间件代理跨域&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; node中间件实现跨域代理，原理大致与nginx相同，都是通过启一个代理服务器，实现数据的转发&lt;/p&gt;
+
+&lt;p&gt;node + vue + webpack-dev-server代理接口跨域，在开发模式下，只需要配置devServer=&amp;gt;proxy即可&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module.exports = {
+    entry: {},
+    module: {},
+    ...
+    devServer: {
+        historyApiFallback: true,
+        proxy: [{
+            target: 'http://www.B.com:8080',  // 代理跨域目标接口
+            changeOrigin: true,
+            cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
+        }],
+        noInfo: true
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在非框架类时nodejs使用http-proxy-middleware&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var express = require('express');
+var proxy = require('http-proxy-middleware');
+var app = express();
+ 
+app.use('/', proxy({
+    // 代理跨域目标接口
+    target: 'http://www.B.com:8080',
+    changeOrigin: true,
+ 
+    // 修改响应头信息，实现跨域并允许带cookie
+    onProxyRes: function(proxyRes, req, res) {
+        res.header('Access-Control-Allow-Origin', 'http://www.A.com');
+        res.header('Access-Control-Allow-Credentials', 'true');
+    },
+ 
+    // 修改响应信息中的cookie域名
+    cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
+}));
+ 
+app.listen(5566);
+console.log('Proxy server is listen at port 5566...');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;nodejs如何设置允许跨域&quot;&gt;Node.js如何设置允许跨域&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-设置允许所有域名跨域&quot;&gt;1. 设置允许所有域名跨域：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
     //设置允许跨域的域名，*代表允许任意域名跨域
@@ -31,11 +334,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;设置允许指定域名httpwwwabccom跨域&quot;&gt;设置允许指定域名“http://www.ABC.com”跨域：&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;2-设置允许指定域名httpwwwabccom跨域&quot;&gt;2. 设置允许指定域名“http://www.ABC.com”跨域：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
     //设置允许跨域的域名，*代表允许任意域名跨域
@@ -51,11 +350,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;设置允许多个域名跨域&quot;&gt;设置允许多个域名跨域：&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;3-设置允许多个域名跨域&quot;&gt;3. 设置允许多个域名跨域：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
     if( req.headers.origin.toLowerCase() == &quot;http://www.ABC.com&quot;
@@ -74,11 +369,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;如果允许的域名较多可以将允许跨域的域名放到数组当中&quot;&gt;如果允许的域名较多，可以将允许跨域的域名放到数组当中：&lt;/h4&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;4-如果允许的域名较多可以将允许跨域的域名放到数组当中&quot;&gt;4. 如果允许的域名较多，可以将允许跨域的域名放到数组当中：&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
     var orginList=[
@@ -103,8 +394,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/</guid>
+        <link>http://localhost:4000/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
         
         <category>NodeJS</category>
         
@@ -381,175 +672,6 @@ vendor/
         <guid isPermaLink="true">http://localhost:4000/2019/09/gitignore%E5%BF%BD%E7%95%A5%E4%B8%8D%E5%BF%85%E8%A6%81%E6%96%87%E4%BB%B6/</guid>
         
         <category>Tools</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>圣杯布局</title>
-        <description>&lt;h2 id=&quot;1-建立框架&quot;&gt;1. 建立框架&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://willtien.com/Projects/src/holyGrail.html&quot;&gt;圣杯布局Demo戳这里&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;​  先写 header, footer 和 container 三个 &amp;lt;div&amp;gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;​  我们将 container 的内边距设置为左右两边各自的宽度。它看起来就像这样：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/006tNc79ly1g5r3byed2gj30f009qaad.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;2-加入三栏&quot;&gt;2. 加入三栏&lt;/h2&gt;
-
-&lt;p&gt;​  此时我们有了基本框架，可以把三栏塞进去了。&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#center&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#left&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#right&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;​  接着我们给每一栏配上合适的宽度，并将它们设为浮动。同时我们需要清除 footer 的上下环境，以免跟上面三栏一起浮动。&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;​  注意这里中间一栏的 100% 宽是基于它的父容器 container 的宽度而言的，由于 container 设置了内边距，因此中间栏看起来就处在了网页的中间，但左右两栏由于排在中间栏的后面，且因为空间不够被挤到了中间栏的下面，如下图所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5r3dlvswvj30f009q74n.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;3-把左侧栏放上去&quot;&gt;3. 把左侧栏放上去&lt;/h2&gt;
-
-&lt;p&gt;​  中间栏已经就位，剩下的事情就是把左右两栏放上去了，接下来我们先放左侧栏。
-为了详述过程，这里将分为两个小步骤。首先，我们先将它的外边距设置为 -100%，这样一来，由于浮动的关系，左侧栏就能上位，与中间栏交叠在一起，并占据了左边。而右侧栏由于左侧栏的上位，自动向前浮动到了原来左侧栏的位置。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5r3jgwkmbj30f009q0t2.jpg&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;​  接着我们要用到相对定位属性（relative），并设置一个与左侧栏等宽的偏移量：&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;​  可以看到，它设置的 right 属性就是相对于 container 的右边线向左偏移 200px，如此一来，它就完美地跑到了 container 左内边距的位置，也就是我们希望它呆的地方，如下图所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tNc79ly1g5r3g7cvmrj30f009qaaa.jpg&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;4-把右侧栏放上去&quot;&gt;4. 把右侧栏放上去&lt;/h2&gt;
-
-&lt;p&gt;​  最后，我们需要把右侧栏放上去，此时只需利用上面的原理把他放到 container 的右外边距的位置即可，我们需要再一次设置一个负外边距的值，它等于右侧栏的宽度：&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;​  至此，所有的栏目都就位了~&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/006tNc79ly1g5r3ffez5wj30f009qmx5.jpg&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;​  具体代码如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;nl&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;550px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;padding-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;padding-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.column&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#e9e9e9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*LC width */&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#1d9ee9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/*RC width */&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-150px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f46a3c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#header&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;#footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#0b0b0b&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#center&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;left&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#left&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#right&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;#footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt; ​ 转载请注明：&lt;a href=&quot;http://tienouc&quot;&gt;Tien’s Blog&lt;/a&gt; » &lt;a href=&quot;http://tienouc.io/2015/09/iOS9_Note/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 07 Sep 2019 02:15:06 +0800</pubDate>
-        <link>http://localhost:4000/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/</guid>
-        
-        <category>WEB</category>
         
         
       </item>
@@ -2396,6 +2518,96 @@ TypeError: Cannot read property 'toString' of null
         <guid isPermaLink="true">http://localhost:4000/2019/07/Js%E4%B9%8B-toString()-%E5%92%8C-String()-%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
         
         <category>Javascript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Js事件冒泡与捕获</title>
+        <description>&lt;h3 id=&quot;1事件传递有两种方式冒泡与捕获&quot;&gt;1.事件传递有两种方式：冒泡与捕获。&lt;/h3&gt;
+
+&lt;p&gt;事件传递定义了元素事件触发的顺序。 如果你将 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 元素插入到 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt; &lt;/code&gt;元素中，用户点击 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 元素, 哪个元素的 “click” 事件先被触发呢？&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在冒泡中，内部元素的事件会先被触发，然后再触发外部元素，即： &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt; &lt;/code&gt;元素的点击事件先触发，然后会触发 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt; &lt;/code&gt;元素的点击事件。
+在捕获中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt; &lt;/code&gt;元素的点击事件先触发 ，然后再触发 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt; &lt;/code&gt;元素的点击事件。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;addEventListener() 方法可以指定 “useCapture” 参数来设置传递类型：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;addEventListener(event, function, useCapture);&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;默认值为 false, 即冒泡传递，当值为 true 时, 事件使用捕获传递。&lt;/strong&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;实例：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;W3Cschool教程(w3cschool.cn)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;coral&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;实例演示了在添加不同事件监听时，冒泡与捕获的不同。&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myP&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;点击段落，我是冒泡。&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myDiv2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myP2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;点击段落，我是捕获。 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myP&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你点击了 P 元素!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myDiv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; 你点击了 DIV 元素 !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myP2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你点击了 P2 元素!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;myDiv2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;你点击了 DIV2 元素 !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;提示：DOM事件流同时支持两种事件模型：捕获型事件和冒泡型事件，捕获型事件首先发生。捕获型事件和冒泡型事件会触及DOM中的所有对象，从document对象开始，也在document对象结束。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;2浏览器支持&quot;&gt;2.浏览器支持&lt;/h3&gt;
+&lt;p&gt;IE 8 及更早 IE 版本，Opera 7.0及其更早版本不支持 addEventListener() 和 removeEventListener() 方法。但是，对于这类浏览器版本可以使用 detachEvent() 方法来移除事件句柄:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;element.attachEvent(event, function);
+element.detachEvent(event, function);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;跨浏览器解决方法:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var x = document.getElementById(&quot;myBtn&quot;); 
+if (x.addEventListener) {                    // 所有主流浏览器，除了 IE 8 及更早版本
+    x.addEventListener(&quot;click&quot;, myFunction); 
+} else if (x.attachEvent) {                  // IE 8 及更早版本 
+    x.attachEvent(&quot;onclick&quot;, myFunction); 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 17 Jun 2019 04:00:03 +0800</pubDate>
+        <link>http://localhost:4000/2019/06/Js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/Js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</guid>
+        
+        <category>Js</category>
         
         
       </item>

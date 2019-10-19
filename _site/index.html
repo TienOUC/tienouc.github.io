@@ -126,9 +126,9 @@
   <ol class="post-list">
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/" title="访问 Node.js如何设置允许跨域">Node.js如何设置允许跨域</a></h2>
-      <p class="excerpt">      设置允许所有域名跨域：  app.all("*",function(req,res,next){    //设置允许跨域的域名，*代表允许任意域名跨域    res.header("Access-Control-Allow-Origin","*");    //允许的header类型    res.header("Access-Control-Allow-Headers","content-type");    //跨域允许的请求方式     res.header("Acces...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-10-14 00:00:00 +0800" class="post-list__meta--date date">2019-10-14</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/Node.js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/>继续阅读</a></div>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="访问 跨域及几种解决方法">跨域及几种解决方法</a></h2>
+      <p class="excerpt">一、 什么是跨域跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。例如：a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。注意：跨域限制访问，其实是浏览器的限制。      同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域  二、 解决跨域的几种方法2.1 JSONP原理： 动态创建一个sc...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-14 00:00:00 +0800" class="post-list__meta--date date">2019-10-14</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/>继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
     
@@ -154,13 +154,6 @@
     </li>
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/" title="访问 圣杯布局">圣杯布局</a></h2>
-      <p class="excerpt">1. 建立框架圣杯布局Demo戳这里​  先写 header, footer 和 container 三个 &lt;div&gt;&lt;div id="header"&gt;#header&lt;/div&gt;&lt;div id="container"&gt;&lt;/div&gt;&lt;div id="footer"&gt;#footer&lt;/div&gt;​  我们将 container 的内边距设置为左右两边各自的宽度。它看起来就像这样：2. 加入三栏​  此时我们有了基...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-09-07 02:15:06 +0800" class="post-list__meta--date date">2019-09-07</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/09/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2019/08/Webpack/" title="访问 Webpack笔记">Webpack笔记</a></h2>
       <p class="excerpt">      网易云免费课程-Webpack打包工具用法    在网易云课堂初学webpack3.0用法，在实践过程中发现4.0版本变动较大，暂先转载该篇优秀博文并结合官方文档以做后续学习参考，原博文链接见文末。全局安装webpacknpm install webpack webpack-cli -g全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。在当前项目安装webpack      新建w...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-08-19 01:00:06 +0800" class="post-list__meta--date date">2019-08-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/08/Webpack/>继续阅读</a></div>
@@ -178,6 +171,13 @@
       <h2 class="post-list__post-title post-title"><a href="/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/" title="访问 MVVM框架理解">MVVM框架理解</a></h2>
       <p class="excerpt">说起这个MVVM模型，就不得不说MVC框架。将整个前端页面分成View，Controller，Modal，视图上发生变化，通过Controller（控件）将响应传入到Model（数据源），由数据源改变View上面的数据。整个过程看起来是行云流水，业务逻辑放在Model当中，页面渲染逻辑放在View当中，但在实际运用上却存在一个问题：那就是MVC框架允许View和Model直接进行通信！！换句话说，View和Model之间随着业务量的不断庞大，会出现蜘蛛网一样难以处理的依赖关系，完全背离了开...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-08-09 05:00:06 +0800" class="post-list__meta--date date">2019-08-09</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/07/jQuery-Selectors/" title="访问 jQuery Selectors">jQuery Selectors</a></h2>
+      <p class="excerpt">基本选择器      ID选择器 $(‘###ID’)        Element选择器 $(‘element’)        Class选择器 $(‘.className’)        通配符选择器 $(‘*’)–选中所有元素，不建议使用  多项选择器  $(“selector1,selector2,selectorN”); 将每一个选择器匹配到的元素合并后一起返回。 可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。 顺序会遵循html的顺序层级选择器      $(‘...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-07-08 01:00:06 +0800" class="post-list__meta--date date">2019-07-08</time> &#8226; <span class="post-list__meta--tags tags">WEB/jQuery</span><a class="btn-border-small" href=/2019/07/jQuery-Selectors/>继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
     

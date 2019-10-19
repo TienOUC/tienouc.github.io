@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>跨域及几种解决方法</title>
+  <meta name="description" content="一、 什么是跨域">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="跨域及几种解决方法">
+  <meta name="twitter:description" content="一、 什么是跨域">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="跨域及几种解决方法">
+  <meta property="og:description" content="一、 什么是跨域">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-10-14 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2019-10-14</time> &#8226; <span class="post-meta__tags tags">NodeJS</span>
+    </div>
+    <h1 class="post-title">跨域及几种解决方法</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="一-什么是跨域">一、 <strong>什么是跨域</strong></h4>
+
+<p>跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+
+<p>例如：a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。注意：跨域限制访问，其实是浏览器的限制。</p>
+
+<blockquote>
+  <ul>
+    <li><strong><em>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域</em></strong></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h4 id="二-解决跨域的几种方法">二、 <strong>解决跨域的几种方法</strong></h4>
+
+<h5 id="21-jsonp">2.1 JSONP</h5>
+
+<p><strong>原理：</strong> 动态创建一个script标签，动态加载一个js文件，载入成功之后会执行在url参数中指定的函数，并且把需要的json数据所谓参数传入。</p>
+<blockquote>
+  <ul>
+    <li><strong><em>只能传递get请求，有一定的限制</em></strong></li>
+  </ul>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 原生方法
+(function (window,document) {
+    "use strict";
+    var jsonp = function (url,data,callback) {
+
+        // 1.将传入的data数据转化为url字符串形式
+        // {id:1,name:'zhangsan'} =&gt; id=1&amp;name=zhangsan
+        var dataString = url.indexof('?') == -1? '?': '&amp;';
+        for(var key in data){
+            dataString += key + '=' + data[key] + '&amp;';
+        };
+
+        // 2 处理url中的回调函数
+        // cbFuncName回调函数的名字 ：my_json_cb_名字的前缀 + 随机数（把小数点去掉）
+        var cbFuncName = 'my_json_cb_' + Math.random().toString().replace('.','');
+        dataString += 'callback=' + cbFuncName;
+
+        // 3.创建一个script标签并插入到页面中
+        var scriptEle = document.createElement('script');
+        scriptEle.src = url + dataString;
+
+        // 4.挂载回调函数
+        window[cbFuncName] = function (data) {
+            callback(data);
+            // 处理完回调函数的数据之后，删除jsonp的script标签
+            document.body.removeChild(scriptEle);
+        }
+
+        // 5.append到页面中
+        document.body.appendChild(scriptEle);
+    }
+
+    // 因为jsonp是一个私有函数外部不能调用，所有jsonp函数作为window对象的一个方法，供外部调用
+    window.$jsonp = jsonp;
+
+})(window,document)
+
+// 原生方式精简版
+&lt;script&gt;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+ 
+    // 传参并指定回调执行函数为onBack
+    script.src = 'http://www.baidu.com/xx?a=b&amp;callback=onBack';
+    document.head.appendChild(script);
+ 
+    // 回调执行函数
+    function onBack(res) {
+        alert(JSON.stringify(res));
+    }
+&lt;/script&gt;
+
+
+// jQuery
+$.ajax({
+    url: url,
+    type: 'get',
+    dataType: 'jsonp',  // 请求方式为jsonp
+    jsonpCallback: "callback",    // 自定义回调函数名
+    data: {}
+});
+
+// 后端node.js代码
+var querystring = require('querystring');
+var http = require('http');
+var server = http.createServer();
+ 
+server.on('request', function(req, res) {
+    var params = qs.parse(req.url.split('?')[1]);
+    var fn = params.callback;
+ 
+    // jsonp返回设置
+    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+    res.write(fn + '(' + JSON.stringify(params) + ')');
+ 
+    res.end();
+});
+ 
+server.listen('8080');
+console.log('Server is running at port 8080...');
+</code></pre></div></div>
+
+<h5 id="22-cros跨域资源共享">2.2 CROS跨域资源共享</h5>
+<p><strong>原理：</strong> 服务器端对于cros的支持，设置Access-Control-Allow-Origin为你传输的origin的值，浏览器监测到响应的设置，支持跨域</p>
+
+<blockquote>
+  <ul>
+    <li><strong><em>跨域携带cookies</em></strong></li>
+    <li><strong><em>优缺点：支持所有的请求类型，get、post、put、delete、updata等等</em></strong></li>
+    <li><strong><em>所有浏览器都支持该功能(IE8+：IE8/9需要使用XDomainRequest对象来支持CORS）)，CORS也已经成为主流的跨域解决方案</em></strong></li>
+  </ul>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 原生
+...
+xhr.withCredentials = true
+...
+
+// jQuery
+$.ajax({
+    ...
+   xhrFields: {
+       withCredentials: true    // 前端设置是否带cookie
+   },
+   crossDomain: true,   // 会让请求头中包含跨域的额外信息，但不会含cookie
+    ...
+});
+
+// axios
+axios.defaults.withCredentials=true; // 让ajax携带cookie
+
+//服务端设置
+const app = express()
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*') // 访问控制允许来源：所有
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept') // 访问控制允许报头 X-Requested-With: xhr请求
+  res.header('Access-Control-Allow-Metheds', 'PUT, POST, GET, DELETE, OPTIONS') // 访问控制允许方法
+  res.header('X-Powered-By', 'nodejs') // 自定义头信息，表示服务端用nodejs
+  res.header('Content-Type', 'application/json;charset=utf-8')
+  res.header('Access-Control-Max-Age', '600')
+  next()
+})
+
+</code></pre></div></div>
+
+<h5 id="23-windowname--iframe跨域">2.3 window.name + iframe跨域</h5>
+
+<p><strong>原理：</strong> 一般用于iframe的跨域问题，在一个窗口（window）的生命周期内，窗口载入的所有的页面都是共享一个window.name的，每个页面的window.name都有读写的权限，并且是持久存在一个再如果的所有页面中</p>
+
+<blockquote>
+  <ul>
+    <li><strong><em>优缺点：通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。window.name支持非常长的name值(2MB)</em></strong></li>
+  </ul>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 在A页面设置函数
+
+var proxy = function(url, callback) {
+    var state = 0;
+    var iframe = document.createElement('iframe');
+ 
+    // 加载跨域页面
+    iframe.src = url;
+ 
+    // onload事件会触发2次，第1次加载跨域页，并留存数据于window.name
+    iframe.onload = function() {
+        if (state === 1) {
+            // 第2次onload(同域proxy页)成功后，读取同域window.name中数据
+            callback(iframe.contentWindow.name);
+            destoryFrame();
+ 
+        } else if (state === 0) {
+            // 第1次onload(跨域页)成功后，切换到同域代理页面
+            iframe.contentWindow.location = 'http://www.domain1.com/proxy.html';
+            state = 1;
+        }
+    };
+ 
+    document.body.appendChild(iframe);
+ 
+    // 获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）
+    function destoryFrame() {
+        iframe.contentWindow.document.write('');
+        iframe.contentWindow.close();
+        document.body.removeChild(iframe);
+    }
+};
+ 
+// 请求跨域b页面数据
+proxy('http://www.xxx.com/B.html', function(data){
+    alert(data);
+});
+
+
+// 在B页面设置window.name值
+&lt;script&gt;
+    window.name = 'B页面向A页面传递的数据';
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h5 id="24-h5属性-windowpostmessage">2.4 H5属性 window.postMessage</h5>
+
+<p><strong>原理：</strong> postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：</p>
+
+<blockquote>
+  <ol>
+    <li>页面和其打开的新窗口的数据传递</li>
+    <li>多窗口之间消息传递</li>
+    <li>页面与嵌套的iframe消息传递</li>
+    <li>上面三个场景的跨域数据传递</li>
+  </ol>
+</blockquote>
+
+<p>用法：postMessage(data,origin)方法接受两个参数
+data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。
+origin： 协议+主机+端口号，也可以设置为”*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/”。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> // A页面 
+&lt;iframe id="iframe" src="http://www.B.com/b.html" style="display:none;"&gt;&lt;/iframe&gt;
+&lt;script&gt;      
+    var iframe = document.getElementById('iframe');
+    iframe.onload = function() {
+        var data = {
+            msg: 'xxx'
+        };
+        // 向B传送跨域数据
+        iframe.contentWindow.postMessage(JSON.stringify(data), 'http://www.B.com');
+    };
+ 
+    // 接受B返回数据
+    window.addEventListener('message', function(e) {
+        alert('data from B ---&gt; ' + e.data);
+    }, false);
+&lt;/script&gt;
+
+
+// B页面
+&lt;script&gt;
+    // 接收A的数据
+    window.addEventListener('message', function(e) {
+        alert('data from A ---&gt; ' + e.data);
+ 
+        var data = JSON.parse(e.data);
+        if (data) {
+            data.number = 16;
+ 
+            // 处理后再发回A
+            window.parent.postMessage(JSON.stringify(data), 'http://www.A.com');
+        }
+    }, false);
+&lt;/script&gt;
+</code></pre></div></div>
+<h5 id="21-nodejs中间件代理跨域">2.1 nodejs中间件代理跨域</h5>
+<p><strong>原理：</strong> node中间件实现跨域代理，原理大致与nginx相同，都是通过启一个代理服务器，实现数据的转发</p>
+
+<p>node + vue + webpack-dev-server代理接口跨域，在开发模式下，只需要配置devServer=&gt;proxy即可</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.exports = {
+    entry: {},
+    module: {},
+    ...
+    devServer: {
+        historyApiFallback: true,
+        proxy: [{
+            target: 'http://www.B.com:8080',  // 代理跨域目标接口
+            changeOrigin: true,
+            cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
+        }],
+        noInfo: true
+    }
+}
+</code></pre></div></div>
+
+<p>在非框架类时nodejs使用http-proxy-middleware</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var proxy = require('http-proxy-middleware');
+var app = express();
+ 
+app.use('/', proxy({
+    // 代理跨域目标接口
+    target: 'http://www.B.com:8080',
+    changeOrigin: true,
+ 
+    // 修改响应头信息，实现跨域并允许带cookie
+    onProxyRes: function(proxyRes, req, res) {
+        res.header('Access-Control-Allow-Origin', 'http://www.A.com');
+        res.header('Access-Control-Allow-Credentials', 'true');
+    },
+ 
+    // 修改响应信息中的cookie域名
+    cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
+}));
+ 
+app.listen(5566);
+console.log('Proxy server is listen at port 5566...');
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="nodejs如何设置允许跨域">Node.js如何设置允许跨域</h3>
+
+<h4 id="1-设置允许所有域名跨域">1. 设置允许所有域名跨域：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.all("*",function(req,res,next){
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.header("Access-Control-Allow-Origin","*");
+    //允许的header类型
+    res.header("Access-Control-Allow-Headers","content-type");
+    //跨域允许的请求方式 
+    res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+</code></pre></div></div>
+
+<h4 id="2-设置允许指定域名httpwwwabccom跨域">2. 设置允许指定域名“http://www.ABC.com”跨域：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.all("*",function(req,res,next){
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.header("Access-Control-Allow-Origin","http://www.ABC.com");
+    //允许的header类型
+    res.header("Access-Control-Allow-Headers","content-type");
+    //跨域允许的请求方式 
+    res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+</code></pre></div></div>
+
+<h4 id="3-设置允许多个域名跨域">3. 设置允许多个域名跨域：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.all("*",function(req,res,next){
+    if( req.headers.origin.toLowerCase() == "http://www.ABC.com"
+        || req.headers.origin.toLowerCase() =="http://127.0.0.1" ) {
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+    }
+    //允许的header类型
+    res.header("Access-Control-Allow-Headers", "content-type");
+    //跨域允许的请求方式 
+    res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();    
+}
+</code></pre></div></div>
+
+<h4 id="4-如果允许的域名较多可以将允许跨域的域名放到数组当中">4. 如果允许的域名较多，可以将允许跨域的域名放到数组当中：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app.all("*",function(req,res,next){
+    var orginList=[
+        "http://www.ABC.com",
+        "http://www.alibaba.com",
+        "http://www.qq.com",
+        "http://www.baidu.com"
+    ]
+    if(orginList.includes(req.headers.origin.toLowerCase())){
+        //设置允许跨域的域名，*代表允许任意域名跨域
+        res.header("Access-Control-Allow-Origin",req.headers.origin);
+    }
+    //允许的header类型
+    res.header("Access-Control-Allow-Headers", "content-type");
+    //跨域允许的请求方式
+    res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+    if (req.method.toLowerCase() == 'options')
+        res.send(200);  //让options尝试请求快速结束
+    else
+        next();
+}
+</code></pre></div></div>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/10/MogoDB/" title="link to MogoDB(MacOS)">MogoDB(MacOS)</a></h2>
+       <p class="excerpt">一、安装  主要有如下三种安装方式，本文主要介绍对入门友好的第三种方式 +（1）手动命令安装 +（2）采用Homebrew +（3）下载安装包。      MongoDB Download        将解压后的文件放入 /usr/local ，默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按 shift + command +G 输入 /usr/local 后回车便能看到这个隐藏的目录了。        配置环境变量，打开终端，输...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-10-10 19:45:00 +0800" class="post-list__meta--date date">2019-10-10</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/MogoDB/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/10/MogoDB/" data-toggle="tooltip" data-placement="top" title="MogoDB(MacOS)">上一篇：  <span>MogoDB(MacOS)</span>
+        </a>
+    </li>
+    
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
