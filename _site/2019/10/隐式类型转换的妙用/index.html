@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>隐式类型转换的妙用</title>
+  <meta name="description" content="可变数组求和举例      function foo(...a){var sum = 0a.forEach((item) =&gt; {    sum += item  })return sum }console.log(foo(1,2,3,'4',11))        输出:    [Running] nod...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="隐式类型转换的妙用">
+  <meta name="twitter:description" content="可变数组求和举例      function foo(...a){var sum = 0a.forEach((item) =&gt; {    sum += item  })return sum }console.log(foo(1,2,3,'4',11))        输出:    [Running] nod...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="隐式类型转换的妙用">
+  <meta property="og:description" content="可变数组求和举例      function foo(...a){var sum = 0a.forEach((item) =&gt; {    sum += item  })return sum }console.log(foo(1,2,3,'4',11))        输出:    [Running] nod...">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/10/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%A6%99%E7%94%A8/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-10-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2019-10-19</time> &#8226; <span class="post-meta__tags tags">JavaScript</span>
+    </div>
+    <h1 class="post-title">隐式类型转换的妙用</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="可变数组求和举例">可变数组求和举例</h4>
+<ul>
+  <li>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function foo(...a){
+var sum = 0
+a.forEach((item) =&gt; {
+    sum += item  
+})
+return sum 
+}
+console.log(foo(1,2,3,'4',11))
+</code></pre></div>    </div>
+    <p><strong>输出:</strong></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Running] node "Untitled-1.js"
+6411
+</code></pre></div>    </div>
+    <hr />
+  </li>
+  <li>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function foo(...a){
+var sum = 0
+a.forEach((item) =&gt; {
+    sum += item * 1   // *1 隐式类型转换,把'4' 转换成4
+})
+return sum 
+}
+console.log(foo(1,2,3,'4',11))
+</code></pre></div>    </div>
+    <p><strong>输出:</strong></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Running] node "Untitled-1.js"
+21
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="link to 跨域及几种解决方法">跨域及几种解决方法</a></h2>
+       <p class="excerpt">一、 什么是跨域跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。例如：a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。注意：跨域限制访问，其实是浏览器的限制。      同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域  二、 解决跨域的几种方法2.1 JSONP原理： 动态创建一个sc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-10-14 00:00:00 +0800" class="post-list__meta--date date">2019-10-14</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="跨域及几种解决方法">上一篇：  <span>跨域及几种解决方法</span>
+        </a>
+    </li>
+    
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
