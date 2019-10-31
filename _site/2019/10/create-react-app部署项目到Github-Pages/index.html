@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>create-react-app部署项目到Github Pages</title>
+  <meta name="description" content="账单薄项目预览 mockAPI: API endpoint1. 创建项目">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="create-react-app部署项目到Github Pages">
+  <meta name="twitter:description" content="账单薄项目预览 mockAPI: API endpoint1. 创建项目">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="create-react-app部署项目到Github Pages">
+  <meta property="og:description" content="账单薄项目预览 mockAPI: API endpoint1. 创建项目">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/10/create-react-app%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0Github-Pages/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is,not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="http://willtien.com">Homepage</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-10-30 01:00:06 +0800" itemprop="datePublished" class="post-meta__date date">2019-10-30</time> &#8226; <span class="post-meta__tags tags">Tools</span>
+    </div>
+    <h1 class="post-title">create-react-app部署项目到Github Pages</h1>
+  </header>
+
+  <section class="post">
+    <p><a href="http://willtien.com/Account-app/">账单薄项目预览</a> <br />
+mockAPI: <a href="https://5db85da7177b350014ac796d.mockapi.io/api/v1/records">API endpoint</a></p>
+<h4 id="1-创建项目"><strong>1. 创建项目</strong></h4>
+
+<p>使用 create-react-app 脚手架创建项目</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install create-react-app 
+npm create-react-app my-app
+cd my-app
+npm start  // 运行
+
+npm run eject //解压默认webpack包，操作不可逆
+</code></pre></div></div>
+
+<h4 id="2-将本地的文件-push-至远端仓库"><strong>2. 将本地的文件 push 至远端仓库</strong></h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init         // 初始化一个文件夹为本地仓库
+git status    // 查看状态和是否存在.git文件
+git add .      // 添加到暂存区
+git commit -m '提交'            // 提交到版本库且增添提交备注
+git remote add origin {url}   // {url} 是你的GitHub上reponsitory地址
+git push -u origin master     // 将代码推送到GitHub
+</code></pre></div></div>
+
+<h4 id="3-github-pages-部署"><strong>3. Github Pages 部署</strong></h4>
+
+<p>把项目部署成GitHub pages，在GitHub上点开项目到设置，翻到Github Pages设置处，可以看到GitHub Pages只能使用master、gh-pages分支或者master下面的docs文件夹。
+这里使用的是gh-pages分支的方式来创建</p>
+
+<h4 id="4-安装-gh-pages"><strong>4. 安装 gh-pages</strong></h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install gh-pages --save-dev
+</code></pre></div></div>
+
+<p>通过 gh-pages 中间件，可以把 build 文件下的文件推送到 GitHub，并且创建 gh-pages branch</p>
+
+<h4 id="5-修改-packagejson"><strong>5. 修改 package.json</strong></h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "name": "react_demo",
+    "version": "1.1.0",
+    "private": true,
+  + "homepage": "./",  // 表示你访问的页面
+},
+</code></pre></div></div>
+
+<ul>
+  <li>注意：homepage 不要设置成 github page上生成的那个链接路径，比如https://username.github.io/react_demo/。如果设置成上面的连接，build打的包会这所有路径前面加上react_demo。比如 index.html 文件中对同等目录下的文件引用应该是 src=’./index.css’，结果会变成src=’./react_demo/index.css’，这样部署后肯定无法访问，所有资源都找不到。</li>
+</ul>
+
+<p>增加npm scripts命令，推送gh-pages</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"scripts": {
+        ...
+  + "predeploy": "npm run build" , // 将你的项目预编译成静态文件放在build文件夹
+  + "deploy": "gh-pages -d build"  // 是使用gh-pages 部署你的build文件夹下的内容
+},
+</code></pre></div></div>
+
+<p>注意修改之后注意也 push 上去</p>
+<h4 id="6-推送项目"><strong>6. 推送项目</strong></h4>
+
+<p>GitHub Pages只是部署项目，react代码直接放上去是识别不了的，所以部署的是打包编译后到代码</p>
+
+<p><code class="highlighter-rouge">npm run build</code></p>
+<blockquote>
+  <p><strong>Webpack 4.X打包Bootstrap4.x失败解决办法</strong></p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install jquery --save // Bootstrap4.x 依赖JQuery，所以需要先安装JQuery
+npm install popper.js --save // Bootstrap4.x 依赖Popper，所以需要先安装Popper
+npm install bootstrap --save // 安装Bootstrap4.x
+</code></pre></div>  </div>
+</blockquote>
+
+<p>编译后就可以推送了,执行上面配置的命令。</p>
+
+<p><code class="highlighter-rouge">npm run deploy</code></p>
+
+<p>这时github上项目就多出了一个gh-pages的branch，在设置中Github Pages处选择gh-pages分支保存，部署完成。
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8hni5w4moj30kf0gm0t6.jpg" alt="" /></p>
+
+<p><strong>部署时候具体执行的操作大概为：</strong></p>
+<ol>
+  <li>按照 package.json 里面增加配置代码</li>
+  <li>build 打包编译代码文件</li>
+  <li>使用 gh-pages 工具把 build 文件下的文件推送到 GitHub部署到新的gh-pages分支上</li>
+  <li>发布页面</li>
+</ol>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/10/TCP%E5%92%8CUDP%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" title="link to TCP和UDP的简单理解">TCP和UDP的简单理解</a></h2>
+       <p class="excerpt">1. TCP 和 UDP 的区别  TCP 是面向连接的，UDP 是面向无连接的  UDP程序结构较简单  TCP 是面向字节流的，UDP 是基于数据报的  TCP 保证数据正确性，UDP 可能丢包  TCP 保证数据顺序，UDP 不保证2. 什么是面向连接，什么是面向无连接?在互通之前，面向连接的协议会先建立连接，如 TCP 有三次握手，而 UDP 不会3. TCP三次握手?  1.客户端发起请求（寻址请求） 2.服务端收到请求，然后回应请求（确认请求） 3.客户端收到服务端的回应报文并...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-10-21 01:00:06 +0800" class="post-list__meta--date date">2019-10-21</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/10/TCP%E5%92%8CUDP%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/10/TCP%E5%92%8CUDP%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="TCP和UDP的简单理解">上一篇：  <span>TCP和UDP的简单理解</span>
+        </a>
+    </li>
+    
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置>-->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+ -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

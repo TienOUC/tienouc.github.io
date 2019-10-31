@@ -126,6 +126,20 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/create-react-app%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0Github-Pages/" title="访问 create-react-app部署项目到Github Pages">create-react-app部署项目到Github Pages</a></h2>
+      <p class="excerpt">账单薄项目预览 mockAPI: API endpoint1. 创建项目使用 create-react-app 脚手架创建项目npm install create-react-app npm create-react-app my-appcd my-appnpm start  // 运行npm run eject //解压默认webpack包，操作不可逆2. 将本地的文件 push 至远端仓库git init         // 初始化一个文件夹为本地仓库git status    //...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-30 01:00:06 +0800" class="post-list__meta--date date">2019-10-30</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/10/create-react-app%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0Github-Pages/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/TCP%E5%92%8CUDP%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" title="访问 TCP和UDP的简单理解">TCP和UDP的简单理解</a></h2>
+      <p class="excerpt">1. TCP 和 UDP 的区别  TCP 是面向连接的，UDP 是面向无连接的  UDP程序结构较简单  TCP 是面向字节流的，UDP 是基于数据报的  TCP 保证数据正确性，UDP 可能丢包  TCP 保证数据顺序，UDP 不保证2. 什么是面向连接，什么是面向无连接?在互通之前，面向连接的协议会先建立连接，如 TCP 有三次握手，而 UDP 不会3. TCP三次握手?  1.客户端发起请求（寻址请求） 2.服务端收到请求，然后回应请求（确认请求） 3.客户端收到服务端的回应报文并...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-21 01:00:06 +0800" class="post-list__meta--date date">2019-10-21</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/10/TCP%E5%92%8CUDP%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2019/10/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%A6%99%E7%94%A8/" title="访问 隐式类型转换的妙用">隐式类型转换的妙用</a></h2>
       <p class="excerpt">可变数组求和举例      function foo(...a){var sum = 0a.forEach((item) =&gt; {    sum += item  })return sum }console.log(foo(1,2,3,'4',11))        输出:    [Running] node "Untitled-1.js"6411                function foo(...a){var sum = 0a.forEach((item) =&gt; ...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-10-19 00:00:00 +0800" class="post-list__meta--date date">2019-10-19</time> &#8226; <span class="post-list__meta--tags tags">JavaScript</span><a class="btn-border-small" href=/2019/10/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%A6%99%E7%94%A8/>继续阅读</a></div>
@@ -164,20 +178,6 @@
       <h2 class="post-list__post-title post-title"><a href="/2019/08/Webpack/" title="访问 Webpack笔记">Webpack笔记</a></h2>
       <p class="excerpt">      网易云免费课程-Webpack打包工具用法    在网易云课堂初学webpack3.0用法，在实践过程中发现4.0版本变动较大，暂先转载该篇优秀博文并结合官方文档以做后续学习参考，原博文链接见文末。全局安装webpacknpm install webpack webpack-cli -g全局安装webpack会有个问题，就是当你有两个项目依赖于不同版本的webpack，就会有一个项目打包不了，所以还是不全局安装webpack比较好。在当前项目安装webpack      新建w...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-08-19 01:00:06 +0800" class="post-list__meta--date date">2019-08-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/08/Webpack/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/" title="访问 Js垃圾收集机制原理">Js垃圾收集机制原理</a></h2>
-      <p class="excerpt">1. 原理：  找出那些不再继续使用的变量，然后释放其占用的内存，垃圾收集器会按照固定的时间间隔，或是在代码执行中预订的收集时间，去周期性的执行这个操作，完成垃圾的清理。2. 局部变量的生命周期:  在函数执行的过程中，才存在有局部变量，在这个过程中，浏览器引擎会为局部变量在栈或是堆内存上分配相应的空间，以便存储这些值。在函数执行结束后，局部变量就没有存在的必要了，因此可以释放它们所占用的内存以供将来使用。这种情况下会比较好判断变量有没有必要存在了，但是作用域还没有结束，当前变量还被其他地...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-08-18 04:15:06 +0800" class="post-list__meta--date date">2019-08-18</time> &#8226; <span class="post-list__meta--tags tags">Javascript</span><a class="btn-border-small" href=/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/" title="访问 MVVM框架理解">MVVM框架理解</a></h2>
-      <p class="excerpt">说起这个MVVM模型，就不得不说MVC框架。将整个前端页面分成View，Controller，Modal，视图上发生变化，通过Controller（控件）将响应传入到Model（数据源），由数据源改变View上面的数据。整个过程看起来是行云流水，业务逻辑放在Model当中，页面渲染逻辑放在View当中，但在实际运用上却存在一个问题：那就是MVC框架允许View和Model直接进行通信！！换句话说，View和Model之间随着业务量的不断庞大，会出现蜘蛛网一样难以处理的依赖关系，完全背离了开...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-08-09 05:00:06 +0800" class="post-list__meta--date date">2019-08-09</time> &#8226; <span class="post-list__meta--tags tags">WEB</span><a class="btn-border-small" href=/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/>继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
     

@@ -192,38 +192,50 @@ npm install webpace@4.29.6 --save-dev
 
 <h3 id="webpack手动打包命令"><strong>webpack手动打包命令</strong></h3>
 
-<p>``` npx webpack /<strong>默认会使用根目录下的webpack.config.js配置文件进行打包</strong>/
-npx webpack –config webpack.config.js /<strong>指定配置文件打包</strong>/</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-### **使用npm scripts 简化webpack命令**
+<p><code class="highlighter-rouge"> npx webpack /**默认会使用根目录下的webpack.config.js配置文件进行打包**/
+npx webpack --config webpack.config.js /**指定配置文件打包**/
+</code></p>
 
-1. 在package.json中的scripts字段下添加bundle字段
-`"bundle": "webpack"`   
+<h3 id="使用npm-scripts-简化webpack命令"><strong>使用npm scripts 简化webpack命令</strong></h3>
 
-2. 使用npm命令打包
-`npm run bundle`   
+<ol>
+  <li>在package.json中的scripts字段下添加bundle字段</li>
+</ol>
 
-## **使用file-loader打包图片**
+<p><code class="highlighter-rouge">"bundle": "webpack"</code></p>
 
-1. 安装file-loader
-`npm install file-loader --save-dev`   
+<ol>
+  <li>使用npm命令打包</li>
+</ol>
 
-2. 在配置文件webpack.config.js中添加字段
-```js
-module: {
-    rules: [
-        {
-            test: /\.(jpg|png|svg|gif)$/,
-            use: {           
-                loader: 'file-loader',
-                options: {
-                   name: '[name].[ext]', /**原名字输出**/
-                   outputPath: 'images/', /**打包后存放图片的文件夹**/
-                }
-            }
-        }
-    ]
-}
+<p><code class="highlighter-rouge">npm run bundle</code></p>
+
+<h2 id="使用file-loader打包图片"><strong>使用file-loader打包图片</strong></h2>
+
+<ol>
+  <li>安装file-loader</li>
+</ol>
+
+<p><code class="highlighter-rouge">npm install file-loader --save-dev</code></p>
+
+<ol>
+  <li>在配置文件webpack.config.js中添加字段</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">jpg|png|svg|gif</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+            <span class="na">use</span><span class="p">:</span> <span class="p">{</span>           
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader'</span><span class="p">,</span>
+                <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                   <span class="na">name</span><span class="p">:</span> <span class="s1">'[name].[ext]'</span><span class="p">,</span> <span class="cm">/**原名字输出**/</span>
+                   <span class="na">outputPath</span><span class="p">:</span> <span class="s1">'images/'</span><span class="p">,</span> <span class="cm">/**打包后存放图片的文件夹**/</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h3 id="使用url-loader打包图片"><strong>使用url-loader打包图片</strong></h3>
