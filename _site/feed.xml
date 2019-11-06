@@ -5,9 +5,129 @@
     <description>The truth is what it is,not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 Oct 2019 20:26:47 +0800</pubDate>
-    <lastBuildDate>Thu, 31 Oct 2019 20:26:47 +0800</lastBuildDate>
+    <pubDate>Wed, 06 Nov 2019 18:19:04 +0800</pubDate>
+    <lastBuildDate>Wed, 06 Nov 2019 18:19:04 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>vue父子组件之间的传值</title>
+        <description>&lt;h3 id=&quot;1-父组件向子组件传值&quot;&gt;1. 父组件向子组件传值&lt;/h3&gt;
+
+&lt;h4 id=&quot;-11-第一个就是要明白怎么在父页面中向子组件中传值&quot;&gt;  1.1 第一个就是要明白怎么在父页面中向子组件中传值？&lt;/h4&gt;
+
+&lt;p&gt;你可以给子组件传入一个静态的值：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g8ogdk4eofj30gq01ft8i.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但我们一般都是需要传动态的值，所以需要v-bind绑定：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g8ogdyto18j30gn038747.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然，你传的值可以是数字、对象、数组等等，参见vue官网。&lt;/p&gt;
+
+&lt;h4 id=&quot;-12-第二个就是要知道如何在子组件中接受父页面传过来的值有几点需要了解&quot;&gt;  1.2 第二个就是要知道如何在子组件中接受父页面传过来的值，有几点需要了解：&lt;/h4&gt;
+
+&lt;p&gt;组件实例的作用域是孤立的；&lt;/p&gt;
+
+&lt;p&gt;子组件要显式的用props选项声明它预期的数据，如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 某个子组件中：
+export default {
+  props: {
+    title: {
+      type: String,
+      default: 'hello world'
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后就可以在页面中使用了，具体我们在项目中体现。&lt;/p&gt;
+
+&lt;p&gt;以上就是单向数据流的一般表现了： &lt;strong&gt;父级 prop 的更新会向下流动到子组件中，但是反过来则不行。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-子组件向父组件传值&quot;&gt;2. 子组件向父组件传值&lt;/h3&gt;
+
+&lt;p&gt;那么我们延伸一下，子组件怎么向父组件传值？&lt;/p&gt;
+
+&lt;h4 id=&quot;-21-基本概念&quot;&gt;  2.1 基本概念&lt;/h4&gt;
+
+&lt;p&gt;在Vue中，父子组件的关系可以总结为&lt;code class=&quot;highlighter-rouge&quot;&gt;prop&lt;/code&gt;向下传递，事件向上传递。父组件通过&lt;code class=&quot;highlighter-rouge&quot;&gt;prop&lt;/code&gt;给子组件下发数据，子组件通过&lt;code class=&quot;highlighter-rouge&quot;&gt;事件&lt;/code&gt;给父组件发送信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/006y8mN6ly1g8ogedzh3aj306u06smx0.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;props down , events up
+每个Vue实例都实现了事件接口：使用&lt;code class=&quot;highlighter-rouge&quot;&gt;$on(evntName)&lt;/code&gt;监听事件；使用&lt;code class=&quot;highlighter-rouge&quot;&gt;$emit(eventName,optionalPayload)&lt;/code&gt;触发事件。另外，父组件可以在使用子组件的地方直接用&lt;code class=&quot;highlighter-rouge&quot;&gt;v-on&lt;/code&gt;来监听子组件触发的事件。&lt;/p&gt;
+
+&lt;h4 id=&quot;-22-举例说明&quot;&gt;  2.2 举例说明&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;父组件在组件上定义了一个自定义事件&lt;code class=&quot;highlighter-rouge&quot;&gt;childFn&lt;/code&gt;，事件名为&lt;code class=&quot;highlighter-rouge&quot;&gt;parentFn&lt;/code&gt;用于接受子组件传过来的&lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- 父组件 --&amp;gt;
+&amp;lt;template&amp;gt;
+    &amp;lt;div class=&quot;test&quot;&amp;gt;
+      &amp;lt;test-com @childFn=&quot;parentFn&quot;&amp;gt;&amp;lt;/test-com&amp;gt;
+      &amp;lt;br/&amp;gt; 
+      子组件传来的值 : 
+    &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+    // ...
+    data: {
+        message: ''
+    },
+    methods: {
+       parentFn(payload) {
+        this.message = payload;
+      }
+    }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;子组件是一个&lt;code class=&quot;highlighter-rouge&quot;&gt;buttton&lt;/code&gt;按钮，并为其添加了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;click&lt;/code&gt;事件，当点击的时候使用&lt;code class=&quot;highlighter-rouge&quot;&gt;$emit()&lt;/code&gt;触发事件，把&lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;传给父组件。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- 子组件 --&amp;gt;
+&amp;lt;template&amp;gt; 
+&amp;lt;div class=&quot;testCom&quot;&amp;gt;
+    &amp;lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&amp;gt;
+    &amp;lt;button @click=&quot;click&quot;&amp;gt;Send&amp;lt;/button&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+export default {
+    // ...
+    data() {
+        return {
+          // 默认
+          message: '我是来自子组件的消息'
+        }
+    },
+    methods: {
+      click() {
+            this.$emit('childFn', this.message);
+        }
+    }    
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样我们就基本实现了子组件向父组件发送值了。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Nov 2019 17:28:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/11/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/11/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/</guid>
+        
+        <category>WEB/Framework</category>
+        
+        
+      </item>
     
       <item>
         <title>create-react-app部署项目到Github Pages</title>
@@ -2196,266 +2316,6 @@ new HtmlWebpackPlugin({
         <guid isPermaLink="true">http://localhost:4000/2019/08/JS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86/</guid>
         
         <category>Javascript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>MVVM框架理解</title>
-        <description>&lt;p&gt;说起这个MVVM模型，就不得不说MVC框架。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tNc79ly1g5sew3t04hj30k009fq32.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;将整个前端页面分成View，Controller，Modal，视图上发生变化，通过Controller（控件）将响应传入到Model（数据源），由数据源改变View上面的数据。&lt;/p&gt;
-
-&lt;p&gt;整个过程看起来是行云流水，业务逻辑放在Model当中，页面渲染逻辑放在View当中，但在实际运用上却存在一个问题：那就是&lt;strong&gt;MVC框架允许View和Model直接进行通信！！&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;换句话说，View和Model之间随着业务量的不断庞大，会出现蜘蛛网一样难以处理的依赖关系，完全背离了开发所应该遵循的&lt;strong&gt;“开放封闭原则”&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;面对这个问题，MVVM框架就出现了，它与MVC框架的主要区别有两点： &lt;br /&gt;
-&lt;strong&gt;1、 实现数据与视图的分离&lt;/strong&gt; &lt;br /&gt;
-&lt;strong&gt;2、 通过数据来驱动视图，开发者只需要关心数据变化，DOM操作被封装了。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/006tNc79ly1g5sewbb03uj30l50cddg8.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到MVVM分别指View，Model，View-Model，View通过View-Model的DOM Listeners将事件绑定到Model上，而Model则通过Data Bindings来管理View中的数据，View-Model从中起到一个连接桥的作用。&lt;/p&gt;
-
-&lt;h3 id=&quot;mvvm的实现原理&quot;&gt;MVVM的实现原理：&lt;/h3&gt;
-
-&lt;p&gt;MVVM的实现主要是三个核心点：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;响应式：vue如何监听data的属性变化&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;模板解析：vue的模板是如何被解析的&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;渲染：vue模板是如何被渲染成HTML的&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;响应式&quot;&gt;响应式：&lt;/h3&gt;
-
-&lt;p&gt;对于MVVM来说，data一般是放在一个对象当中，就比如这样：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         var obj = {
-             name: 'zhangsan',
-             age: 25
-         }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;当我们访问或修改obj的属性的时候，比如：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         console.log（obj.name）  //访问
-         obj.age = 22            //修改
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;但是这样的操作vue本身是没有办法感知到的，那么应该如何让vue知道我们进行了访问或是修改的操作呢？
-那就要使用Object.defineProperty&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var vm = {}
-        var data = {
-            name: 'zhangsan',
-            age: 20
-        }
-
-        var key, value
-        for (key in data) {
-            (function (key) {
-                Object.defineProperty(vm, key, {
-                    get: function () {
-                        console.log('get', data[key]) // 监听
-                        return data[key]
-                    },
-                    set: function (newVal) {
-                        console.log('set', newVal) // 监听
-                        data[key] = newVal
-                    }
-                })
-            })(key)
-        }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;通过Object.defineProperty将data里的每一个属性的访问与修改都变成了一个函数，在函数get和set中我们即可监听到data的属性发生了改变。&lt;/p&gt;
-
-&lt;h3 id=&quot;模板解析&quot;&gt;模板解析：&lt;/h3&gt;
-
-&lt;p&gt;首先模板是什么？&lt;/p&gt;
-
-&lt;p&gt;模板本质上是一串字符串，它看起来和html的格式很相像，实际上有很大的区别，因为模板本身还带有逻辑运算，比如v-if，v-for等等，但它最后还是要转换为html来显示。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;app&quot;&amp;gt;
-  &amp;lt;div&amp;gt;
-    &amp;lt;input v-model=&quot;title&quot; /&amp;gt;
-    &amp;lt;button v-on:click=&quot;add&quot;&amp;gt;submit&amp;lt;/button&amp;gt;
-  &amp;lt;/div&amp;gt;
-  &amp;lt;div&amp;gt;
-    &amp;lt;ul&amp;gt;
-      &amp;lt;li v-for=&quot;item in list&quot;&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;模板在vue中必须转换为JS代码，原因在于：在前端环境下，只有JS才是一个图灵完备语言，才能实现逻辑运算，以及渲染为html页面。&lt;/p&gt;
-
-&lt;p&gt;这里就引出了vue中一个特别重要的函数——&lt;strong&gt;render&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;render函数中的核心就是with函数。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;with函数将某个对象添加到作用域链的顶部，如果在 statement中有某个未使用命名空间的变量，跟作用域链中的某个属性同名，则这个变量将指向这个属性值。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;举个例子：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;       var obj = {
-            name: 'zhangsan',
-            age: 20,
-            getAddress: function () {
-                alert('beijing')
-            }
-        }
-        function fn1() {
-            with(obj) {
-                alert(age)
-                alert(name)
-                getAddress()
-            }
-        }
-        fn1()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;with将obj这个对象放在了自己函数的作用域链的顶部，当执行下列函数时，就会自动到obj这个对象去寻找同名的属性。&lt;/p&gt;
-
-&lt;p&gt;而在render函数中，with的用法是这样：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;app&quot;&amp;gt;
-  &amp;lt;div&amp;gt;
-    &amp;lt;input v-model=&quot;title&quot; /&amp;gt;
-    &amp;lt;button v-on:click=&quot;add&quot;&amp;gt;submit&amp;lt;/button&amp;gt;
-  &amp;lt;/div&amp;gt;
-  &amp;lt;div&amp;gt;
-    &amp;lt;ul&amp;gt;
-      &amp;lt;li v-for=&quot;item in list&quot;&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;/ul&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // 对应的js文件
-        var data = {
-            title: '',
-            list: []
-        }
-        // 初始化 Vue 实例
-        var vm = new Vue({
-            el: '#app',
-            data: data,
-            methods: {
-                add: function () {
-                    this.list.push(this.title)
-                    this.title = ''
-                }
-            }
-        })
-
-        
-        with(this){  // this 就是 vm
-            return _c(
-                'div',
-                {
-                    attrs:{&quot;id&quot;:&quot;app&quot;}
-                },
-                [
-                    _c(
-                        'div',
-                        [
-                            _c(
-                                'input',
-                                {
-                                    directives:[
-                                        {
-                                            name:&quot;model&quot;,
-                                            rawName:&quot;v-model&quot;,
-                                            value:(title),
-                                            expression:&quot;title&quot;
-                                        }
-                                    ],
-                                    domProps:{
-                                        &quot;value&quot;:(title)
-                                    },
-                                    on:{
-                                        &quot;input&quot;:function($event){
-                                            if($event.target.composing)return;
-                                            title=$event.target.value
-                                        }
-                                    }
-                                }
-                            ),
-                            _v(&quot; &quot;),
-                            _c(
-                                'button',
-                                {
-                                    on:{
-                                        &quot;click&quot;:add
-                                    }
-                                },
-                                [_v(&quot;submit&quot;)]
-                            )
-                        ]
-                    ),
-                    _v(&quot; &quot;),
-                    _c('div',
-                        [
-                            _c(
-                                'ul',
-                                _l((list),function(item){return _c('li',[_v(_s(item))])})
-                            )
-                        ]
-                    )
-                ]
-            )
-        }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在一开始，因为new操作符，所以this指向了vm，通过with我们将vm这个对象放在作用域链的顶部，因为在函数内部我们会多次调用vm内部的属性，所以使用with可以缩短变量长度，提供系统运行效率。&lt;/p&gt;
-
-&lt;p&gt;其中的_c函数表示的是创建一个新的html元素，其基本用法为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_c(element,{attrs},[children...])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;其中的element表示所要创建的html元素类型，attrs表示所要创建的元素的属性，children表示该html元素的子元素。&lt;/p&gt;
-
-&lt;p&gt;_v函数表示创建一个文本节点，_l函数表示创建一个数组。&lt;/p&gt;
-
-&lt;p&gt;最终render函数返回的是一个虚拟DOM。&lt;/p&gt;
-
-&lt;h3 id=&quot;如何将模板渲染为html&quot;&gt;如何将模板渲染为html&lt;/h3&gt;
-
-&lt;p&gt;模板渲染为html分为两种情况，第一种是初次渲染的时候，第二种是渲染之后数据发生改变的时候，它们都需要调用updateComponent,其形式如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vm._update(vnode){
-  const prevVnode = vm._vnode
-  vm._vnode = vnode
-  if (!prevVnode){
-    vm.$el = vm.__patch__(vm.$el,vnode)
-  } else {
-    vm.$el = vm.__patch__(prevVnode,vnode)
-  }
-}
-
-function updateComponent(){
-  vm._update(vm._render())
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;首先读取当前的虚拟DOM——vm._vnode,判断其是否为空，若为空，则为初次渲染，将虚拟DOM全部渲染到所对应的容器当中（vm.$el），若不为空，则是数据发生了修改，通过响应式我们可以监听到这一情况，使用diff算法完成新旧对比并修改。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;转自&lt;/strong&gt;-&lt;a href=&quot;https://segmentfault.com/a/1190000015895017&quot;&gt;&lt;strong&gt;原文链接&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 09 Aug 2019 05:00:06 +0800</pubDate>
-        <link>http://localhost:4000/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/08/MVVM%E6%A1%86%E6%9E%B6%E7%90%86%E8%A7%A3/</guid>
-        
-        <category>WEB</category>
         
         
       </item>

@@ -2,7 +2,7 @@
 title: Tien
 #subtitle: 日就月将，渐益堆积。
 description: The truth is what it is,not what you see.
-welcome_message: <a href="http://willtien.com">Homepage</a>
+welcome_message: <a href="">Welcome your coming!</a>
 #welcome_message: <a href="#" target="_blank">Download the theme</a>
 #creator: <a href="http://xxx.com">@yourID</a>
 
@@ -15,7 +15,7 @@ permalink: /:year/:month/:title/
 highlighter: rouge
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: 
+cover_color: blue
 
 # The blog button should not be removed.
 blog_button:
@@ -25,7 +25,6 @@ blog_button:
 # Navigation buttons in the front page.
 nav:
     - {title: Projects, description: Projects, url: 'https://willtien.com/Projects'}
-   # - {title: Resume, description: Resume, url: 'https://willtien.com/Resume'} 
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
