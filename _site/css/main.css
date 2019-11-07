@@ -273,7 +273,7 @@ td:last-child {
 .content-wrapper__inner {
   margin: 0 10%;
   padding: 50px 0;
-  max-width: 850px; }
+  max-width: 100%; }
 
 .footer {
   display: block;
