@@ -21,7 +21,7 @@ tag: Tools
 4. 将复制的元标记（meta标签）粘贴到入口文件的head标签中
 ![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn0wk2ptwj31ds0s0di5.jpg)   
 
-5. 待入口文件更新后，在网页端查看源码，显示步骤3中复制的元标记（meta标签）已添加到入口文件head中，此时再点击步骤3中的验证按钮
+5. 待入口文件更新后，在网页端查看源码，显示步骤3中复制的元标记（meta标签）已添加到入口文件head中，此时再点击步骤3中的验证按钮 
 ![](https://tva1.sinaimg.cn/large/0082zybply1gbn4rhk5vnj31dn0rignn.jpg)   
 
 6. 验证成功，点击前往资源页面
