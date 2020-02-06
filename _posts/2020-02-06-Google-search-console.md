@@ -15,4 +15,18 @@ tag: Tools
 2. 使用网址前缀验证，输入网址
 ![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn075v0wqj31g90g5aah.jpg)   
 
-3. 
+3. 选择HTML标记验证
+![](https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0lnr8xej30gk0tu0ts.jpg)   
+
+4. 将复制的meta标签粘贴到入口文件的head标签中，待网站文件更新后，点击步骤3中的验证
+![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn0wk2ptwj31ds0s0di5.jpg)   
+
+5. 验证成功
+![](https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0o37mhtj30lg0kht99.jpg)   
+
+6. 网页端查看源码，显示meta标签已加入head标签
+![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn12ded1ej31kg0u0ju4.jpg)   
+
+7. 进入Google Serach Console管理页面，待数据更新后即可查看网站的展现数据
+![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn15tr2joj31kc0u0ta1.jpg)   
+![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn18qbhg4j31is0u0jsl.jpg)
