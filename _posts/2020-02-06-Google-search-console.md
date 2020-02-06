@@ -24,7 +24,7 @@ tag: Tools
 5. 验证成功
 ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0o37mhtj30lg0kht99.jpg)   
 
-6. 网页端查看源码，显示meta标签已加入head标签
+6. 网页端查看源码，显示步骤3中复制的元标记（meta标签）已更新
 ![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn12ded1ej31kg0u0ju4.jpg)   
 
 7. 进入Google Serach Console管理页面，待数据更新后即可查看网站的展现数据
