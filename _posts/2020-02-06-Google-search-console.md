@@ -27,6 +27,6 @@ tag: Tools
 6. 验证成功，点击前往资源页面
 ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0o37mhtj30lg0kht99.jpg)   
 
-7. 进入Google Serach Console管理页面，待数据更新后即可查看网站的展现数据
+7. 进入Google Search Console管理页面，待数据更新后即可查看网站的展现数据
 ![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn15tr2joj31kc0u0ta1.jpg)   
 ![](https://tva1.sinaimg.cn/large/006tNbRwly1gbn18qbhg4j31is0u0jsl.jpg)
