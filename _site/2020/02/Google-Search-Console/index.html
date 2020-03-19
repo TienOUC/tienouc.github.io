@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>input标签的兼容问题</title>
-  <meta name="description" content="1. input需要清掉哪些默认样式，和兼容问题如何解决？ `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   ">
+  <title>Google search console</title>
+  <meta name="description" content="一、什么是Google Search Console">
   <meta name="author" content="Tien">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="input标签的兼容问题">
-  <meta name="twitter:description" content="1. input需要清掉哪些默认样式，和兼容问题如何解决？ `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   ">
+  <meta name="twitter:title" content="Google search console">
+  <meta name="twitter:description" content="一、什么是Google Search Console">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="input标签的兼容问题">
-  <meta property="og:description" content="1. input需要清掉哪些默认样式，和兼容问题如何解决？ `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   ">
+  <meta property="og:title" content="Google search console">
+  <meta property="og:description" content="一、什么是Google Search Console">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2019/05/input%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/">
+  <link rel="canonical" href="http://localhost:4000/2020/02/Google-Search-Console/">
   <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
   
 <!-- Google search console -->
@@ -124,64 +124,73 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">input标签的兼容问题</h1>
+    <h1 class="post-title">Google search console</h1>
     <div class="post-meta">
-      <time datetime="2019-05-10 06:10:03 +0800" itemprop="datePublished" class="post-meta__date date">2019-05-10</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2020-02-07 04:46:06 +0800" itemprop="datePublished" class="post-meta__date date">2020-02-07</time> &#8226; <span class="post-meta__tags tags">Tools</span>
     </div>
     <hr />
   </header>
 
   <section class="post">
-    <h3 id="1-input需要清掉哪些默认样式和兼容问题如何解决">1. input需要清掉哪些默认样式，和兼容问题如何解决？</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> `input{outline:none;border:none;background:none;}`   (清除以上边界后单独设置颜色和padding，可解决IE浏览器input边框不准导致浮动错位和光标的问题)   
-</code></pre></div></div>
+    <h4 id="一什么是google-search-console">一、什么是Google Search Console</h4>
 
-<h3 id="2-如何解决ie8一下的input框文字偏上问题">2. 如何解决IE8一下的input框文字偏上问题？</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`input{ float:left; line-height:30px\9;}`
-\9  是针对所有IE浏览器的CSS hack解决；以上可解决框内的文字偏移问题；
-框外的文字不对齐，需框外元素，input共同设置`vertical-align：middle`；即可（垂直居中，对应`text-align:center`;）
-这个是css hack 写法,  \9:支持IE浏览器
-\0:支持IE8浏览器.   
-</code></pre></div></div>
+<p>  <a href="https://search.google.com/search-console/welcome?hl=zh-CN&amp;utm_source=about-page">Search Console</a> 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 <code class="highlighter-rouge">SEOer</code> 必要的使用工具。</p>
 
-<h3 id="3-input高度最好不要给100而是给实际的32px兼容ie浏览器更好">3. input高度最好不要给100%，而是给实际的32px；兼容IE浏览器更好；</h3>
+<h4 id="二使用方法">二、使用方法</h4>
+<ol>
+  <li>
+    <p>用谷歌账号登录<a href="https://search.google.com/search-console/welcome?hl=zh-CN&amp;utm_source=about-page">Google Search Console</a></p>
+  </li>
+  <li>
+    <p>使用网址前缀验证，输入网址
+<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gbn075v0wqj31g90g5aah.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>选择HTML标记验证
+<img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0lnr8xej30gk0tu0ts.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>将复制的元标记（meta标签）粘贴到入口文件的head标签中
+<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gbn0wk2ptwj31ds0s0di5.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>待入口文件更新后，在网页端查看源码，显示步骤3中复制的元标记（meta标签）已添加到入口文件head中，此时再点击步骤3中的验证按钮 
+<img src="https://tva1.sinaimg.cn/large/0082zybply1gbn4rhk5vnj31dn0rignn.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>验证成功，点击前往资源页面
+<img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbn0o37mhtj30lg0kht99.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>进入Google Search Console管理页面，待数据更新后即可查看网站的展现数据
+<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gbn15tr2joj31kc0u0ta1.jpg" alt="" /> <br />
+<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gbn18qbhg4j31is0u0jsl.jpg" alt="" /></p>
+  </li>
+</ol>
 
   </section>
 </article>
 
 <section class="read-more">
    <!-- 
-    -->
-   <!-- <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/" title="link to HTML5音/视频">HTML5音/视频</a></h2>
-       <p class="excerpt">一、HTML5 视频video 元素支持三种视频格式：            格式      IE      Firefox      Opera      Chrome      Safari              Ogg      No      3.5+      10.5+      5.0+      No              MPEG 4      9.0+      No      No      5.0+      3.0+              WebM  ...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2019-05-15 04:37:00 +0800" class="post-list__meta--date date">2019-05-15</time> &#8226; <span class="post-list__meta--tags tags">WEB/Html</span><a class="btn-border-small" href=/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/>继续阅读</a></div>
-   </div>
-   
    
    
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2019/05/CSS3-transform/" title="link to CSS图片旋转-transform">CSS图片旋转-transform</a></h2>
-       <p class="excerpt">html&lt;!DOCTYPE html&gt;&lt;html lang="zh-CN"&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;&lt;style&gt;    .mainDiv{        width:100px;        height:100px;        margin:100px auto;        text-alig...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2019-05-08 01:00:06 +0800" class="post-list__meta--date date">2019-05-08</time> &#8226; <span class="post-list__meta--tags tags">WEB/CSS</span><a class="btn-border-small" href=/2019/05/CSS3-transform/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2019/12/v-model%E5%8E%9F%E7%90%86/" title="link to v-model原理">v-model原理</a></h2>
+       <p class="excerpt">1.v-model其实是一个语法糖，本质上是如下两个操作：  a)  v-bind绑定一个value属性  b)  v-on指令给当前元素绑定input事件示例    &lt;div id="app"&gt;        &lt;input type="text" v-bind:value = "message" v-on:input = "valueChange"&gt;        &lt;h2&gt;&lt;/h2&gt;    &lt;/div&gt;    &lt;scrip...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-12-17 02:46:06 +0800" class="post-list__meta--date date">2019-12-17</time> &#8226; <span class="post-list__meta--tags tags">Framework/Vue</span><a class="btn-border-small" href=/2019/12/v-model%E5%8E%9F%E7%90%86/>继续阅读</a></div>
    </div>
     -->
 
    <ul class="pager">
     
     <li class="previous">
-        <a href="/2019/05/CSS3-transform/" data-toggle="tooltip" data-placement="top" title="CSS图片旋转-transform">上一篇：  <span>CSS图片旋转-transform</span>
+        <a href="/2019/12/v-model%E5%8E%9F%E7%90%86/" data-toggle="tooltip" data-placement="top" title="v-model原理">上一篇：  <span>v-model原理</span>
         </a>
     </li>
     
-    
-    <li class="next">
-        <a href="/2019/05/HTML5%E9%9F%B3%E8%A7%86%E9%A2%91/" data-toggle="tooltip" data-placement="top" title="HTML5音/视频">下一篇：  <span>HTML5音/视频</span>
-        </a>
-    </li>
     
 </ul>
 </section>

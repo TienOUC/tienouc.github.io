@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>v-model原理</title>
+  <meta name="description" content="1.v-model其实是一个语法糖，本质上是如下两个操作：  a)  v-bind绑定一个value属性  b)  v-on指令给当前元素绑定input事件">
+  <meta name="author" content="Tien">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="v-model原理">
+  <meta name="twitter:description" content="1.v-model其实是一个语法糖，本质上是如下两个操作：  a)  v-bind绑定一个value属性  b)  v-on指令给当前元素绑定input事件">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="v-model原理">
+  <meta property="og:description" content="1.v-model其实是一个语法糖，本质上是如下两个操作：  a)  v-bind绑定一个value属性  b)  v-on指令给当前元素绑定input事件">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/12/v-model%E5%8E%9F%E7%90%86/">
+  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
+  
+<!-- Google search console -->
+  <meta name="google-site-verification" content="SGMWyY5ggeQ-HljJv10is4xNxzpHxA_XEcoCngRNqRI" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is, not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">Welcome for your visit !</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">v-model原理</h1>
+    <div class="post-meta">
+      <time datetime="2019-12-17 02:46:06 +0800" itemprop="datePublished" class="post-meta__date date">2019-12-17</time> &#8226; <span class="post-meta__tags tags">Framework/Vue</span>
+    </div>
+    <hr />
+  </header>
+
+  <section class="post">
+    <h4 id="1v-model其实是一个语法糖本质上是如下两个操作">1.v-model其实是一个语法糖，本质上是如下两个操作：</h4>
+<blockquote>
+  <p>a)  v-bind绑定一个value属性 <br />
+ b)  v-on指令给当前元素绑定input事件</p>
+</blockquote>
+
+<p><strong>示例</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;div id="app"&gt;
+        &lt;input type="text" v-bind:value = "message" v-on:input = "valueChange"&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello'
+            },
+            methods: {
+                valueChange(event){
+                    this.message = event.target.value;
+                }
+            }
+        })
+    &lt;/script&gt;
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>上述methods方法可以省略，利用event事件将input监听简写
+
+    &lt;div id="app"&gt;
+        &lt;input type="text" :value = "message" @input = "message = $event.target.value"&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello'
+            }
+        })
+    &lt;/script&gt;
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v-model是上述v-bind和v-on的语法糖，所以
+
+&lt;input type = "text" v-bind:value = "message" v-on:input = "message = $event.target.value"&gt;
+
+等同于
+
+&lt;input type = "text" v-model = "message"&gt;
+</code></pre></div></div>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2020/02/Google-Search-Console/" title="link to Google search console">Google search console</a></h2>
+       <p class="excerpt">一、什么是Google Search Console  Search Console 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 SEOer 必要的使用工具。二、使用方法      用谷歌账号登录Google Searc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-02-07 04:46:06 +0800" class="post-list__meta--date date">2020-02-07</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/02/Google-Search-Console/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/11/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/" title="link to vue父子组件之间的传值">vue父子组件之间的传值</a></h2>
+       <p class="excerpt">1. 父组件向子组件传值  1.1 第一个就是要明白怎么在父页面中向子组件中传值？你可以给子组件传入一个静态的值：但我们一般都是需要传动态的值，所以需要v-bind绑定：当然，你传的值可以是数字、对象、数组等等，参见vue官网。  1.2 第二个就是要知道如何在子组件中接受父页面传过来的值，有几点需要了解：组件实例的作用域是孤立的；子组件要显式的用props选项声明它预期的数据，如：// 某个子组件中：export default {  props: {    title: {      ...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-11-01 17:28:00 +0800" class="post-list__meta--date date">2019-11-01</time> &#8226; <span class="post-list__meta--tags tags">WEB/Framework</span><a class="btn-border-small" href=/2019/11/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/11/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/" data-toggle="tooltip" data-placement="top" title="vue父子组件之间的传值">上一篇：  <span>vue父子组件之间的传值</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2020/02/Google-Search-Console/" data-toggle="tooltip" data-placement="top" title="Google search console">下一篇：  <span>Google search console</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置> -->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+  -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019-2020&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
