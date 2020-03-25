@@ -7,31 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>Tien</title>
-  <meta name="description" content="The truth is what it is, not what you see.">
+  <meta name="description"
+    content="The truth is what it is, not what you see.">
   <meta name="author" content="Tien">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Tien">
-  <meta name="twitter:description" content="The truth is what it is, not what you see.">
-  
+  <meta name="twitter:title"
+    content="Tien">
+  <meta name="twitter:description"
+    content="The truth is what it is, not what you see.">
+
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Tien">
-  <meta property="og:description" content="The truth is what it is, not what you see.">
-  
+  <meta property="og:title"
+    content="Tien">
+  <meta property="og:description"
+    content="The truth is what it is, not what you see.">
+
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
-  
+
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="canonical" href="http://localhost:4000/page/2/">
-  <link rel="alternate" type="application/rss+xml" title="Tien" href="http://localhost:4000/feed.xml">
-  
-<!-- Google search console -->
-  <meta name="google-site-verification" content="SGMWyY5ggeQ-HljJv10is4xNxzpHxA_XEcoCngRNqRI" />
-  
-</head>
+  <link rel="alternate" type="application/rss+xml" title="Tien"
+    href="http://localhost:4000/feed.xml">
 
+  <!-- Google search console -->
+  <meta name="google-site-verification" content="SGMWyY5ggeQ-HljJv10is4xNxzpHxA_XEcoCngRNqRI" />
+
+  <!-- 百度统计 -->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f9b0af2815387b68725b600e0eedcb9d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
 
   <body>
 
@@ -54,7 +70,7 @@
         <hr class="panel-cover__divider panel-cover__divider--secondary" />
         
         
-        <p class="panel-cover__description">Welcome for your visit !</p>
+        <p class="panel-cover__description">Welcome!</p>
         
         
         <div class="navigation-wrapper">
@@ -127,6 +143,13 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2019/10/MogoDB/" title="访问 MogoDB(MacOS)">MogoDB(MacOS)</a></h2>
+      <p class="excerpt">一、安装  主要有如下三种安装方式，本文主要介绍对入门友好的第三种方式 +（1）手动命令安装 +（2）采用Homebrew +（3）下载安装包。      MongoDB Download        将解压后的文件放入 /usr/local ，默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按 shift + command +G 输入 /usr/local 后回车便能看到这个隐藏的目录了。        配置环境变量，打开终端，输...&hellip;</p>
+      <div class="post-list__meta"><time datetime="2019-10-10 19:45:00 +0800" class="post-list__meta--date date">2019-10-10</time> &#8226; <span class="post-list__meta--tags tags">NodeJS</span><a class="btn-border-small" href=/2019/10/MogoDB/>继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" title="访问 Js一元运算-数据类型转换">Js一元运算-数据类型转换</a></h2>
       <p class="excerpt">今天碰到个下面这段代码中  ` =+ ` 一时半会儿不得其解，上stack overflow  查了一下才知道这个是日常比较少见的数据类型转换用法。function(dx, dy){            rect.attr({x: orig_x+dx,y: orig_y+dy, fill:"orange"});        },function(x,y){            orig_x=+rect.attr("x");            orig_y=+rect.attr("...&hellip;</p>
       <div class="post-list__meta"><time datetime="2019-09-19 03:15:00 +0800" class="post-list__meta--date date">2019-09-19</time> &#8226; <span class="post-list__meta--tags tags">Javascript</span><a class="btn-border-small" href=/2019/09/Js%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/>继续阅读</a></div>
@@ -175,13 +198,6 @@
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/06/Js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/" title="访问 Js事件冒泡与捕获">Js事件冒泡与捕获</a></h2>
-      <p class="excerpt">1.事件传递有两种方式：冒泡与捕获。事件传递定义了元素事件触发的顺序。 如果你将 &lt;p&gt; 元素插入到 &lt;div&gt; 元素中，用户点击 &lt;p&gt; 元素, 哪个元素的 “click” 事件先被触发呢？  在冒泡中，内部元素的事件会先被触发，然后再触发外部元素，即： &lt;p&gt; 元素的点击事件先触发，然后会触发 &lt;div&gt; 元素的点击事件。在捕获中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： &lt;div&gt; 元素的点击事...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-06-17 04:00:03 +0800" class="post-list__meta--date date">2019-06-17</time> &#8226; <span class="post-list__meta--tags tags">Js</span><a class="btn-border-small" href=/2019/06/Js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
@@ -190,7 +206,7 @@
     
         <a class="newer-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">&larr; 最近</a>
     
-    <span class="pagination__page-number">2 / 3</span>
+    <span class="pagination__page-number">2 / 4</span>
     
         <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/3/#blog">更早 &rarr;</a>
     

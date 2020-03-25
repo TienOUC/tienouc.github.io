@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>JS浅拷贝和深拷贝</title>
+  <meta name="description"
+    content="1. 浅拷贝">
+  <meta name="author" content="Tien">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+    content="JS浅拷贝和深拷贝">
+  <meta name="twitter:description"
+    content="1. 浅拷贝">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title"
+    content="JS浅拷贝和深拷贝">
+  <meta property="og:description"
+    content="1. 浅拷贝">
+
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2020/01/JS%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+  <link rel="alternate" type="application/rss+xml" title="Tien"
+    href="http://localhost:4000/feed.xml">
+
+  <!-- Google search console -->
+  <meta name="google-site-verification" content="SGMWyY5ggeQ-HljJv10is4xNxzpHxA_XEcoCngRNqRI" />
+
+  <!-- 百度统计 -->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f9b0af2815387b68725b600e0eedcb9d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is, not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">Welcome!</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">JS浅拷贝和深拷贝</h1>
+    <div class="post-meta">
+      <time datetime="2020-01-02 04:46:06 +0800" itemprop="datePublished" class="post-meta__date date">2020-01-02</time> &#8226; <span class="post-meta__tags tags">JavaScript</span>
+    </div>
+    <hr />
+  </header>
+
+  <section class="post">
+    <h4 id="1-浅拷贝">1. 浅拷贝</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//原始对象exp1
+let exp1 = {
+  name: 'exp1',
+  data: 1234
+}
+ let exp2 = exp1     //只是把exp1所储存的内存地址复制给exp2, exp1和exp2指向同一个对象（传址）
+ exp2.name = 'exp2'   //修改其中一个的属性会导致另一个的属性也跟着改变
+   console.log(exp1);   //{ name: 'exp2', data: 1234 }
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// =========浅拷贝-1=========
+let exp3 = {
+  name : exp1.name,
+  data : exp1.data
+}
+exp3.name = 'exp3'
+  console.log(exp3);  //{ name: 'exp3', data: 1234 }   复制exp1第一层属性，改变exp3时不影响exp1
+  console.log(exp1);  //{ name: 'exp1', data: 1234 }
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// =========浅拷贝-2=========
+let exp4 = {}
+for (const key in exp1) {   //当exp1属性较多时，用上面的方法逐个复制便不是很便利了，所以可采用for in循环复制，exp4的修改也不会影响exp1
+  exp4[key] = exp1[key]
+}
+exp4.name = 'exp4'
+  console.log(exp4);   //{ name: 'exp4', data: 1234 }
+  console.log(exp1);   //{ name: 'exp1', data: 1234 }
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// =========浅拷贝-3=========
+let exp5 = Object.assign({}, exp1)  //使用Object.assign()方法
+exp5.name = 'exp5'
+  console.log(exp5);   //{ name: 'exp5', data: 1234 }
+  console.log(exp1);   //{ name: 'exp1', data: 1234 }
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// =========浅拷贝-4=========
+let exp6 = {...exp1}   //使用ES6的展开语法
+exp6.name = 'exp6'
+  console.log(exp6);   //{ name: 'exp6', data: 1234 }
+  console.log(exp1);   //{ name: 'exp1', data: 1234 }
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>总结：</strong> 浅拷贝只复制对象的第一层属性，深拷贝可以对对象的属性进行递归复制</p>
+</blockquote>
+
+<hr />
+
+<h4 id="2-深拷贝">2. 深拷贝</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//原对象
+let exp_1 = {
+  name: 'exp_1',
+  data: {
+    m: 123,
+    n: 'ABC'
+  }
+}
+
+let exp_2 = {
+  name: exp_1.name,
+  data: exp_1.data  //exp_1深层属性是个对象，这里依然只是复制了对象的地址，所以exp_2.data.m修改会引起exp_1中data对象的m变化
+}
+exp_2.name = 'exp_2'
+exp_2.data.m = 456
+  console.log(exp_2); //{ name: 'exp_2', data: { m: 456, n: 'ABC' } }
+  console.log(exp_1); //{ name: 'exp_1', data: { m: 456, n: 'ABC' } }
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//要实现深拷贝就必须对原对象里的各层数据逐层递归处理
+function copy(object) {
+  let res = {}
+  for (const key in object) {
+    res[key] = typeof object[key] == "object" ? copy(object[key]) : object[key];
+  }
+  return res;
+}
+
+let exp_3 = copy(exp_1);
+exp_3.name = 'exp_3'
+exp_3.data.m = 789
+  console.log(exp_3); //{ name: 'exp_3', data: { m: 789, n: 'ABC' } }
+  console.log(exp_1); //{ name: 'exp_1', data: { m: 123, n: 'ABC' } }
+</code></pre></div></div>
+
+<ul>
+  <li>但此时上述方法有一个问题，即当原对象中有数组时便会出错</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//当原对象为：
+let exp_1 = {
+  name: 'exp_1',
+  data: {
+    m: 123,
+    n: 'ABC'
+  },
+  arr: ['a']
+}
+
+function copy(object) {
+  let res = {}
+  for (const key in object) {
+    res[key] = typeof object[key] == "object" ? copy(object[key]) : object[key];
+  }
+  return res;
+}
+
+let exp_3 = copy(exp_1)
+exp_3.name = 'exp_3'
+exp_3.data.m = 456
+  console.log(exp_3); //{ name: 'exp_3', data: { m: 456, n: 'ABC' }, arr: { '0': 'a' } }
+  console.log(exp_1); //{ name: 'exp_1', data: { m: 123, n: 'ABC' }, arr: [ 'a' ] }
+
+</code></pre></div></div>
+
+<ul>
+  <li>此时，发现exp_3中的arr变成了对象，而非数组，所以需要改造copy函数</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//改造copy函数
+function copy(object) {
+  let res = object instanceof Array ? [] : {};
+  for (const [k, v] of Object.entries(object)) {
+    res[k] = typeof v == 'object' ? copy(v) : v
+  }
+  return res;
+}
+
+let exp_3 = copy(exp_1)
+exp_3.name = 'exp_3'
+exp_3.data.m = 456
+exp_3.arr.push('b')
+  console.log(exp_3); //{ name: 'exp_3', data: { m: 456, n: 'ABC' }, arr: [ 'a', 'b' ] }
+  console.log(exp_1); //{ name: 'exp_1', data: { m: 123, n: 'ABC' }, arr: [ 'a' ] }
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>总结：</strong> 深拷贝不仅将原对象的各个属性逐个复制出去，而且将原对象各个属性所包含的对象也依次递归复制到新对象上，所以对新对象的修改并不会影响原对象。</p>
+</blockquote>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2020/02/Google-Search-Console/" title="link to Google search console">Google search console</a></h2>
+       <p class="excerpt">一、什么是Google Search Console  Search Console 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 SEOer 必要的使用工具。二、使用方法      用谷歌账号登录Google Searc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-02-07 04:46:06 +0800" class="post-list__meta--date date">2020-02-07</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/02/Google-Search-Console/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/12/v-model%E5%8E%9F%E7%90%86/" title="link to v-model原理">v-model原理</a></h2>
+       <p class="excerpt">1.v-model其实是一个语法糖，本质上是如下两个操作：  a)  v-bind绑定一个value属性  b)  v-on指令给当前元素绑定input事件示例    &lt;div id="app"&gt;        &lt;input type="text" v-bind:value = "message" v-on:input = "valueChange"&gt;        &lt;h2&gt;&lt;/h2&gt;    &lt;/div&gt;    &lt;scrip...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-12-17 02:46:06 +0800" class="post-list__meta--date date">2019-12-17</time> &#8226; <span class="post-list__meta--tags tags">Framework/Vue</span><a class="btn-border-small" href=/2019/12/v-model%E5%8E%9F%E7%90%86/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2019/12/v-model%E5%8E%9F%E7%90%86/" data-toggle="tooltip" data-placement="top" title="v-model原理">上一篇：  <span>v-model原理</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2020/02/Google-Search-Console/" data-toggle="tooltip" data-placement="top" title="Google search console">下一篇：  <span>Google search console</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置> -->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+  -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019-2020&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
