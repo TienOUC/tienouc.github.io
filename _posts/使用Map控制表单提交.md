@@ -1,0 +1,109 @@
+---
+layout: post
+title: "使用Map类型控制表单提交"
+data: 2020-03-16 20:46:06 
+description: "工具"
+tag: JavaScript
+---   
+   
+1. Map()和WeakMap()的区别
++  Map()键可以是任意对象
+   
+```
+  let map = new Map(); //键可以使任意类型
+  console.log(map.set(1, 'This is Map test')); //Map { 1 => 'This is Map test' }
+  
+  let user = {
+    name: "ABC"
+  }
+  console.log(map.set(user, ['abc']));  //Map { 1 => 'This is Map test', { name: 'ABC' } => [ 'abc' ]   }
+
+```   
+
++  WeakMap()键是且只能是引用类型(对象)，对键名所引用对象的引用是弱引用，当所引用的对象的其他引用被清除时，回收机制就会释放该对象所占用内存。
+    
+```
+  let weakmap = new WeakMap(); //键是且只能是引用类型（对象）
+  console.log(weakmap.set([1, 2], 'This is WeakMap test')); //WeakMap {Array(2) => "This is WeakMap   test"}
+
+```   
+> 怎么理解 **当所引用的对象的其他引用被清除时，回收机制就会释放该对象所占用内存。** 这句话呢，举例说明如下：   
+```
+  let test = {
+    name: "Test"
+  };
+  a = test;
+  let weakmap = new WeakMap();
+  weakmap.set(test, "ABC");
+  console.log(weakmap);  //此时输出如图一，键值都正常，且键为对象test
+
+```   
+   ![图一](https://tva1.sinaimg.cn/large/00831rSTly1gdcb64t4rzj30b304cglj.jpg)   
+
+```   
+   let test = {
+     name: "Test"
+   };
+   a = test;
+   let weakmap = new WeakMap();
+   weakmap.set(test, "ABC");
+   test = null;
+   a = null;
+   console.log(weakmap); //此时输出如图二，对象test的引用都置为null时，显示No properties，但显示WeakMap{{...} => "ABC"}，这是因为系统还没有立刻感知到，待系统回收对象test所占内存后就会输出如图三所示
+
+```   
+   ![图二](https://tva1.sinaimg.cn/large/00831rSTly1gdcb6d5tgej30bj03bdfp.jpg)   
+
+```
+  let test = {
+    name: "Test"
+  };
+  a = test;
+  let weakmap = new WeakMap();
+  weakmap.set(test, "ABC");
+  test = null;
+  a = null;
+  setTimeout(() => {
+    console.log(weakmap); 
+  }, 1000);  //此时输出如图三，一定时间后，对象test所占内存被回收，所以显示WeakMap{}，与图二显示不同
+```
+   ![图三](https://tva1.sinaimg.cn/large/00831rSTly1gdcb6iiky0j30b203bt8k.jpg)   
+
+2. 控制表单提交示例
+```
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>使用Map类型控制表单提交</title>
+    </head>
+  
+    <body>
+      <form action="https://baidu.com" onsubmit="return post()">
+        <input type="checkbox" name="agreement" error="请接收协议" />接受协议
+        <input type="checkbox" name="student" error="网站只对学生开放" />我是学生
+        <input type="submit" />
+      </form>
+  
+      <script>
+        function post() {
+          let map = new Map();
+          let inputs = document.querySelectorAll("[error]");
+          inputs.forEach(item => {
+            map.set(item, {
+              errorInfo: item.getAttribute("error"),
+              status: item.checked
+            });
+          });
+          return [...map].every(([elem, config]) => {  //every()保证元素调用结果都返回true，即全部选中才可提交 
+            config.status || alert(config.errorInfo);  //短路运算config.status为false时，弹出alert
+            return config.status;
+          });
+        }
+      </script>
+    </body>
+  </html>
+
+```   
+![](https://tva1.sinaimg.cn/large/00831rSTly1gdcbm2bg8cg30m00dbagx.gif)
