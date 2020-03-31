@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Tien</title>
+  <title>jekyll问题总结</title>
   <meta name="description"
-    content="The truth is what it is, not what you see.">
+    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
   <meta name="author" content="Tien">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title"
-    content="Tien">
+    content="jekyll问题总结">
   <meta name="twitter:description"
-    content="The truth is what it is, not what you see.">
+    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
 
   <meta property="og:type" content="article">
   <meta property="og:title"
-    content="Tien">
+    content="jekyll问题总结">
   <meta property="og:description"
-    content="The truth is what it is, not what you see.">
+    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
 
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/page/4/">
+  <link rel="canonical" href="http://localhost:4000/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
   <link rel="alternate" type="application/rss+xml" title="Tien"
     href="http://localhost:4000/feed.xml">
 
@@ -56,7 +56,7 @@
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
     </span>
     
-    <header class="panel-cover " style="background-image: url('/assets/images/background-cover.jpg')">
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
@@ -138,45 +138,66 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list hidden">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">jekyll问题总结</h1>
+    <div class="post-meta">
+      <time datetime="2020-03-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-03-16</time> &#8226; <span class="post-meta__tags tags">Tools/Jekyll</span>
+    </div>
+    <hr />
+  </header>
 
-  <ol class="post-list">
+  <section class="post">
+    <h4 id="本地执行-jeykll-serve-时遇到的问题"><strong>本地执行 jeykll serve 时遇到的问题：</strong></h4>
+
+<ol>
+  <li>提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”</li>
+</ol>
+
+<blockquote>
+  <p><strong>原因：</strong> <code class="highlighter-rouge">代码块中有{}导致</code>  <br />
+<strong>解决办法：</strong> 在代码块前后加上  {% raw %} <code class="highlighter-rouge">代码块</code> {% endraw %} ，如下图：</p>
+</blockquote>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdd53vg6rbj30c804vdfn.jpg" alt="" /></p>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2020/02/Google-Search-Console/" title="link to Google search console">Google search console</a></h2>
+       <p class="excerpt">一、什么是Google Search Console  Search Console 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 SEOer 必要的使用工具。二、使用方法      用谷歌账号登录Google Searc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-02-07 04:46:06 +0800" class="post-list__meta--date date">2020-02-07</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/02/Google-Search-Console/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/05/CSS3-transform/" title="访问 CSS图片旋转-transform">CSS图片旋转-transform</a></h2>
-      <p class="excerpt">html&lt;!DOCTYPE html&gt;&lt;html lang="zh-CN"&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;&lt;style&gt;    .mainDiv{        width:100px;        height:100px;        margin:100px auto;        text-alig...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-05-08 01:00:06 +0800" class="post-list__meta--date date">2019-05-08</time> &#8226; <span class="post-list__meta--tags tags">WEB/CSS</span><a class="btn-border-small" href=/2019/05/CSS3-transform/>继续阅读</a></div>
-      <hr class="post-list__divider" />
+    <li class="previous">
+        <a href="/2020/02/Google-Search-Console/" data-toggle="tooltip" data-placement="top" title="Google search console">上一篇：  <span>Google search console</span>
+        </a>
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/04/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" title="访问 如何使用中国区停服后的iTunes Store">如何使用中国区停服后的iTunes Store</a></h2>
-      <p class="excerpt">1.先决条件1.1 有外网环境（你懂的）      参考资料      造梯教程1.2 安装快捷指令APP，并添加【APP Store地区切换指令】      用Safari打开链接    https://www.icloud.com/shortcuts/c68bfc73e12341b0b84028b3d02a8a2e  2.操作演示2.1 打开梯子按钮，保持网络通畅2.2 执行 APP Store地区切换指令 ，地址切换到国外，一般首选美国🇺🇸      1) 执行APP Store地区...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-04-19 01:00:06 +0800" class="post-list__meta--date date">2019-04-19</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/04/%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%9C%8D%E5%8A%A1%E5%81%9C%E7%94%A8%E5%90%8E%E7%9A%84iTunes-Store%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2019/04/Markdown%E8%AF%AD%E6%B3%95/" title="访问 Markdown语法">Markdown语法</a></h2>
-      <p class="excerpt">一、标题在想要设置为标题的文字前面加#来表示一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。注：标准语法在#后跟一个空格示例：这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题二、字体      加粗要加粗的文字左右分别用两个*号包起来        斜体要倾斜的文字左右分别用一个*号包起来        斜体加粗要倾斜和加粗的文字左右分别用三个*号包起来        删除线要加删除线的文字左右分别用两个~~号包起来  示例：这是加粗的文字 这是倾斜的文...&hellip;</p>
-      <div class="post-list__meta"><time datetime="2019-04-18 01:00:06 +0800" class="post-list__meta--date date">2019-04-18</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2019/04/Markdown%E8%AF%AD%E6%B3%95/>继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-    
-  </ol>
-
-  <hr class="post-list__divider " />
-
-<nav class="pagination" role="navigation">
-    
-        <a class="newer-posts pagination__newer btn btn-small btn-tertiary" href="/page/3/#blog">&larr; 最近</a>
-    
-    <span class="pagination__page-number">4 / 4</span>
-    
-</nav>
+</ul>
+</section>
 
 
-</div>
+<!-- disqus <comments.html里设置> -->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+  -->
 
             <section class="footer">
     <footer>

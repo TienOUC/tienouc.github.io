@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>使用Map类型控制表单提交</title>
+  <meta name="description"
+    content="1. Map()和WeakMap()的区别  Map()键可以是任意对象  let map = new Map(); //键可以使任意类型  console.log(map.set(1, 'This is Map test')); //Map { 1 =&gt; 'This is Map test' }    l...">
+  <meta name="author" content="Tien">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+    content="使用Map类型控制表单提交">
+  <meta name="twitter:description"
+    content="1. Map()和WeakMap()的区别  Map()键可以是任意对象  let map = new Map(); //键可以使任意类型  console.log(map.set(1, 'This is Map test')); //Map { 1 =&gt; 'This is Map test' }    l...">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title"
+    content="使用Map类型控制表单提交">
+  <meta property="og:description"
+    content="1. Map()和WeakMap()的区别  Map()键可以是任意对象  let map = new Map(); //键可以使任意类型  console.log(map.set(1, 'This is Map test')); //Map { 1 =&gt; 'This is Map test' }    l...">
+
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2020/01/%E4%BD%BF%E7%94%A8Map%E6%8E%A7%E5%88%B6%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/">
+  <link rel="alternate" type="application/rss+xml" title="Tien"
+    href="http://localhost:4000/feed.xml">
+
+  <!-- Google search console -->
+  <meta name="google-site-verification" content="SGMWyY5ggeQ-HljJv10is4xNxzpHxA_XEcoCngRNqRI" />
+
+  <!-- 百度统计 -->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f9b0af2815387b68725b600e0eedcb9d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Tien 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Tien logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Tien" class="blog-button">Tien</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">The truth is what it is, not what you see.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">Welcome!</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://willtien.com/Projects" target="_blank" title="Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!--  -->
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/TienOUC" title="@TienOUC 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  <!--  -->
+
+  <!--  -->
+
+  <!-- RSS -->
+  <!-- <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li> -->
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:tianfeng_ouc@outlook.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">使用Map类型控制表单提交</h1>
+    <div class="post-meta">
+      <time datetime="2020-01-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-01-16</time> &#8226; <span class="post-meta__tags tags">JavaScript</span>
+    </div>
+    <hr />
+  </header>
+
+  <section class="post">
+    <h4 id="1-map和weakmap的区别">1. Map()和WeakMap()的区别</h4>
+<ul>
+  <li>Map()键可以是任意对象</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  let map = new Map(); //键可以使任意类型
+  console.log(map.set(1, 'This is Map test')); //Map { 1 =&gt; 'This is Map test' }
+  
+  let user = {
+    name: "ABC"
+  }
+  console.log(map.set(user, ['abc']));  //Map { 1 =&gt; 'This is Map test', { name: 'ABC' } =&gt; [ 'abc' ]   }
+</code></pre></div></div>
+
+<ul>
+  <li>WeakMap()键是且只能是引用类型(对象)，对键名所引用对象的引用是弱引用，当所引用的对象的其他引用被清除时，回收机制就会释放该对象所占用的内存。</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  let weakmap = new WeakMap(); //键是且只能是引用类型（对象）
+  console.log(weakmap.set([1, 2], 'This is WeakMap test')); //WeakMap {Array(2) =&gt; "This is WeakMap   test"}
+</code></pre></div></div>
+<blockquote>
+  <p>怎么理解 <strong>当所引用的对象的其他引用被清除时，回收机制就会释放该对象所占用内存。</strong> 这句话呢，举例说明如下：</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  let test = {
+    name: "Test"
+  };
+  a = test;
+  let weakmap = new WeakMap();
+  weakmap.set(test, "ABC");
+  console.log(weakmap);  //此时输出如图一，键值都正常，且键为对象test
+</code></pre></div></div>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdcb64t4rzj30b304cglj.jpg" alt="图一" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+   let test = {
+     name: "Test"
+   };
+   a = test;
+   let weakmap = new WeakMap();
+   weakmap.set(test, "ABC");
+   test = null;
+   a = null;
+   console.log(weakmap); //此时输出如图二，对象test的引用都置为null时，内容是No properties，但显示WeakMap{{...} =&gt; "ABC"}，这是因为系统还没有立刻感知到，待系统回收对象test所占内存后就会输出如图三所示
+</code></pre></div></div>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdcb6d5tgej30bj03bdfp.jpg" alt="图二" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  let test = {
+    name: "Test"
+  };
+  a = test;
+  let weakmap = new WeakMap();
+  weakmap.set(test, "ABC");
+  test = null;
+  a = null;
+  setTimeout(() =&gt; {
+    console.log(weakmap); 
+  }, 1000);  //此时输出如图三，一定时间后，对象test所占内存被回收，所以显示 WeakMap{} ，与图二显示 WeakMap{{...} =&gt; "ABC"} 不同
+</code></pre></div></div>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdcb6iiky0j30b203bt8k.jpg" alt="图三" /></p>
+
+<h4 id="2-控制表单提交示例">2. 控制表单提交示例</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;!DOCTYPE html&gt;</span>
+  <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+      <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;title&gt;</span>使用Map类型控制表单提交<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+  
+    <span class="nt">&lt;body&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://baidu.com"</span> <span class="na">onsubmit=</span><span class="s">"return post()"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"agreement"</span> <span class="na">error=</span><span class="s">"请接收协议"</span> <span class="nt">/&gt;</span>接受协议
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"student"</span> <span class="na">error=</span><span class="s">"网站只对学生开放"</span> <span class="nt">/&gt;</span>我是学生
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+  
+      <span class="nt">&lt;script&gt;</span>
+        <span class="kd">function</span> <span class="nx">post</span><span class="p">()</span> <span class="p">{</span>
+          <span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+          <span class="kd">let</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"[error]"</span><span class="p">);</span>
+          <span class="nx">inputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="p">{</span>
+              <span class="na">errorInfo</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">"error"</span><span class="p">),</span>
+              <span class="na">status</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">checked</span>
+            <span class="p">});</span>
+          <span class="p">});</span>
+          <span class="k">return</span> <span class="p">[...</span><span class="nx">map</span><span class="p">].</span><span class="nx">every</span><span class="p">(([</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">config</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>  <span class="c1">//every()保证元素调用结果都返回true，即全部选中才可提交 </span>
+            <span class="nx">config</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">errorInfo</span><span class="p">);</span>  <span class="c1">//短路运算config.status为false时，弹出alert</span>
+            <span class="k">return</span> <span class="nx">config</span><span class="p">.</span><span class="nx">status</span><span class="p">;</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdcbm2bg8cg30m00dbagx.gif" alt="" /></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   <!-- 
+    -->
+   <!-- <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2020/02/Google-Search-Console/" title="link to Google search console">Google search console</a></h2>
+       <p class="excerpt">一、什么是Google Search Console  Search Console 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 SEOer 必要的使用工具。二、使用方法      用谷歌账号登录Google Searc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-02-07 04:46:06 +0800" class="post-list__meta--date date">2020-02-07</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/02/Google-Search-Console/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2020/01/JS%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" title="link to JS浅拷贝和深拷贝">JS浅拷贝和深拷贝</a></h2>
+       <p class="excerpt">1. 浅拷贝//原始对象exp1let exp1 = {  name: 'exp1',  data: 1234} let exp2 = exp1     //只是把exp1所储存的内存地址复制给exp2, exp1和exp2指向同一个对象（传址） exp2.name = 'exp2'   //修改其中一个的属性会导致另一个的属性也跟着改变   console.log(exp1);   //{ name: 'exp2', data: 1234 }// =========浅拷贝-1======...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-01-02 04:46:06 +0800" class="post-list__meta--date date">2020-01-02</time> &#8226; <span class="post-list__meta--tags tags">JavaScript</span><a class="btn-border-small" href=/2020/01/JS%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/>继续阅读</a></div>
+   </div>
+    -->
+
+   <ul class="pager">
+    
+    <li class="previous">
+        <a href="/2020/01/JS%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" data-toggle="tooltip" data-placement="top" title="JS浅拷贝和深拷贝">上一篇：  <span>JS浅拷贝和深拷贝</span>
+        </a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/2020/02/Google-Search-Console/" data-toggle="tooltip" data-placement="top" title="Google search console">下一篇：  <span>Google search console</span>
+        </a>
+    </li>
+    
+</ul>
+</section>
+
+
+<!-- disqus <comments.html里设置> -->
+<!-- <section class="post-comments">
+  
+  
+  
+  
+</section>
+  -->
+
+            <section class="footer">
+    <footer>
+         <!--<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>-->
+        <span class="footer__copyright">开源协议-<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licenses</a></span>
+        <span class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2019-2020&nbsp;Tien&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
