@@ -5,9 +5,325 @@
     <description>The truth is what it is, not what you see.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 Mar 2020 15:34:32 +0800</pubDate>
-    <lastBuildDate>Tue, 31 Mar 2020 15:34:32 +0800</lastBuildDate>
+    <pubDate>Thu, 02 Apr 2020 15:48:50 +0800</pubDate>
+    <lastBuildDate>Thu, 02 Apr 2020 15:48:50 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Vuex</title>
+        <description>&lt;h4 id=&quot;1-vuex概述&quot;&gt;&lt;strong&gt;1. Vuex概述&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;  &lt;strong&gt;1.1 vue组件之间共享数据的方式&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;父向子传值： &lt;code class=&quot;highlighter-rouge&quot;&gt;v-bind&lt;/code&gt; 属性绑定 &lt;br /&gt;
+子向父传值： &lt;code class=&quot;highlighter-rouge&quot;&gt;v-on&lt;/code&gt; 事件绑定 &lt;br /&gt;
+兄弟组件之间传值：&lt;code class=&quot;highlighter-rouge&quot;&gt;EventBus&lt;/code&gt; ,  发送数据的组件&lt;code class=&quot;highlighter-rouge&quot;&gt;$emit&lt;/code&gt; , 接受数据的组件  &lt;code class=&quot;highlighter-rouge&quot;&gt;$on&lt;/code&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;  &lt;strong&gt;1.2 Vuex是什么&lt;/strong&gt; &lt;br /&gt;
+Vuex是实现组件全局状态（数据）管理的机制，可以方便地实现组件之间传值。(适用于大数据共享或者数据频繁共享的场景)&lt;/p&gt;
+
+&lt;p&gt;如下图所示，常规组件A-&amp;gt;B传值，需要A逐级向上到根，再到B，传值较为麻烦。而VueX可以把共享数据存储在Store中，A直接存进Store，B再直接调用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/00831rSTly1gde0pyam8gj30j80a50tx.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;strong&gt;1.3 Vuex统一管理的优点&lt;/strong&gt; &lt;br /&gt;
+一般情况下，只有组建共享的数据才会存储在Vuex Store中，组件私有数据依然存在组件data中&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;a. 能够在VueX中集中管理共享的数据，便于开发和维护 &lt;br /&gt;
+b. 能够高效地实现组件之间的传值，便于提高开发效率 &lt;br /&gt;
+c. 存储在VueX中的数据都是响应式的，能够实时保持数据和页面的同步&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;2-vuex核心概念&quot;&gt;&lt;strong&gt;2. Vuex核心概念&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;  &lt;strong&gt;2.1 &lt;code class=&quot;highlighter-rouge&quot;&gt;State&lt;/code&gt;  唯一的公共数据源，所有的数据都要统一放到Store的state中存储&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;两种触发方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this.$store.state.srcData&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;Addition: {{ this.$store.state.srcData }}&amp;lt;/h3&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;mapState&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. 导入mapSate函数 
+import { mapState } from 'vuex'
+
+b. //然后在组件的computed属性映射
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState(['srcData']),
+  } 
+}
+
+c. 最后在模板中直接引用映射结果
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h3&amp;gt;Subtraction:{{ srcData }}&amp;lt;/h3&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;  &lt;strong&gt;2.2 &lt;code class=&quot;highlighter-rouge&quot;&gt;Mutations&lt;/code&gt;  用于变更Store中的数据（mutation不能执行异步操作），便于集中监控数据变化（因此不推荐在模板中直接用  $store.state.数据名 进行修改）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;两种触发方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;组件methods中通过 this.$store.commit(‘mutations 非异步操作函数名’)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js 中定义mutation
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    add(state) {
+      state.count++
+    }
+  })
+
+b. 组件methods中触发
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;button @click=&quot;handlerBtn1()&quot;&amp;gt;-&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    handlerBtn1() {
+      this.$store.commit('add')
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;mapMutations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js 中定义mutations
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    add(state) {
+      state.count++
+    }
+  })
+
+b. 组件中引入mapMutations函数，然后在methods中触发
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;button @click=&quot;handlerBtn1&quot;&amp;gt;-&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+import { mapMutations} from 'vuex'
+
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    ...mapMutations(['sub']),
+    handlerBtn1() {
+      this.sub()
+    }
+  }
+} 
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;   &lt;strong&gt;2.3 &lt;code class=&quot;highlighter-rouge&quot;&gt;Actions&lt;/code&gt;   用于处理异步任务（如果要异步操作变更数据，必须通过Action，而不能使用Mutation，但Action的本质还是通过触发Mutation的方式间接地变更数据）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;两种触发方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this.$store.dispatch(‘actions异步函数名’)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js 定义actions
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations:{
+     add(state) {
+      state.count++
+    }
+  },
+  actions: {
+    addAsync(context) {
+      setTimeout(() =&amp;gt; {
+        context.commit('add')
+      }, 1000)
+    }
+  })
+
+b. 组件methods中触发 this.$store.dispatch('addAsync')
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;button @click=&quot;handlerBtn1()&quot;&amp;gt;-&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    handlerBtn1() {
+      this.$store.dispatch('addAsync')
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;mapActions函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js 定义actions
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations:{
+     add(state) {
+      state.count++
+    }
+  },
+  actions: {
+    addAsync(context) {
+      setTimeout(() =&amp;gt; {
+        context.commit('add')
+      }, 1000)
+    }
+  })
+
+b. 组件引入mapActions函数，将需要的函数映射为组件的methods方法   
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;button @click=&quot;handlerBtn1&quot;&amp;gt;-&amp;lt;/button&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+  data() {
+    return {}
+  },
+    methods: {
+    ...mapActions(['addAsync'])
+    handlerBtn1(){
+      this.addAsync()
+    }
+  }
+}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;   &lt;strong&gt;2.4 &lt;code class=&quot;highlighter-rouge&quot;&gt;Getters&lt;/code&gt;  用于对Store中的数据进行加工处理形成新的数据（不会修改store的数据，只起到包装的作用），Store中数据变化时，Getter的数据也会随之变化&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;两种触发方式&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this.$store.getters.函数名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js中定义getters
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  getters:{
+      show: (state) =&amp;gt; {
+      return '当前最新的数据:' + state.count
+    }
+  }
+}
+
+b. 组件中  this.$store.getters.函数  直接调用
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h4&amp;gt;{{this.$store.getters.show}}&amp;lt;/h4&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;mapGetters函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a. store.js中定义getters
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  getters:{   //步骤一
+      show: (state) =&amp;gt; {
+      return '当前最新的数据:' + state.count
+    }
+  }
+}
+
+b. 组件中引入mapGetters函数，把函数映射到组件的computed属性，然后模板中直接调用函数
+&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    &amp;lt;h4&amp;gt;{{show}}&amp;lt;/h4&amp;gt;  //步骤四， 直接调用
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+import { mapGetters } from 'vuex'  //步骤二
+export default {
+  data() {
+    return {}
+  },
+  computed: {  //步骤三
+    ...mapGetters(['show'])
+  }
+}
+&amp;lt;/script&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/vuex/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/vuex/</guid>
+        
+        <category>Vue</category>
+        
+        
+      </item>
     
       <item>
         <title>jekyll问题总结</title>
@@ -747,397 +1063,6 @@ console.log(foo(1,2,3,'4',11))
         <guid isPermaLink="true">http://localhost:4000/2019/10/%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%A6%99%E7%94%A8/</guid>
         
         <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>跨域及几种解决方法</title>
-        <description>&lt;h4 id=&quot;一-什么是跨域&quot;&gt;一、 &lt;strong&gt;什么是跨域&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。&lt;/p&gt;
-
-&lt;p&gt;例如：a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。注意：跨域限制访问，其实是浏览器的限制。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;二-解决跨域的几种方法&quot;&gt;二、 &lt;strong&gt;解决跨域的几种方法&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h5 id=&quot;21-jsonp&quot;&gt;2.1 JSONP&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 动态创建一个script标签，动态加载一个js文件，载入成功之后会执行在url参数中指定的函数，并且把需要的json数据所谓参数传入。&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;只能传递get请求，有一定的限制&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 原生方法
-(function (window,document) {
-    &quot;use strict&quot;;
-    var jsonp = function (url,data,callback) {
-
-        // 1.将传入的data数据转化为url字符串形式
-        // {id:1,name:'zhangsan'} =&amp;gt; id=1&amp;amp;name=zhangsan
-        var dataString = url.indexof('?') == -1? '?': '&amp;amp;';
-        for(var key in data){
-            dataString += key + '=' + data[key] + '&amp;amp;';
-        };
-
-        // 2 处理url中的回调函数
-        // cbFuncName回调函数的名字 ：my_json_cb_名字的前缀 + 随机数（把小数点去掉）
-        var cbFuncName = 'my_json_cb_' + Math.random().toString().replace('.','');
-        dataString += 'callback=' + cbFuncName;
-
-        // 3.创建一个script标签并插入到页面中
-        var scriptEle = document.createElement('script');
-        scriptEle.src = url + dataString;
-
-        // 4.挂载回调函数
-        window[cbFuncName] = function (data) {
-            callback(data);
-            // 处理完回调函数的数据之后，删除jsonp的script标签
-            document.body.removeChild(scriptEle);
-        }
-
-        // 5.append到页面中
-        document.body.appendChild(scriptEle);
-    }
-
-    // 因为jsonp是一个私有函数外部不能调用，所有jsonp函数作为window对象的一个方法，供外部调用
-    window.$jsonp = jsonp;
-
-})(window,document)
-
-// 原生方式精简版
-&amp;lt;script&amp;gt;
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
- 
-    // 传参并指定回调执行函数为onBack
-    script.src = 'http://www.baidu.com/xx?a=b&amp;amp;callback=onBack';
-    document.head.appendChild(script);
- 
-    // 回调执行函数
-    function onBack(res) {
-        alert(JSON.stringify(res));
-    }
-&amp;lt;/script&amp;gt;
-
-
-// jQuery
-$.ajax({
-    url: url,
-    type: 'get',
-    dataType: 'jsonp',  // 请求方式为jsonp
-    jsonpCallback: &quot;callback&quot;,    // 自定义回调函数名
-    data: {}
-});
-
-// 后端node.js代码
-var querystring = require('querystring');
-var http = require('http');
-var server = http.createServer();
- 
-server.on('request', function(req, res) {
-    var params = qs.parse(req.url.split('?')[1]);
-    var fn = params.callback;
- 
-    // jsonp返回设置
-    res.writeHead(200, { 'Content-Type': 'text/javascript' });
-    res.write(fn + '(' + JSON.stringify(params) + ')');
- 
-    res.end();
-});
- 
-server.listen('8080');
-console.log('Server is running at port 8080...');
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;22-cros跨域资源共享&quot;&gt;2.2 CROS跨域资源共享&lt;/h5&gt;
-&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 服务器端对于cros的支持，设置Access-Control-Allow-Origin为你传输的origin的值，浏览器监测到响应的设置，支持跨域&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;跨域携带cookies&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;优缺点：支持所有的请求类型，get、post、put、delete、updata等等&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;所有浏览器都支持该功能(IE8+：IE8/9需要使用XDomainRequest对象来支持CORS）)，CORS也已经成为主流的跨域解决方案&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 原生
-...
-xhr.withCredentials = true
-...
-
-// jQuery
-$.ajax({
-    ...
-   xhrFields: {
-       withCredentials: true    // 前端设置是否带cookie
-   },
-   crossDomain: true,   // 会让请求头中包含跨域的额外信息，但不会含cookie
-    ...
-});
-
-// axios
-axios.defaults.withCredentials=true; // 让ajax携带cookie
-
-//服务端设置
-const app = express()
-app.all('*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*') // 访问控制允许来源：所有
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept') // 访问控制允许报头 X-Requested-With: xhr请求
-  res.header('Access-Control-Allow-Metheds', 'PUT, POST, GET, DELETE, OPTIONS') // 访问控制允许方法
-  res.header('X-Powered-By', 'nodejs') // 自定义头信息，表示服务端用nodejs
-  res.header('Content-Type', 'application/json;charset=utf-8')
-  res.header('Access-Control-Max-Age', '600')
-  next()
-})
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;23-windowname--iframe跨域&quot;&gt;2.3 window.name + iframe跨域&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; 一般用于iframe的跨域问题，在一个窗口（window）的生命周期内，窗口载入的所有的页面都是共享一个window.name的，每个页面的window.name都有读写的权限，并且是持久存在一个再如果的所有页面中&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;strong&gt;&lt;em&gt;优缺点：通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。window.name支持非常长的name值(2MB)&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 在A页面设置函数
-
-var proxy = function(url, callback) {
-    var state = 0;
-    var iframe = document.createElement('iframe');
- 
-    // 加载跨域页面
-    iframe.src = url;
- 
-    // onload事件会触发2次，第1次加载跨域页，并留存数据于window.name
-    iframe.onload = function() {
-        if (state === 1) {
-            // 第2次onload(同域proxy页)成功后，读取同域window.name中数据
-            callback(iframe.contentWindow.name);
-            destoryFrame();
- 
-        } else if (state === 0) {
-            // 第1次onload(跨域页)成功后，切换到同域代理页面
-            iframe.contentWindow.location = 'http://www.domain1.com/proxy.html';
-            state = 1;
-        }
-    };
- 
-    document.body.appendChild(iframe);
- 
-    // 获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）
-    function destoryFrame() {
-        iframe.contentWindow.document.write('');
-        iframe.contentWindow.close();
-        document.body.removeChild(iframe);
-    }
-};
- 
-// 请求跨域b页面数据
-proxy('http://www.xxx.com/B.html', function(data){
-    alert(data);
-});
-
-
-// 在B页面设置window.name值
-&amp;lt;script&amp;gt;
-    window.name = 'B页面向A页面传递的数据';
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;24-h5属性-windowpostmessage&quot;&gt;2.4 H5属性 window.postMessage&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; postMessage是HTML5 XMLHttpRequest Level 2中的API，且是为数不多可以跨域操作的window属性之一，它可用于解决以下方面的问题：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;页面和其打开的新窗口的数据传递&lt;/li&gt;
-    &lt;li&gt;多窗口之间消息传递&lt;/li&gt;
-    &lt;li&gt;页面与嵌套的iframe消息传递&lt;/li&gt;
-    &lt;li&gt;上面三个场景的跨域数据传递&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;用法：postMessage(data,origin)方法接受两个参数
-data： html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符串，所以传参时最好用JSON.stringify()序列化。
-origin： 协议+主机+端口号，也可以设置为”*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/”。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // A页面 
-&amp;lt;iframe id=&quot;iframe&quot; src=&quot;http://www.B.com/b.html&quot; style=&quot;display:none;&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
-&amp;lt;script&amp;gt;      
-    var iframe = document.getElementById('iframe');
-    iframe.onload = function() {
-        var data = {
-            msg: 'xxx'
-        };
-        // 向B传送跨域数据
-        iframe.contentWindow.postMessage(JSON.stringify(data), 'http://www.B.com');
-    };
- 
-    // 接受B返回数据
-    window.addEventListener('message', function(e) {
-        alert('data from B ---&amp;gt; ' + e.data);
-    }, false);
-&amp;lt;/script&amp;gt;
-
-
-// B页面
-&amp;lt;script&amp;gt;
-    // 接收A的数据
-    window.addEventListener('message', function(e) {
-        alert('data from A ---&amp;gt; ' + e.data);
- 
-        var data = JSON.parse(e.data);
-        if (data) {
-            data.number = 16;
- 
-            // 处理后再发回A
-            window.parent.postMessage(JSON.stringify(data), 'http://www.A.com');
-        }
-    }, false);
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h5 id=&quot;21-nodejs中间件代理跨域&quot;&gt;2.1 nodejs中间件代理跨域&lt;/h5&gt;
-&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt; node中间件实现跨域代理，原理大致与nginx相同，都是通过启一个代理服务器，实现数据的转发&lt;/p&gt;
-
-&lt;p&gt;node + vue + webpack-dev-server代理接口跨域，在开发模式下，只需要配置devServer=&amp;gt;proxy即可&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module.exports = {
-    entry: {},
-    module: {},
-    ...
-    devServer: {
-        historyApiFallback: true,
-        proxy: [{
-            target: 'http://www.B.com:8080',  // 代理跨域目标接口
-            changeOrigin: true,
-            cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
-        }],
-        noInfo: true
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在非框架类时nodejs使用http-proxy-middleware&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var express = require('express');
-var proxy = require('http-proxy-middleware');
-var app = express();
- 
-app.use('/', proxy({
-    // 代理跨域目标接口
-    target: 'http://www.B.com:8080',
-    changeOrigin: true,
- 
-    // 修改响应头信息，实现跨域并允许带cookie
-    onProxyRes: function(proxyRes, req, res) {
-        res.header('Access-Control-Allow-Origin', 'http://www.A.com');
-        res.header('Access-Control-Allow-Credentials', 'true');
-    },
- 
-    // 修改响应信息中的cookie域名
-    cookieDomainRewrite: 'www.A.com'  // 可以为false，表示不修改
-}));
- 
-app.listen(5566);
-console.log('Proxy server is listen at port 5566...');
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;nodejs如何设置允许跨域&quot;&gt;Node.js如何设置允许跨域&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-设置允许所有域名跨域&quot;&gt;1. 设置允许所有域名跨域：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
-    //设置允许跨域的域名，*代表允许任意域名跨域
-    res.header(&quot;Access-Control-Allow-Origin&quot;,&quot;*&quot;);
-    //允许的header类型
-    res.header(&quot;Access-Control-Allow-Headers&quot;,&quot;content-type&quot;);
-    //跨域允许的请求方式 
-    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
-    if (req.method.toLowerCase() == 'options')
-        res.send(200);  //让options尝试请求快速结束
-    else
-        next();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2-设置允许指定域名httpwwwabccom跨域&quot;&gt;2. 设置允许指定域名“http://www.ABC.com”跨域：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
-    //设置允许跨域的域名，*代表允许任意域名跨域
-    res.header(&quot;Access-Control-Allow-Origin&quot;,&quot;http://www.ABC.com&quot;);
-    //允许的header类型
-    res.header(&quot;Access-Control-Allow-Headers&quot;,&quot;content-type&quot;);
-    //跨域允许的请求方式 
-    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
-    if (req.method.toLowerCase() == 'options')
-        res.send(200);  //让options尝试请求快速结束
-    else
-        next();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;3-设置允许多个域名跨域&quot;&gt;3. 设置允许多个域名跨域：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
-    if( req.headers.origin.toLowerCase() == &quot;http://www.ABC.com&quot;
-        || req.headers.origin.toLowerCase() ==&quot;http://127.0.0.1&quot; ) {
-        //设置允许跨域的域名，*代表允许任意域名跨域
-        res.header(&quot;Access-Control-Allow-Origin&quot;, req.headers.origin);
-    }
-    //允许的header类型
-    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type&quot;);
-    //跨域允许的请求方式 
-    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
-    if (req.method.toLowerCase() == 'options')
-        res.send(200);  //让options尝试请求快速结束
-    else
-        next();    
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;4-如果允许的域名较多可以将允许跨域的域名放到数组当中&quot;&gt;4. 如果允许的域名较多，可以将允许跨域的域名放到数组当中：&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app.all(&quot;*&quot;,function(req,res,next){
-    var orginList=[
-        &quot;http://www.ABC.com&quot;,
-        &quot;http://www.alibaba.com&quot;,
-        &quot;http://www.qq.com&quot;,
-        &quot;http://www.baidu.com&quot;
-    ]
-    if(orginList.includes(req.headers.origin.toLowerCase())){
-        //设置允许跨域的域名，*代表允许任意域名跨域
-        res.header(&quot;Access-Control-Allow-Origin&quot;,req.headers.origin);
-    }
-    //允许的header类型
-    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type&quot;);
-    //跨域允许的请求方式
-    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;DELETE,PUT,POST,GET,OPTIONS&quot;);
-    if (req.method.toLowerCase() == 'options')
-        res.send(200);  //让options尝试请求快速结束
-    else
-        next();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 14 Oct 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
-        
-        <category>NodeJS</category>
         
         
       </item>
