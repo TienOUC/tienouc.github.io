@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>jekyll问题总结</title>
+  <title>Jsonp封装</title>
   <meta name="description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Jsonp封装">
   <meta name="author" content="Tien">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title"
-    content="jekyll问题总结">
+    content="Jsonp封装">
   <meta name="twitter:description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Jsonp封装">
 
   <meta property="og:type" content="article">
   <meta property="og:title"
-    content="jekyll问题总结">
+    content="Jsonp封装">
   <meta property="og:description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Jsonp封装">
 
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+  <link rel="canonical" href="http://localhost:4000/2020/03/Jsonp%E5%B0%81%E8%A3%85/">
   <link rel="alternate" type="application/rss+xml" title="Tien"
     href="http://localhost:4000/feed.xml">
 
@@ -140,27 +140,57 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">jekyll问题总结</h1>
+    <h1 class="post-title">Jsonp封装</h1>
     <div class="post-meta">
-      <time datetime="2020-03-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-03-16</time> &#8226; <span class="post-meta__tags tags">Tools/Jekyll</span>
+      <time datetime="2020-03-01 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-03-01</time> &#8226; <span class="post-meta__tags tags">Tools</span>
     </div>
     <hr />
   </header>
 
   <section class="post">
-    <h4 id="本地执行-jeykll-serve-时遇到的问题"><strong>本地执行 jeykll serve 时遇到的问题：</strong></h4>
+    <h3 id="jsonp封装">Jsonp封装</h3>
 
-<ol>
-  <li>提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”</li>
-</ol>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function jsonp(options) {
+//动态创建 Script 标签
+var script = document.createElement('script');
 
-<blockquote>
-  <p><strong>原因：</strong> <code class="highlighter-rouge">代码块中有{}导致</code>  <br />
-<strong>解决办法：</strong> 在代码块前后加上  {% raw %} <code class="highlighter-rouge">代码块</code> {% endraw %} ，如下图：</p>
-</blockquote>
+var params = '';
+for (var attr in options.data) {
+  params += '&amp;' + attr + '=' + options.data[attr];
+};
 
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdd53vg6rbj30c804vdfn.jpg" alt="" /></p>
+var fnName = 'jsonp' + Math.random().toString().replace('.', '');
 
+//用 window 把 success 函数挂载到全局
+window[fnName] = options.success;
+
+//为 scriptb 标签添加 src 属性
+script.src = options.url + '?callback=' + fnName + params;
+
+//将 script 标签添加到 body
+document.body.appendChild(script);
+
+//script 标签加载完成时，服务器返回的函数已执行，所以在此之后移除 script 标签
+script.onload = function () {
+    document.body.removeChild(script);
+   }
+}
+</code></pre></div></div>
+<h4 id="请求举例">请求举例</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jsonp({
+type: 'get',
+url: 'http://www.xxx.com/get', //非同源地址
+data: {
+name: 'ABC',
+age: 20
+},
+success: function (data) { },
+error: function (data) { }
+})
+
+   
+//服务器端用(express 框架)用 res.jsonp({name: 'ABC', age: 20})返回需要调用的函数名和数据给客户端
+</code></pre></div></div>
 
   </section>
 </article>
@@ -170,9 +200,9 @@
     -->
    <!-- <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2020/03/vuex/" title="link to Vuex">Vuex</a></h2>
-       <p class="excerpt">1. Vuex概述  1.1 vue组件之间共享数据的方式  父向子传值： v-bind 属性绑定 子向父传值： v-on 事件绑定 兄弟组件之间传值：EventBus ,  发送数据的组件$emit , 接受数据的组件  $on  1.2 Vuex是什么 Vuex是实现组件全局状态（数据）管理的机制，可以方便地实现组件之间传值。(适用于大数据共享或者数据频繁共享的场景)如下图所示，常规组件A-&gt;B传值，需要A逐级向上到根，再到B，传值较为麻烦。而VueX可以把共享数据存储在Stor...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2020-03-25 00:00:00 +0800" class="post-list__meta--date date">2020-03-25</time> &#8226; <span class="post-list__meta--tags tags">Vue</span><a class="btn-border-small" href=/2020/03/vuex/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="link to jekyll问题总结">jekyll问题总结</a></h2>
+       <p class="excerpt">本地执行 jeykll serve 时遇到的问题：{% raw %}  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …” {% endraw %}{% raw %}  原因： 代码块中有{}导致  解决办法： 在代码块前后加上  {% raw %} 代码块 {% endraw %} ，如下图： {...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-03-16 00:00:00 +0800" class="post-list__meta--date date">2020-03-16</time> &#8226; <span class="post-list__meta--tags tags">Tools/Jekyll</span><a class="btn-border-small" href=/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/>继续阅读</a></div>
    </div>
    
    
@@ -180,22 +210,22 @@
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" title="link to Jsonp封装">Jsonp封装</a></h2>
-       <p class="excerpt">Jsonp封装function jsonp(options) {//动态创建 Script 标签var script = document.createElement('script');var params = '';for (var attr in options.data) {  params += '&amp;' + attr + '=' + options.data[attr];};var fnName = 'jsonp' + Math.random().toString().r...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2020-03-01 00:00:00 +0800" class="post-list__meta--date date">2020-03-01</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/03/Jsonp%E5%B0%81%E8%A3%85/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2020/03/Ajax%E5%B0%81%E8%A3%85/" title="link to Ajax封装">Ajax封装</a></h2>
+       <p class="excerpt">Ajax封装function ajax(options) {  //默认值  var defaults = {    type: 'get',    url: '',    data: {},    header: {      'Context-Type': 'application/x-www-form-urlencoded'    },    success: function () { },    error: function () { }  }  //使用options对象中的...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-03-01 00:00:00 +0800" class="post-list__meta--date date">2020-03-01</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/03/Ajax%E5%B0%81%E8%A3%85/>继续阅读</a></div>
    </div>
     -->
 
    <ul class="pager">
     
     <li class="previous">
-        <a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Jsonp封装">上一篇：  <span>Jsonp封装</span>
+        <a href="/2020/03/Ajax%E5%B0%81%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Ajax封装">上一篇：  <span>Ajax封装</span>
         </a>
     </li>
     
     
     <li class="next">
-        <a href="/2020/03/vuex/" data-toggle="tooltip" data-placement="top" title="Vuex">下一篇：  <span>Vuex</span>
+        <a href="/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" data-toggle="tooltip" data-placement="top" title="jekyll问题总结">下一篇：  <span>jekyll问题总结</span>
         </a>
     </li>
     

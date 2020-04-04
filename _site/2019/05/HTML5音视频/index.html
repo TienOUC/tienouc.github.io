@@ -201,14 +201,13 @@ WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件</p>
 包含宽度和高度属性也是不错的主意。
 **<code class="highlighter-rouge">&lt;video&gt; 与 &lt;/video&gt;</code> **之间插入的内容是供不支持 video 元素的浏览器显示的：</p>
 
-<p><strong>实例</strong></p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;video src="movie.ogg" width="320" height="240" controls="controls"&gt;
 Your browser does not support the video tag.
 &lt;/video&gt;
 </code></pre></div></div>
 
-<p><strong>video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式：</strong>
-<strong>实例</strong></p>
+<p><strong>video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式：</strong></p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;video width="320" height="240" controls="controls"&gt;
   &lt;source src="movie.ogg" type="video/ogg"&gt;
   &lt;source src="movie.mp4" type="video/mp4"&gt;
@@ -216,7 +215,7 @@ Your browser does not support the video tag.
 &lt;/video&gt;
 </code></pre></div></div>
 
-<p><strong><code class="highlighter-rouge">&lt;video&gt;</code> 标签的属性</strong></p>
+<p><code class="highlighter-rouge">&lt;video&gt;</code> 标签的属性</p>
 
 <table>
   <tbody>
@@ -286,23 +285,57 @@ canPlayType|videoHeight|error
 
 <p>audio 元素支持三种音频格式：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        |IE 9  |Firefox 3.5 |Opera 10.5 |Chrome 3.0  |Safari 3.0 |      Ogg Vorbis|          |√           |√          |√           |               |      MP3        |√     |                  |               |√           |√         |      Wav         |          |√           |               |√           |√         |     
-</code></pre></div></div>
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>IE 9</td>
+      <td>Firefox 3.5</td>
+      <td>Opera 10.5</td>
+      <td>Chrome 3.0</td>
+      <td>Safari 3.0</td>
+    </tr>
+    <tr>
+      <td>Ogg Vorbis</td>
+      <td> </td>
+      <td>√</td>
+      <td>√</td>
+      <td>√</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MP3</td>
+      <td>√</td>
+      <td> </td>
+      <td> </td>
+      <td>√</td>
+      <td>√</td>
+    </tr>
+    <tr>
+      <td>Wav</td>
+      <td> </td>
+      <td>√</td>
+      <td> </td>
+      <td>√</td>
+      <td>√</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>如需在 HTML5 中播放音频：</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;audio src="song.ogg" controls="controls"&gt;
 &lt;/audio&gt;
 </code></pre></div></div>
-<p><strong>control 属性供添加播放、暂停和音量控件。</strong>
-<strong><audio> 与 </audio> 之间插入的内容是供不支持 audio 元素的浏览器显示的：</strong>
-<strong>实例：</strong></p>
+<p><strong>control 属性供添加播放、暂停和音量控件。</strong><br />
+<strong><audio> 与 </audio> 之间插入的内容是供不支持 audio 元素的浏览器显示的：</strong></p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;audio src="song.ogg" controls="controls"&gt;
 Your browser does not support the audio tag.
 &lt;/audio&gt;
 </code></pre></div></div>
 
-<p>audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：
-<strong>实例</strong></p>
+<p>audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;audio controls="controls"&gt;
   &lt;source src="song.ogg" type="audio/ogg"&gt;
   &lt;source src="song.mp3" type="audio/mpeg"&gt;

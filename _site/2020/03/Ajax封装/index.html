@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>jekyll问题总结</title>
+  <title>Ajax封装</title>
   <meta name="description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Ajax封装```function ajax(options) {  //默认值  var defaults = {    type: ‘get’,    url: ‘’,    data: {},    header: {      ‘Context-Type’: ‘application/x-www-form...">
   <meta name="author" content="Tien">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title"
-    content="jekyll问题总结">
+    content="Ajax封装">
   <meta name="twitter:description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Ajax封装```function ajax(options) {  //默认值  var defaults = {    type: ‘get’,    url: ‘’,    data: {},    header: {      ‘Context-Type’: ‘application/x-www-form...">
 
   <meta property="og:type" content="article">
   <meta property="og:title"
-    content="jekyll问题总结">
+    content="Ajax封装">
   <meta property="og:description"
-    content="本地执行 jeykll serve 时遇到的问题：  提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”">
+    content="Ajax封装```function ajax(options) {  //默认值  var defaults = {    type: ‘get’,    url: ‘’,    data: {},    header: {      ‘Context-Type’: ‘application/x-www-form...">
 
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2020/03/jekyll%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+  <link rel="canonical" href="http://localhost:4000/2020/03/Ajax%E5%B0%81%E8%A3%85/">
   <link rel="alternate" type="application/rss+xml" title="Tien"
     href="http://localhost:4000/feed.xml">
 
@@ -140,27 +140,85 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">jekyll问题总结</h1>
+    <h1 class="post-title">Ajax封装</h1>
     <div class="post-meta">
-      <time datetime="2020-03-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-03-16</time> &#8226; <span class="post-meta__tags tags">Tools/Jekyll</span>
+      <time datetime="2020-03-01 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-03-01</time> &#8226; <span class="post-meta__tags tags">Tools</span>
     </div>
     <hr />
   </header>
 
   <section class="post">
-    <h4 id="本地执行-jeykll-serve-时遇到的问题"><strong>本地执行 jeykll serve 时遇到的问题：</strong></h4>
+    <h3 id="ajax封装">Ajax封装</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function ajax(options) {
+  //默认值
+  var defaults = {
+    type: 'get',
+    url: '',
+    data: {},
+    header: {
+      'Context-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function () { },
+    error: function () { }
+  }
 
-<ol>
-  <li>提示 “Liquid Exception: Liquid syntax error (line 67): Variable ‘{{…}’ was not properly terminated with regexp: /\}\}/ in …”</li>
-</ol>
+  //使用options对象中的属性覆盖defaults对象中的属性（Object.assign会改变原对象）
+  Object.assign(defaults, options);
 
-<blockquote>
-  <p><strong>原因：</strong> <code class="highlighter-rouge">代码块中有{}导致</code>  <br />
-<strong>解决办法：</strong> 在代码块前后加上  {% raw %} <code class="highlighter-rouge">代码块</code> {% endraw %} ，如下图：</p>
-</blockquote>
+  var xhr = new XMLHttpRequest();
+  var params = ""; //请求参数变量
 
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdd53vg6rbj30c804vdfn.jpg" alt="" /></p>
+  //循环用户传递进来的对象格式参数，并将其转换成字符串格式
+  for (var attr in defaults.data) {
+    params += attr + "=" + defaults.data[attr] + "&amp;";
+  }
+  params = params.sunstr(0, params.length - 1); //截掉最后面的 &amp;
+  
+  //判断请求类型
+  if (defaults.type == "get") {
+    defaults.url = defaults.url + "?" + params;
+  }
+  xhr.open(defaults.type, defaults.url);
 
+  if (defaults.type == "post") {
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //post请求必须设置RequestHeader
+    xhr.send(params);
+  } else {
+    xhr.send();
+  }
+
+  xhr.onload = function () {
+    var contentType = xhr.getResponseHeader("Content-Type");
+    var responseText = xhr.responseText;
+
+    //若响应类型中包含application/json，则将json字符串转换为json对象
+    if (contentType.includes("application/json")) {
+      responseText = JSON.parse(responseText);
+    }
+    if (xhr.status == 200) {   //若使用xhr.onreadystatechange()时则要判断  xhr.readyState == 4 &amp;&amp; xhr.status == 200
+      return defaults.success(responseText, xhr);
+    } else {
+      defaults.error(responseText, xhr);
+    }
+  };
+}
+</code></pre></div></div>
+
+<h4 id="请求举例">请求举例</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ajax({
+  type: "get",
+  url: "http://localhost:3000/get",
+  data: {
+    name: "name",
+    age: 20
+  },
+  header: {
+    'Context-Type': 'applicatoion/json'
+  },
+  success: function (data, xhr) { },
+  error: function (error, xhr) { }
+});
+</code></pre></div></div>
 
   </section>
 </article>
@@ -170,9 +228,9 @@
     -->
    <!-- <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2020/03/vuex/" title="link to Vuex">Vuex</a></h2>
-       <p class="excerpt">1. Vuex概述  1.1 vue组件之间共享数据的方式  父向子传值： v-bind 属性绑定 子向父传值： v-on 事件绑定 兄弟组件之间传值：EventBus ,  发送数据的组件$emit , 接受数据的组件  $on  1.2 Vuex是什么 Vuex是实现组件全局状态（数据）管理的机制，可以方便地实现组件之间传值。(适用于大数据共享或者数据频繁共享的场景)如下图所示，常规组件A-&gt;B传值，需要A逐级向上到根，再到B，传值较为麻烦。而VueX可以把共享数据存储在Stor...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2020-03-25 00:00:00 +0800" class="post-list__meta--date date">2020-03-25</time> &#8226; <span class="post-list__meta--tags tags">Vue</span><a class="btn-border-small" href=/2020/03/vuex/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" title="link to Jsonp封装">Jsonp封装</a></h2>
+       <p class="excerpt">Jsonp封装function jsonp(options) {//动态创建 Script 标签var script = document.createElement('script');var params = '';for (var attr in options.data) {  params += '&amp;' + attr + '=' + options.data[attr];};var fnName = 'jsonp' + Math.random().toString().r...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-03-01 00:00:00 +0800" class="post-list__meta--date date">2020-03-01</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/03/Jsonp%E5%B0%81%E8%A3%85/>继续阅读</a></div>
    </div>
    
    
@@ -180,22 +238,22 @@
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" title="link to Jsonp封装">Jsonp封装</a></h2>
-       <p class="excerpt">Jsonp封装function jsonp(options) {//动态创建 Script 标签var script = document.createElement('script');var params = '';for (var attr in options.data) {  params += '&amp;' + attr + '=' + options.data[attr];};var fnName = 'jsonp' + Math.random().toString().r...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2020-03-01 00:00:00 +0800" class="post-list__meta--date date">2020-03-01</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/03/Jsonp%E5%B0%81%E8%A3%85/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2020/02/Google-Search-Console/" title="link to Google search console">Google search console</a></h2>
+       <p class="excerpt">一、什么是Google Search Console  Search Console 是搜索引擎Google旗下的一款免费站长工具，类似于国内的百度资源平台和其他搜索引擎的站长平台，通过注册验证网站域名，可以直观的看到网站在搜索引擎中的一些点击展现数据，以及工具提供的其它管理性的功能，同时也能接收到搜索引擎对网站检测的一些提示或通知信息，有利于更好更优质的管理站点在搜索引擎的表现，也是每个站长和网站 SEOer 必要的使用工具。二、使用方法      用谷歌账号登录Google Searc...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2020-02-07 04:46:06 +0800" class="post-list__meta--date date">2020-02-07</time> &#8226; <span class="post-list__meta--tags tags">Tools</span><a class="btn-border-small" href=/2020/02/Google-Search-Console/>继续阅读</a></div>
    </div>
     -->
 
    <ul class="pager">
     
     <li class="previous">
-        <a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Jsonp封装">上一篇：  <span>Jsonp封装</span>
+        <a href="/2020/02/Google-Search-Console/" data-toggle="tooltip" data-placement="top" title="Google search console">上一篇：  <span>Google search console</span>
         </a>
     </li>
     
     
     <li class="next">
-        <a href="/2020/03/vuex/" data-toggle="tooltip" data-placement="top" title="Vuex">下一篇：  <span>Vuex</span>
+        <a href="/2020/03/Jsonp%E5%B0%81%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Jsonp封装">下一篇：  <span>Jsonp封装</span>
         </a>
     </li>
     
