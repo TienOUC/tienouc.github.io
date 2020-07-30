@@ -38,7 +38,7 @@
 
 若提示jekyll版本不对，按提示执行 `bundle install`即可   
 
-生成的bundle文件和.sass-cache可以不用上传到仓库，如何添加gitignore文件见[gitignore忽略不必要文件](https://willtien.com/2019/09/gitignore忽略不必要文件/)  
+生成的bundle文件和.sass-cache可以不用上传到仓库，如何添加gitignore文件见[gitignore忽略不必要文件](https://www.dodolo.top/2019/09/gitignore忽略不必要文件/)  
 
 在浏览器输入 [127.0.0.1:4000](127.0.0.1:4000) ， 就可以看到博客即时修改后的效果了。
 
