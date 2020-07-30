@@ -1,5 +1,5 @@
 # Tien
-我的个人博客主页 &rarr;[Tien](https://willtien.com)
+我的个人博客主页 &rarr;[Tien](https://www.dodolo.top)
 
 
 ### 1. 如何部署
